@@ -3,13 +3,16 @@
   "snapshot_version": "H1",
   "updated_at": "2026-09-19",
   "phase": "产品与技术方案定稿",
-  "active_item_id": "paper_source_selection",
-  "active_item": "论文数据源最终选择",
+  "active_item_id": "epo_ops_account_and_api_test",
+  "active_item": "EPO OPS 账户权限与真实 API 测试",
   "overall_status": "in_progress",
   "confirmed_decisions": {
     "domain": "生命科学科研调研",
     "runtime_model_preference": "deepseek-flash",
     "patent_source": "EPO OPS",
+    "paper_primary_source": "PubMed",
+    "paper_enrichment_source": "Europe PMC",
+    "paper_identity_source": "Crossref",
     "source_limit": 19,
     "deployment_trial": "Tencent EdgeOne free tier",
     "deployment_fallback": "Hong Kong lightweight server",
@@ -26,10 +29,10 @@
     {"id": "prompt_eval_runner_prepared", "status": "prepared_and_runtime_used", "evidence": ["tests/run_prompt_eval.py", "tests/fixtures/prompt-eval-fixtures.json", "提示词固定测试集与验收.md"]},
     {"id": "prompt_eval_runtime", "status": "runtime_verified_with_recorded_limitation", "evidence": ["artifacts/prompt-eval/20260919T154210/summary.json", "artifacts/prompt-eval/20260919T154210/revalidation.json", "artifacts/prompt-eval/20260919T154210/manual-review.md", "提示词固定测试集与验收.md"]},
     {"id": "local_git_initialized", "status": "verified", "evidence": [".gitignore", ".env.example", "git_commit:07d647b"]},
-    {"id": "github_remote_private_repo", "status": "verified_and_pushed", "evidence": ["https://github.com/jiahuishe0204/life-science-research-workbench", "git_remote:origin", "git_branch:main"]}
+    {"id": "github_remote_private_repo", "status": "verified_and_pushed", "evidence": ["https://github.com/jiahuishe0204/life-science-research-workbench", "git_remote:origin", "git_branch:main"]},
+    {"id": "paper_source_selection", "status": "runtime_verified", "evidence": ["论文数据源选择与实测.md", "artifacts/paper-source-eval/20260919T083041Z/summary.json", "tests/run_paper_source_eval.py", "tests/fixtures/paper-source-queries.json"]}
   ],
   "pending_in_order": [
-    "paper_source_selection",
     "epo_ops_account_and_api_test",
     "official_media_allowlist",
     "deepseek_budget_limits",
@@ -41,7 +44,6 @@
   "not_executed": [
     "网站编码",
     "EPO OPS 注册与真实调用",
-    "论文数据源真实对比",
     "EdgeOne 项目创建与部署",
     "公开发布"
   ]

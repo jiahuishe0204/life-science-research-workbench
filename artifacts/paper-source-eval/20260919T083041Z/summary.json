@@ -1,0 +1,379 @@
+{
+  "generated_at": "2026-09-19T08:35:56.314492+00:00",
+  "method": {
+    "date_from": "2022-01-01",
+    "date_to": "2026-09-19",
+    "rows": 20,
+    "queries": [
+      {
+        "id": "Q01",
+        "label": "基因编辑与血液病",
+        "query": "CRISPR base editing sickle cell disease"
+      },
+      {
+        "id": "Q02",
+        "label": "空间组学与肿瘤微环境",
+        "query": "spatial transcriptomics tumor microenvironment"
+      },
+      {
+        "id": "Q03",
+        "label": "代谢药物与心血管结局",
+        "query": "semaglutide cardiovascular outcomes"
+      },
+      {
+        "id": "Q04",
+        "label": "神经退行性疾病标志物",
+        "query": "alpha synuclein Parkinson biomarker"
+      },
+      {
+        "id": "Q05",
+        "label": "细胞治疗与实体瘤",
+        "query": "CAR T cell therapy solid tumors"
+      }
+    ]
+  },
+  "aggregate": {
+    "pubmed": {
+      "queries_ok": 5,
+      "records_returned": 100,
+      "median_latency_seconds": 4.908,
+      "doi_present": 100,
+      "abstract_present": 100,
+      "authors_present": 100,
+      "year_present": 100,
+      "journal_present": 100,
+      "url_present": 100,
+      "open_access": 0,
+      "full_text_signal": 0,
+      "duplicate_doi": 1,
+      "duplicate_title": 0
+    },
+    "europe_pmc": {
+      "queries_ok": 5,
+      "records_returned": 100,
+      "median_latency_seconds": 3.368,
+      "doi_present": 96,
+      "abstract_present": 87,
+      "authors_present": 98,
+      "year_present": 98,
+      "journal_present": 94,
+      "url_present": 100,
+      "open_access": 45,
+      "full_text_signal": 52,
+      "duplicate_doi": 0,
+      "duplicate_title": 0
+    },
+    "crossref": {
+      "queries_ok": 5,
+      "records_returned": 100,
+      "median_latency_seconds": 3.153,
+      "doi_present": 100,
+      "abstract_present": 42,
+      "authors_present": 87,
+      "year_present": 100,
+      "journal_present": 100,
+      "url_present": 100,
+      "open_access": 0,
+      "full_text_signal": 0,
+      "duplicate_doi": 0,
+      "duplicate_title": 5
+    }
+  },
+  "queries": [
+    {
+      "query": {
+        "id": "Q01",
+        "label": "基因编辑与血液病",
+        "query": "CRISPR base editing sickle cell disease"
+      },
+      "metrics": {
+        "pubmed": {
+          "total_hits": 43,
+          "returned": 20,
+          "latency_seconds": 8.24,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "europe_pmc": {
+          "total_hits": 1352,
+          "returned": 20,
+          "latency_seconds": 3.825,
+          "doi_present": 19,
+          "abstract_present": 18,
+          "authors_present": 20,
+          "year_present": 19,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 13,
+          "full_text_signal": 16,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "crossref": {
+          "total_hits": 1134517,
+          "returned": 20,
+          "latency_seconds": 2.83,
+          "doi_present": 20,
+          "abstract_present": 6,
+          "authors_present": 14,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 2
+        }
+      },
+      "top_result_doi_overlap": {
+        "pubmed_europe_pmc": 1,
+        "pubmed_crossref": 0,
+        "europe_pmc_crossref": 0
+      }
+    },
+    {
+      "query": {
+        "id": "Q02",
+        "label": "空间组学与肿瘤微环境",
+        "query": "spatial transcriptomics tumor microenvironment"
+      },
+      "metrics": {
+        "pubmed": {
+          "total_hits": 1815,
+          "returned": 20,
+          "latency_seconds": 6.733,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "europe_pmc": {
+          "total_hits": 18087,
+          "returned": 20,
+          "latency_seconds": 2.705,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 17,
+          "url_present": 20,
+          "open_access": 3,
+          "full_text_signal": 3,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "crossref": {
+          "total_hits": 283826,
+          "returned": 20,
+          "latency_seconds": 3.57,
+          "doi_present": 20,
+          "abstract_present": 7,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        }
+      },
+      "top_result_doi_overlap": {
+        "pubmed_europe_pmc": 0,
+        "pubmed_crossref": 0,
+        "europe_pmc_crossref": 1
+      }
+    },
+    {
+      "query": {
+        "id": "Q03",
+        "label": "代谢药物与心血管结局",
+        "query": "semaglutide cardiovascular outcomes"
+      },
+      "metrics": {
+        "pubmed": {
+          "total_hits": 560,
+          "returned": 20,
+          "latency_seconds": 4.136,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 1,
+          "duplicate_title": 0
+        },
+        "europe_pmc": {
+          "total_hits": 8059,
+          "returned": 20,
+          "latency_seconds": 2.728,
+          "doi_present": 20,
+          "abstract_present": 17,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 19,
+          "url_present": 20,
+          "open_access": 13,
+          "full_text_signal": 14,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "crossref": {
+          "total_hits": 498768,
+          "returned": 20,
+          "latency_seconds": 2.368,
+          "doi_present": 20,
+          "abstract_present": 5,
+          "authors_present": 17,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 1
+        }
+      },
+      "top_result_doi_overlap": {
+        "pubmed_europe_pmc": 0,
+        "pubmed_crossref": 0,
+        "europe_pmc_crossref": 2
+      }
+    },
+    {
+      "query": {
+        "id": "Q04",
+        "label": "神经退行性疾病标志物",
+        "query": "alpha synuclein Parkinson biomarker"
+      },
+      "metrics": {
+        "pubmed": {
+          "total_hits": 664,
+          "returned": 20,
+          "latency_seconds": 3.736,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "europe_pmc": {
+          "total_hits": 2230,
+          "returned": 20,
+          "latency_seconds": 3.842,
+          "doi_present": 19,
+          "abstract_present": 17,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 3,
+          "full_text_signal": 5,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "crossref": {
+          "total_hits": 72543,
+          "returned": 20,
+          "latency_seconds": 3.58,
+          "doi_present": 20,
+          "abstract_present": 10,
+          "authors_present": 19,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 1
+        }
+      },
+      "top_result_doi_overlap": {
+        "pubmed_europe_pmc": 0,
+        "pubmed_crossref": 0,
+        "europe_pmc_crossref": 0
+      }
+    },
+    {
+      "query": {
+        "id": "Q05",
+        "label": "细胞治疗与实体瘤",
+        "query": "CAR T cell therapy solid tumors"
+      },
+      "metrics": {
+        "pubmed": {
+          "total_hits": 1748,
+          "returned": 20,
+          "latency_seconds": 4.908,
+          "doi_present": 20,
+          "abstract_present": 20,
+          "authors_present": 20,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "europe_pmc": {
+          "total_hits": 19558,
+          "returned": 20,
+          "latency_seconds": 3.368,
+          "doi_present": 18,
+          "abstract_present": 15,
+          "authors_present": 18,
+          "year_present": 19,
+          "journal_present": 18,
+          "url_present": 20,
+          "open_access": 13,
+          "full_text_signal": 14,
+          "duplicate_doi": 0,
+          "duplicate_title": 0
+        },
+        "crossref": {
+          "total_hits": 1039064,
+          "returned": 20,
+          "latency_seconds": 3.153,
+          "doi_present": 20,
+          "abstract_present": 14,
+          "authors_present": 17,
+          "year_present": 20,
+          "journal_present": 20,
+          "url_present": 20,
+          "open_access": 0,
+          "full_text_signal": 0,
+          "duplicate_doi": 0,
+          "duplicate_title": 1
+        }
+      },
+      "top_result_doi_overlap": {
+        "pubmed_europe_pmc": 0,
+        "pubmed_crossref": 1,
+        "europe_pmc_crossref": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "date_from": "2022-01-01",
+  "date_to": "2026-09-19",
+  "rows": 20,
+  "queries": [
+    {
+      "id": "Q01",
+      "label": "基因编辑与血液病",
+      "query": "CRISPR base editing sickle cell disease"
+    },
+    {
+      "id": "Q02",
+      "label": "空间组学与肿瘤微环境",
+      "query": "spatial transcriptomics tumor microenvironment"
+    },
+    {
+      "id": "Q03",
+      "label": "代谢药物与心血管结局",
+      "query": "semaglutide cardiovascular outcomes"
+    },
+    {
+      "id": "Q04",
+      "label": "神经退行性疾病标志物",
+      "query": "alpha synuclein Parkinson biomarker"
+    },
+    {
+      "id": "Q05",
+      "label": "细胞治疗与实体瘤",
+      "query": "CAR T cell therapy solid tumors"
+    }
+  ]
+}
