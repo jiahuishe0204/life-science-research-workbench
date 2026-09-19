@@ -24,7 +24,7 @@
     {"id": "prompt_eval_cases", "evidence": ["tests/prompt-eval-cases.json", "提示词固定测试集与验收.md"]},
     {"id": "prompt_eval_runner_prepared", "status": "prepared_and_runtime_used", "evidence": ["tests/run_prompt_eval.py", "tests/fixtures/prompt-eval-fixtures.json", "提示词固定测试集与验收.md"]},
     {"id": "prompt_eval_runtime", "status": "runtime_verified_with_recorded_limitation", "evidence": ["artifacts/prompt-eval/20260919T154210/summary.json", "artifacts/prompt-eval/20260919T154210/revalidation.json", "artifacts/prompt-eval/20260919T154210/manual-review.md", "提示词固定测试集与验收.md"]},
-    {"id": "secret_exclusion_files_prepared", "status": "files_present_not_git_verified", "evidence": [".gitignore", ".env.example"]}
+    {"id": "local_git_initialized", "status": "verified", "evidence": [".gitignore", ".env.example", "git_commit:07d647b"]}
   ],
   "pending_in_order": [
     "paper_source_selection",
@@ -39,8 +39,8 @@
   "current_blockers": [
     {
       "item": "github_remote_private_repo",
-      "reason": "2026-09-19 实际检查确认当前目录不是 Git 仓库，与旧快照中的 local_git_initialized 记录不一致",
-      "required_action": "到第 8 项时实际初始化本地仓库、检查密钥排除后再创建远程私有仓库"
+      "reason": "本地 Git 已初始化且密钥排除已验证，但 GitHub 远程私有仓库尚未创建或推送",
+      "required_action": "在 GitHub 写入连接或 gh 认证可用时，创建私有仓库、添加 origin 并推送 main，然后再标记远程完成"
     }
   ],
   "not_executed": [
