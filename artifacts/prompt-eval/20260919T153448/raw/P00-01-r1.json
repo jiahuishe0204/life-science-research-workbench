@@ -1,0 +1,365 @@
+{
+  "case_id": "P00-01",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 11.156,
+  "usage": {
+    "prompt_tokens": 2244,
+    "completion_tokens": 2418,
+    "total_tokens": 4662,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 196
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"ready\",\n  \"scope_statement\": \"本计划围绕“mRNA递送技术”进行基础技术调研，覆盖mRNA载荷形式、递送系统类型、靶组织与给药途径、关键性能与限制，以及可用于横向比较的技术平台对象；不预设某一疾病领域、物种或产品形态，论文、专利和官方资料分别检索。\",\n  \"assumptions\": [\n    \"将“mRNA递送技术”理解为将信使RNA或相关RNA载荷导入目标细胞/组织并实现表达或功能调控的技术体系，包括脂质纳米颗粒、聚合物、脂质体、多肽、外泌体/囊泡、病毒载体等可能路线。\",\n    \"未限定适应症或物种；检索时保留传染病疫苗、蛋白替代、肿瘤免疫、基因编辑等应用方向作为交叉词，但不以任一方向收窄主范围。\",\n    \"未指定竞品时，比较对象先按technology_platform定义，后续可细化到企业、产品或专利申请人。\"\n  ],\n  \"clarification_question\": null,\n  \"research_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"mRNA递送技术的基础概念和核心组成是什么，包括载荷类型、递送载体、靶细胞/组织、给药途径和表达调控？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"目前主要非病毒和病毒类mRNA递送路线各有哪些，代表性技术平台的设计原则和差异是什么？\",\n      \"source_types\": [\"paper\", \"patent\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"近五年mRNA递送在器官靶向、可电离脂质、辅助脂质、聚合物及新型载体方面有哪些代表进展？\",\n      \"source_types\": [\"paper\", \"patent\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"mRNA递送技术的关键限制是什么，包括递送效率、组织选择性、稳定性、免疫原性、重复给药、毒性和制造放大？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"评估mRNA递送技术或平台时，应选择哪些可比较对象和指标，例如企业、产品、技术平台、研究方案或专利申请人？\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    }\n  ],\n  \"concepts\": [\n    {\n      \"canonical\": \"mRNA delivery\",\n      \"zh\": [\"mRNA递送\", \"信使RNA递送\", \"mRNA递送技术\", \"mRNA输送\", \"信使核糖核酸递送\"],\n      \"en\": [\"mRNA delivery\", \"messenger RNA delivery\", \"mRNA delivery technology\", \"RNA delivery\"],\n      \"abbreviations\": [\"mRNA\", \"modRNA\", \"saRNA\", \"circRNA\"],\n      \"exclude\": [\"siRNA delivery only\", \"DNA delivery only\", \"protein delivery only\", \"mRNA detection only\", \"mRNA quantification only\"]\n    },\n    {\n      \"canonical\": \"lipid nanoparticle\",\n      \"zh\": [\"脂质纳米颗粒\", \"脂质纳米粒\", \"脂质纳米颗粒递送\", \"可电离脂质纳米颗粒\"],\n      \"en\": [\"lipid nanoparticle\", \"lipid nanoparticles\", \"LNP\", \"ionizable lipid nanoparticle\", \"lipid nanoparticle delivery\"],\n      \"abbreviations\": [\"LNP\", \"LNPs\"],\n      \"exclude\": [\"solid lipid nanoparticle only\", \"liposome cosmetic only\", \"nanoparticle imaging only\"]\n    },\n    {\n      \"canonical\": \"ionizable lipid\",\n      \"zh\": [\"可电离脂质\", \"电离脂质\", \"可离子化脂质\", \"脂质材料\"],\n      \"en\": [\"ionizable lipid\", \"ionizable lipids\", \"ionizable cationic lipid\", \"lipidoid\", \"lipidoids\"],\n      \"abbreviations\": [\"IL\"],\n      \"exclude\": [\"cationic lipid only\", \"phospholipid only\", \"cholesterol only\"]\n    },\n    {\n      \"canonical\": \"targeted delivery\",\n      \"zh\": [\"靶向递送\", \"器官靶向\", \"组织靶向\", \"细胞靶向\", \"选择性递送\"],\n      \"en\": [\"targeted delivery\", \"organ targeting\", \"tissue targeting\", \"cell targeting\", \"selective delivery\", \"extrahepatic delivery\"],\n      \"abbreviations\": [\"SORT\", \"tLNP\"],\n      \"exclude\": [\"nontargeted delivery only\", \"passive targeting only\", \"systemic toxicity only\"]\n    },\n    {\n      \"canonical\": \"non-viral vector\",\n      \"zh\": [\"非病毒载体\", \"非病毒递送\", \"聚合物递送\", \"多肽递送\", \"外泌体递送\"],\n      \"en\": [\"non-viral vector\", \"non-viral delivery\", \"polymeric delivery\", \"peptide delivery\", \"exosome delivery\", \"extracellular vesicle delivery\"],\n      \"abbreviations\": [\"EV\", \"PEI\", \"PBAE\"],\n      \"exclude\": [\"viral vector only\", \"AAV only\", \"lentivirus only\"]\n    },\n    {\n      \"canonical\": \"mRNA vaccine and therapeutics\",\n      \"zh\": [\"mRNA疫苗\", \"mRNA治疗\", \"mRNA药物\", \"信使RNA疗法\"],\n      \"en\": [\"mRNA vaccine\", \"mRNA therapeutic\", \"mRNA medicine\", \"mRNA drug\", \"messenger RNA therapeutic\"],\n      \"abbreviations\": [\"mRNA vaccine\", \"mRNA therapeutics\"],\n      \"exclude\": [\"DNA vaccine only\", \"protein subunit vaccine only\", \"viral vector vaccine only\"]\n    },\n    {\n      \"canonical\": \"delivery performance and safety\",\n      \"zh\": [\"递送效率\", \"表达效率\", \"组织选择性\", \"免疫原性\", \"重复给药\", \"毒性\", \"稳定性\", \"制造放大\"],\n      \"en\": [\"delivery efficiency\", \"expression efficiency\", \"tissue selectivity\", \"immunogenicity\", \"repeat dosing\", \"toxicity\", \"stability\", \"manufacturability\", \"scale-up\"],\n      \"abbreviations\": [\"AE\", \"PK/PD\"],\n      \"exclude\": [\"efficacy endpoint only\", \"clinical outcome only\", \"market size\", \"price\"]\n    }\n  ],\n  \"queries\": [\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\", \"Q2\"],\n      \"query\": \"(\\\"mRNA delivery\\\" OR \\\"messenger RNA delivery\\\" OR \\\"mRNA delivery technology\\\") AND (\\\"lipid nanoparticle\\\" OR LNP OR ionizable lipid OR polymer OR peptide OR \\\"extracellular vesicle\\\") AND (mechanism OR design OR platform OR review) NOT (\\\"siRNA delivery\\\" OR \\\"DNA delivery\\\" OR \\\"protein delivery\\\")\",\n      \"purpose\": \"获取mRNA递送的基础概念、主要路线和代表性平台综述。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q3\"],\n      \"query\": \"(\\\"mRNA delivery\\\" OR \\\"mRNA LNP\\\" OR \\\"messenger RNA delivery\\\") AND (\\\"organ targeting\\\" OR \\\"tissue targeting\\\" OR \\\"extrahepatic\\\" OR \\\"SORT\\\" OR \\\"ionizable lipid\\\" OR \\\"lipidoid\\\" OR \\\"polymeric nanoparticle\\\") AND (2020:2026[dp] OR 2019:2026[dp])\",\n      \"purpose\": \"检索近五年器官靶向、可电离脂质和新型载体代表进展。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q4\"],\n      \"query\": \"(\\\"mRNA delivery\\\" OR \\\"mRNA LNP\\\" OR \\\"messenger RNA delivery\\\") AND (\\\"immunogenicity\\\" OR \\\"repeat dosing\\\" OR \\\"toxicity\\\" OR \\\"stability\\\" OR \\\"manufacturability\\\" OR \\\"scale-up\\\" OR \\\"delivery efficiency\\\") AND (limitation OR challenge OR safety OR barrier)\",\n      \"purpose\": \"检索mRNA递送在效率、安全性、稳定性和制造方面的关键限制。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q2\", \"Q3\"],\n      \"query\": \"(\\\"mRNA delivery\\\" OR \\\"messenger RNA delivery\\\" OR \\\"lipid nanoparticle\\\" OR LNP OR \\\"ionizable lipid\\\" OR \\\"lipidoid\\\") AND (composition OR formulation OR targeting OR \\\"ionizable lipid\\\" OR \\\"payload\\\" OR \\\"administration\\\")\",\n      \"purpose\": \"检索mRNA递送载体、脂质材料、配方和靶向相关专利技术披露。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q5\"],\n      \"query\": \"(\\\"mRNA delivery\\\" OR \\\"lipid nanoparticle\\\" OR \\\"ionizable lipid\\\" OR \\\"mRNA therapeutic\\\" OR \\\"mRNA vaccine\\\") AND (applicant OR assignee OR company OR platform) AND (2020:2026[dp] OR 2019:2026[dp])\",\n      \"purpose\": \"识别可比较的专利申请人、技术平台和企业对象，用于后续竞品或技术路线比较。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q1\", \"Q4\", \"Q5\"],\n      \"query\": \"(\\\"mRNA\\\" OR \\\"messenger RNA\\\") AND (\\\"delivery\\\" OR \\\"lipid nanoparticle\\\" OR \\\"LNP\\\" OR \\\"vaccine\\\" OR \\\"therapeutic\\\") AND (FDA OR EMA OR NMPA OR WHO OR NIH OR \\\"official guidance\\\" OR \\\"regulatory science\\\")\",\n      \"purpose\": \"检索监管机构、官方指南和专业机构对mRNA递送相关产品、安全性、质量和监管考虑的文件。\"\n    }\n  ],\n  \"comparison_unit\": \"technology_platform\",\n  \"coverage_targets\": [\n    \"每个研究问题至少获得1—2条直接相关来源；论文覆盖基础概念、主要路线、代表进展和限制。\",\n    \"专利覆盖至少2类递送载体或材料方向，并覆盖可比较的申请人/平台。\",\n    \"官方资料覆盖监管、质量、安全性或指南类信息；若官方来源不足，在结果中标注缺口。\",\n    \"论文、专利和官方资料合计入选不超过19条；同一论文的不同版本、同一专利族及转载内容不重复计数。\",\n    \"语言以中文输出为主，检索词保留英文专业词；时间优先近五年，必要时补充奠基资料。\"\n  ],\n  \"stop_conditions\": [\n    \"Q1—Q5均有直接证据或明确标注证据不足时停止扩展检索。\",\n    \"新增来源主要重复已有结论，且未引入新的技术路线、限制条件或比较对象时停止。\",\n    \"已覆盖至少两类递送载体、至少两类应用场景和至少一类比较单元时，不再仅因数量不足继续检索。\",\n    \"若某一来源类型持续不可用或返回结果与主题无关，记录缺口后停止该类型扩展，不凭记忆补充。\",\n    \"入选论文、专利和官方资料合计达到19条或关键问题证据饱和时停止。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "ready",
+    "scope_statement": "本计划围绕“mRNA递送技术”进行基础技术调研，覆盖mRNA载荷形式、递送系统类型、靶组织与给药途径、关键性能与限制，以及可用于横向比较的技术平台对象；不预设某一疾病领域、物种或产品形态，论文、专利和官方资料分别检索。",
+    "assumptions": [
+      "将“mRNA递送技术”理解为将信使RNA或相关RNA载荷导入目标细胞/组织并实现表达或功能调控的技术体系，包括脂质纳米颗粒、聚合物、脂质体、多肽、外泌体/囊泡、病毒载体等可能路线。",
+      "未限定适应症或物种；检索时保留传染病疫苗、蛋白替代、肿瘤免疫、基因编辑等应用方向作为交叉词，但不以任一方向收窄主范围。",
+      "未指定竞品时，比较对象先按technology_platform定义，后续可细化到企业、产品或专利申请人。"
+    ],
+    "clarification_question": null,
+    "research_questions": [
+      {
+        "id": "Q1",
+        "question": "mRNA递送技术的基础概念和核心组成是什么，包括载荷类型、递送载体、靶细胞/组织、给药途径和表达调控？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "目前主要非病毒和病毒类mRNA递送路线各有哪些，代表性技术平台的设计原则和差异是什么？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "近五年mRNA递送在器官靶向、可电离脂质、辅助脂质、聚合物及新型载体方面有哪些代表进展？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "mRNA递送技术的关键限制是什么，包括递送效率、组织选择性、稳定性、免疫原性、重复给药、毒性和制造放大？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "评估mRNA递送技术或平台时，应选择哪些可比较对象和指标，例如企业、产品、技术平台、研究方案或专利申请人？",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "canonical": "mRNA delivery",
+        "zh": [
+          "mRNA递送",
+          "信使RNA递送",
+          "mRNA递送技术",
+          "mRNA输送",
+          "信使核糖核酸递送"
+        ],
+        "en": [
+          "mRNA delivery",
+          "messenger RNA delivery",
+          "mRNA delivery technology",
+          "RNA delivery"
+        ],
+        "abbreviations": [
+          "mRNA",
+          "modRNA",
+          "saRNA",
+          "circRNA"
+        ],
+        "exclude": [
+          "siRNA delivery only",
+          "DNA delivery only",
+          "protein delivery only",
+          "mRNA detection only",
+          "mRNA quantification only"
+        ]
+      },
+      {
+        "canonical": "lipid nanoparticle",
+        "zh": [
+          "脂质纳米颗粒",
+          "脂质纳米粒",
+          "脂质纳米颗粒递送",
+          "可电离脂质纳米颗粒"
+        ],
+        "en": [
+          "lipid nanoparticle",
+          "lipid nanoparticles",
+          "LNP",
+          "ionizable lipid nanoparticle",
+          "lipid nanoparticle delivery"
+        ],
+        "abbreviations": [
+          "LNP",
+          "LNPs"
+        ],
+        "exclude": [
+          "solid lipid nanoparticle only",
+          "liposome cosmetic only",
+          "nanoparticle imaging only"
+        ]
+      },
+      {
+        "canonical": "ionizable lipid",
+        "zh": [
+          "可电离脂质",
+          "电离脂质",
+          "可离子化脂质",
+          "脂质材料"
+        ],
+        "en": [
+          "ionizable lipid",
+          "ionizable lipids",
+          "ionizable cationic lipid",
+          "lipidoid",
+          "lipidoids"
+        ],
+        "abbreviations": [
+          "IL"
+        ],
+        "exclude": [
+          "cationic lipid only",
+          "phospholipid only",
+          "cholesterol only"
+        ]
+      },
+      {
+        "canonical": "targeted delivery",
+        "zh": [
+          "靶向递送",
+          "器官靶向",
+          "组织靶向",
+          "细胞靶向",
+          "选择性递送"
+        ],
+        "en": [
+          "targeted delivery",
+          "organ targeting",
+          "tissue targeting",
+          "cell targeting",
+          "selective delivery",
+          "extrahepatic delivery"
+        ],
+        "abbreviations": [
+          "SORT",
+          "tLNP"
+        ],
+        "exclude": [
+          "nontargeted delivery only",
+          "passive targeting only",
+          "systemic toxicity only"
+        ]
+      },
+      {
+        "canonical": "non-viral vector",
+        "zh": [
+          "非病毒载体",
+          "非病毒递送",
+          "聚合物递送",
+          "多肽递送",
+          "外泌体递送"
+        ],
+        "en": [
+          "non-viral vector",
+          "non-viral delivery",
+          "polymeric delivery",
+          "peptide delivery",
+          "exosome delivery",
+          "extracellular vesicle delivery"
+        ],
+        "abbreviations": [
+          "EV",
+          "PEI",
+          "PBAE"
+        ],
+        "exclude": [
+          "viral vector only",
+          "AAV only",
+          "lentivirus only"
+        ]
+      },
+      {
+        "canonical": "mRNA vaccine and therapeutics",
+        "zh": [
+          "mRNA疫苗",
+          "mRNA治疗",
+          "mRNA药物",
+          "信使RNA疗法"
+        ],
+        "en": [
+          "mRNA vaccine",
+          "mRNA therapeutic",
+          "mRNA medicine",
+          "mRNA drug",
+          "messenger RNA therapeutic"
+        ],
+        "abbreviations": [
+          "mRNA vaccine",
+          "mRNA therapeutics"
+        ],
+        "exclude": [
+          "DNA vaccine only",
+          "protein subunit vaccine only",
+          "viral vector vaccine only"
+        ]
+      },
+      {
+        "canonical": "delivery performance and safety",
+        "zh": [
+          "递送效率",
+          "表达效率",
+          "组织选择性",
+          "免疫原性",
+          "重复给药",
+          "毒性",
+          "稳定性",
+          "制造放大"
+        ],
+        "en": [
+          "delivery efficiency",
+          "expression efficiency",
+          "tissue selectivity",
+          "immunogenicity",
+          "repeat dosing",
+          "toxicity",
+          "stability",
+          "manufacturability",
+          "scale-up"
+        ],
+        "abbreviations": [
+          "AE",
+          "PK/PD"
+        ],
+        "exclude": [
+          "efficacy endpoint only",
+          "clinical outcome only",
+          "market size",
+          "price"
+        ]
+      }
+    ],
+    "queries": [
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1",
+          "Q2"
+        ],
+        "query": "(\"mRNA delivery\" OR \"messenger RNA delivery\" OR \"mRNA delivery technology\") AND (\"lipid nanoparticle\" OR LNP OR ionizable lipid OR polymer OR peptide OR \"extracellular vesicle\") AND (mechanism OR design OR platform OR review) NOT (\"siRNA delivery\" OR \"DNA delivery\" OR \"protein delivery\")",
+        "purpose": "获取mRNA递送的基础概念、主要路线和代表性平台综述。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q3"
+        ],
+        "query": "(\"mRNA delivery\" OR \"mRNA LNP\" OR \"messenger RNA delivery\") AND (\"organ targeting\" OR \"tissue targeting\" OR \"extrahepatic\" OR \"SORT\" OR \"ionizable lipid\" OR \"lipidoid\" OR \"polymeric nanoparticle\") AND (2020:2026[dp] OR 2019:2026[dp])",
+        "purpose": "检索近五年器官靶向、可电离脂质和新型载体代表进展。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q4"
+        ],
+        "query": "(\"mRNA delivery\" OR \"mRNA LNP\" OR \"messenger RNA delivery\") AND (\"immunogenicity\" OR \"repeat dosing\" OR \"toxicity\" OR \"stability\" OR \"manufacturability\" OR \"scale-up\" OR \"delivery efficiency\") AND (limitation OR challenge OR safety OR barrier)",
+        "purpose": "检索mRNA递送在效率、安全性、稳定性和制造方面的关键限制。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q3"
+        ],
+        "query": "(\"mRNA delivery\" OR \"messenger RNA delivery\" OR \"lipid nanoparticle\" OR LNP OR \"ionizable lipid\" OR \"lipidoid\") AND (composition OR formulation OR targeting OR \"ionizable lipid\" OR \"payload\" OR \"administration\")",
+        "purpose": "检索mRNA递送载体、脂质材料、配方和靶向相关专利技术披露。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q5"
+        ],
+        "query": "(\"mRNA delivery\" OR \"lipid nanoparticle\" OR \"ionizable lipid\" OR \"mRNA therapeutic\" OR \"mRNA vaccine\") AND (applicant OR assignee OR company OR platform) AND (2020:2026[dp] OR 2019:2026[dp])",
+        "purpose": "识别可比较的专利申请人、技术平台和企业对象，用于后续竞品或技术路线比较。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q4",
+          "Q5"
+        ],
+        "query": "(\"mRNA\" OR \"messenger RNA\") AND (\"delivery\" OR \"lipid nanoparticle\" OR \"LNP\" OR \"vaccine\" OR \"therapeutic\") AND (FDA OR EMA OR NMPA OR WHO OR NIH OR \"official guidance\" OR \"regulatory science\")",
+        "purpose": "检索监管机构、官方指南和专业机构对mRNA递送相关产品、安全性、质量和监管考虑的文件。"
+      }
+    ],
+    "comparison_unit": "technology_platform",
+    "coverage_targets": [
+      "每个研究问题至少获得1—2条直接相关来源；论文覆盖基础概念、主要路线、代表进展和限制。",
+      "专利覆盖至少2类递送载体或材料方向，并覆盖可比较的申请人/平台。",
+      "官方资料覆盖监管、质量、安全性或指南类信息；若官方来源不足，在结果中标注缺口。",
+      "论文、专利和官方资料合计入选不超过19条；同一论文的不同版本、同一专利族及转载内容不重复计数。",
+      "语言以中文输出为主，检索词保留英文专业词；时间优先近五年，必要时补充奠基资料。"
+    ],
+    "stop_conditions": [
+      "Q1—Q5均有直接证据或明确标注证据不足时停止扩展检索。",
+      "新增来源主要重复已有结论，且未引入新的技术路线、限制条件或比较对象时停止。",
+      "已覆盖至少两类递送载体、至少两类应用场景和至少一类比较单元时，不再仅因数量不足继续检索。",
+      "若某一来源类型持续不可用或返回结果与主题无关，记录缺口后停止该类型扩展，不凭记忆补充。",
+      "入选论文、专利和官方资料合计达到19条或关键问题证据饱和时停止。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "status_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "question_count_3_to_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "paper_and_patent_planned",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

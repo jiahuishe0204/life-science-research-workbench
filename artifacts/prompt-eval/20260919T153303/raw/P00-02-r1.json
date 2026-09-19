@@ -1,0 +1,59 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.718,
+  "usage": {
+    "prompt_tokens": 2240,
+    "completion_tokens": 298,
+    "total_tokens": 2538,
+    "prompt_tokens_details": {
+      "cached_tokens": 1408
+    },
+    "prompt_cache_hit_tokens": 1408,
+    "prompt_cache_miss_tokens": 832
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"need_clarification\",\n  \"scope_statement\": \"主题“ADC”存在多个会显著改变检索对象、数据库和评价指标的常见生命科学释义，无法在不混淆对象的前提下生成一份单一可执行检索计划。最可能的两类是抗体偶联药物（antibody-drug conjugate）与腺苷酸环化酶（adenylyl cyclase，也常写作 adenylate cyclase，对应基因如 ADCY 家族），二者在论文文献、专利技术分类和官方资料中的检索入口完全不同；此外在微生物学中 ADC 还可指 axenic culture 等培养相关术语。\",\n  \"assumptions\": [\n    \"用户输入仅为三个字母的短缩写，未提供物种、疾病、机制或产品背景。\",\n    \"runtime_config 指定中文输出、来源上限 19，available_sources 提供论文、专利和官方资料三类接口，均不影响对本缩写的释义判断。\"\n  ],\n  \"clarification_question\": \"请确认“ADC”指抗体偶联药物（antibody-drug conjugate），还是腺苷酸环化酶（adenylyl cyclase / ADCY 基因家族）或其他生命科学含义？\",\n  \"research_questions\": [],\n  \"concepts\": [],\n  \"queries\": [],\n  \"comparison_unit\": \"not_applicable\",\n  \"coverage_targets\": [],\n  \"stop_conditions\": []\n}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "主题“ADC”存在多个会显著改变检索对象、数据库和评价指标的常见生命科学释义，无法在不混淆对象的前提下生成一份单一可执行检索计划。最可能的两类是抗体偶联药物（antibody-drug conjugate）与腺苷酸环化酶（adenylyl cyclase，也常写作 adenylate cyclase，对应基因如 ADCY 家族），二者在论文文献、专利技术分类和官方资料中的检索入口完全不同；此外在微生物学中 ADC 还可指 axenic culture 等培养相关术语。",
+    "assumptions": [
+      "用户输入仅为三个字母的短缩写，未提供物种、疾病、机制或产品背景。",
+      "runtime_config 指定中文输出、来源上限 19，available_sources 提供论文、专利和官方资料三类接口，均不影响对本缩写的释义判断。"
+    ],
+    "clarification_question": "请确认“ADC”指抗体偶联药物（antibody-drug conjugate），还是腺苷酸环化酶（adenylyl cyclase / ADCY 基因家族）或其他生命科学含义？",
+    "research_questions": [],
+    "concepts": [],
+    "queries": [],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [],
+    "stop_conditions": []
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

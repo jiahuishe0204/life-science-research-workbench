@@ -1,0 +1,80 @@
+{
+  "case_id": "P03-01",
+  "step": "step_3a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 1.843,
+  "usage": {
+    "prompt_tokens": 2190,
+    "completion_tokens": 207,
+    "total_tokens": 2397,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 142
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"results\": [\n    {\n      \"claim_id\": \"C1\",\n      \"source_identity\": \"matched\",\n      \"support_status\": \"partially_supported\",\n      \"reading_scope\": \"full_text\",\n      \"issue_codes\": [\n        \"wrong_number\",\n        \"wrong_unit\"\n      ],\n      \"explanation\": \"证据表明指标上升5 µg（condition A），claim 写为上升50 mg，数值与单位均不符；对象“该处理”与条件A的对应关系未在claim中说明。\",\n      \"action\": \"revise\",\n      \"revised_claim\": \"在条件A下，Marker X 上升 5 µg。\",\n      \"valid_evidence_ids\": [\n        \"E-NUM\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"supported\": 0,\n    \"partially_supported\": 1,\n    \"unsupported\": 0,\n    \"cannot_determine\": 0\n  }\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "matched",
+        "support_status": "partially_supported",
+        "reading_scope": "full_text",
+        "issue_codes": [
+          "wrong_number",
+          "wrong_unit"
+        ],
+        "explanation": "证据表明指标上升5 µg（condition A），claim 写为上升50 mg，数值与单位均不符；对象“该处理”与条件A的对应关系未在claim中说明。",
+        "action": "revise",
+        "revised_claim": "在条件A下，Marker X 上升 5 µg。",
+        "valid_evidence_ids": [
+          "E-NUM"
+        ]
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 1,
+      "unsupported": 0,
+      "cannot_determine": 0
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "not_supported",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "number_or_unit_issue",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

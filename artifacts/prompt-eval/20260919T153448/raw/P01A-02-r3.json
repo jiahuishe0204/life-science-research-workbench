@@ -1,0 +1,88 @@
+{
+  "case_id": "P01A-02",
+  "step": "step_1a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 4.414,
+  "usage": {
+    "prompt_tokens": 2233,
+    "completion_tokens": 315,
+    "total_tokens": 2548,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 185
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-EP\",\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"专利族 F-SYN-01 的代表性公开，具有可读取的权利要求，可直接回答 Q1 关于公开递送结构的问题。\",\n      \"reading_scope\": \"claims\",\n      \"relation_group\": \"F-SYN-01\",\n      \"relation_type\": \"patent_family\"\n    },\n    {\n      \"source_id\": \"S-US\",\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"与 S-EP 为同一专利族（priority P-SYN-001），但其描述部分可提供技术细节补充，作为同族非独立来源保留。\",\n      \"reading_scope\": \"description\",\n      \"relation_group\": \"F-SYN-01\",\n      \"relation_type\": \"patent_family\"\n    }\n  ],\n  \"excluded\": [],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"当前候选仅包含同一专利族的两项公开，缺少论文、官方或其他独立专利来源，无法呈现不同递送结构路线、性能数据或非专利文献证据。\",\n      \"suggested_followup_query\": \"carrier delivery structure patent OR 递送结构 专利 OR delivery system review\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-EP",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "专利族 F-SYN-01 的代表性公开，具有可读取的权利要求，可直接回答 Q1 关于公开递送结构的问题。",
+        "reading_scope": "claims",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      },
+      {
+        "source_id": "S-US",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与 S-EP 为同一专利族（priority P-SYN-001），但其描述部分可提供技术细节补充，作为同族非独立来源保留。",
+        "reading_scope": "description",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      }
+    ],
+    "excluded": [],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选仅包含同一专利族的两项公开，缺少论文、官方或其他独立专利来源，无法呈现不同递送结构路线、性能数据或非专利文献证据。",
+        "suggested_followup_query": "carrier delivery structure patent OR 递送结构 专利 OR delivery system review"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "patent_family_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "family_not_independent",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

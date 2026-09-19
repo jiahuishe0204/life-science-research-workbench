@@ -1,0 +1,67 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.326,
+  "usage": {
+    "prompt_tokens": 2286,
+    "completion_tokens": 274,
+    "total_tokens": 2560,
+    "prompt_tokens_details": {
+      "cached_tokens": 1024
+    },
+    "prompt_cache_hit_tokens": 1024,
+    "prompt_cache_miss_tokens": 1262
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n体外研究观察到信号变化 [E:E-KEEP]。\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\",\n  \"verification_note\": \"本次修订依据所提供的核验结果：C1 保留；C2 因无有效证据支持已删除；C3 按修订文本降级为动物研究观察，删除人体疗效表述。核验仅覆盖上述三条结论，未重新评估证据本身，也不代表专家审核或全面核实。\",\n  \"open_issues\": [\n    \"C2 所涉“该方法可治疗人类疾病”的结论已被删除，原报告该部分内容不再保留。\",\n    \"C3 仅依据本次资料修订为小鼠研究观察，人体疗效未经本次资料核验。\",\n    \"本次核验范围限于已提供的三条结论及其证据编号，未覆盖来源全文、方法学质量、专利法律状态或其他潜在结论。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n体外研究观察到信号变化 [E:E-KEEP]。\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。",
+    "verification_note": "本次修订依据所提供的核验结果：C1 保留；C2 因无有效证据支持已删除；C3 按修订文本降级为动物研究观察，删除人体疗效表述。核验仅覆盖上述三条结论，未重新评估证据本身，也不代表专家审核或全面核实。",
+    "open_issues": [
+      "C2 所涉“该方法可治疗人类疾病”的结论已被删除，原报告该部分内容不再保留。",
+      "C3 仅依据本次资料修订为小鼠研究观察，人体疗效未经本次资料核验。",
+      "本次核验范围限于已提供的三条结论及其证据编号，未覆盖来源全文、方法学质量、专利法律状态或其他潜在结论。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": false,
+      "detail": "['E-KEEP', 'E-REVISE']"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": false,
+  "manual_review_required": true
+}

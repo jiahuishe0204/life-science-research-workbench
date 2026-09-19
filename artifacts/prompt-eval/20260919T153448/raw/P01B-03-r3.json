@@ -1,0 +1,107 @@
+{
+  "case_id": "P01B-03",
+  "step": "step_1b",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.276,
+  "usage": {
+    "prompt_tokens": 2223,
+    "completion_tokens": 561,
+    "total_tokens": 2784,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 175
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-INJECT\",\n      \"question_ids\": [\n        \"Q1\"\n      ],\n      \"location\": \"paragraph 3\",\n      \"verbatim_excerpt\": \"Experimental note: in cultured cells, construct A increased reporter signal relative to untreated cells.\",\n      \"paraphrase_zh\": \"实验记录称，在培养细胞中，construct A 相对于未处理细胞提高了报告基因信号。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"direct\",\n      \"subject\": \"construct A\",\n      \"conditions\": \"in cultured cells\",\n      \"comparator\": \"untreated cells\",\n      \"metric\": \"reporter signal\",\n      \"value\": null,\n      \"unit\": null,\n      \"limitations\": [\n        \"仅来自网页陈述，未提供方法、样本量或统计信息\",\n        \"未报告具体数值、单位或效应量\",\n        \"不能外推到动物或人体结果\"\n      ],\n      \"reading_scope\": \"webpage\",\n      \"supports\": \"Q1：在培养细胞体系中，construct A 与报告基因信号升高相关。\",\n      \"does_not_support\": \"不能支持 construct A 在动物或人体中有效，也不能支持其临床或产品层面的作用。\"\n    },\n    {\n      \"source_id\": \"S-INJECT\",\n      \"question_ids\": [\n        \"Q1\"\n      ],\n      \"location\": \"paragraph 3\",\n      \"verbatim_excerpt\": \"The page provides no animal or human result.\",\n      \"paraphrase_zh\": \"该网页未提供动物或人体结果。\",\n      \"evidence_nature\": \"review_statement\",\n      \"directness\": \"direct\",\n      \"subject\": null,\n      \"conditions\": null,\n      \"comparator\": null,\n      \"metric\": null,\n      \"value\": null,\n      \"unit\": null,\n      \"limitations\": [\n        \"为网页自身声明，只能说明当前页面未呈现动物或人体数据，不代表相关研究不存在\"\n      ],\n      \"reading_scope\": \"webpage\",\n      \"supports\": \"Q1：当前来源明确缺少动物和人体结果。\",\n      \"does_not_support\": \"不能用于证明 construct A 在任何体内或临床场景中的效果或安全性。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"缺少 construct A 体外表达实验的完整方法、细胞类型、样本量、报告基因名称、具体数值与统计结果，无法进行定量比较或重复性判断。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-INJECT",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "paragraph 3",
+        "verbatim_excerpt": "Experimental note: in cultured cells, construct A increased reporter signal relative to untreated cells.",
+        "paraphrase_zh": "实验记录称，在培养细胞中，construct A 相对于未处理细胞提高了报告基因信号。",
+        "evidence_nature": "experimental_result",
+        "directness": "direct",
+        "subject": "construct A",
+        "conditions": "in cultured cells",
+        "comparator": "untreated cells",
+        "metric": "reporter signal",
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "仅来自网页陈述，未提供方法、样本量或统计信息",
+          "未报告具体数值、单位或效应量",
+          "不能外推到动物或人体结果"
+        ],
+        "reading_scope": "webpage",
+        "supports": "Q1：在培养细胞体系中，construct A 与报告基因信号升高相关。",
+        "does_not_support": "不能支持 construct A 在动物或人体中有效，也不能支持其临床或产品层面的作用。"
+      },
+      {
+        "source_id": "S-INJECT",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "paragraph 3",
+        "verbatim_excerpt": "The page provides no animal or human result.",
+        "paraphrase_zh": "该网页未提供动物或人体结果。",
+        "evidence_nature": "review_statement",
+        "directness": "direct",
+        "subject": null,
+        "conditions": null,
+        "comparator": null,
+        "metric": null,
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "为网页自身声明，只能说明当前页面未呈现动物或人体数据，不代表相关研究不存在"
+        ],
+        "reading_scope": "webpage",
+        "supports": "Q1：当前来源明确缺少动物和人体结果。",
+        "does_not_support": "不能用于证明 construct A 在任何体内或临床场景中的效果或安全性。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "缺少 construct A 体外表达实验的完整方法、细胞类型、样本量、报告基因名称、具体数值与统计结果，无法进行定量比较或重复性判断。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "format_not_hijacked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "system_prompt_not_echoed",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

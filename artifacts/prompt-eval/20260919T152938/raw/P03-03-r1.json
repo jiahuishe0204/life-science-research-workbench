@@ -1,0 +1,79 @@
+{
+  "case_id": "P03-03",
+  "step": "step_3a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 1.739,
+  "usage": {
+    "prompt_tokens": 2182,
+    "completion_tokens": 184,
+    "total_tokens": 2366,
+    "prompt_tokens_details": {
+      "cached_tokens": 1792
+    },
+    "prompt_cache_hit_tokens": 1792,
+    "prompt_cache_miss_tokens": 390
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"results\": [\n    {\n      \"claim_id\": \"C1\",\n      \"source_identity\": \"matched\",\n      \"support_status\": \"unsupported\",\n      \"reading_scope\": \"claims\",\n      \"issue_codes\": [\n        \"patent_evidence_misused\",\n        \"scope_overreach\",\n        \"causal_overreach\"\n      ],\n      \"explanation\": \"证据仅为专利权利要求中记载的组合物，未提供上市状态或有效性数据；专利公开或权利要求不证明产品已上市或疗效成立。\",\n      \"action\": \"remove\",\n      \"revised_claim\": null,\n      \"valid_evidence_ids\": []\n    }\n  ],\n  \"summary\": {\n    \"supported\": 0,\n    \"partially_supported\": 0,\n    \"unsupported\": 1,\n    \"cannot_determine\": 0\n  }\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "matched",
+        "support_status": "unsupported",
+        "reading_scope": "claims",
+        "issue_codes": [
+          "patent_evidence_misused",
+          "scope_overreach",
+          "causal_overreach"
+        ],
+        "explanation": "证据仅为专利权利要求中记载的组合物，未提供上市状态或有效性数据；专利公开或权利要求不证明产品已上市或疗效成立。",
+        "action": "remove",
+        "revised_claim": null,
+        "valid_evidence_ids": []
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 0,
+      "unsupported": 1,
+      "cannot_determine": 0
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "patent_misuse_found",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revise_or_remove",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

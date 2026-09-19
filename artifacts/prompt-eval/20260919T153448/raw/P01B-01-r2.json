@@ -1,0 +1,85 @@
+{
+  "case_id": "P01B-01",
+  "step": "step_1b",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.892,
+  "usage": {
+    "prompt_tokens": 2235,
+    "completion_tokens": 426,
+    "total_tokens": 2661,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 187
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\n        \"Q1\"\n      ],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle. No human participants were enrolled, and causality beyond this model was not assessed.\",\n      \"paraphrase_zh\": \"在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关；未纳入人类受试者，也未评估该模型之外的因果关系。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"indirect\",\n      \"subject\": \"小鼠异种移植模型\",\n      \"conditions\": \"第14天评估；与溶媒对照比较\",\n      \"comparator\": \"溶媒对照（vehicle）\",\n      \"metric\": \"平均肿瘤体积变化\",\n      \"value\": \"24%\",\n      \"unit\": \"reduction in mean tumor volume\",\n      \"limitations\": [\n        \"仅小鼠异种移植模型结果\",\n        \"未纳入人类受试者\",\n        \"未评估该模型之外的因果关系\",\n        \"原文表述为 associated with（相关），未证明因果\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"该候选物在小鼠异种移植模型中与第14天平均肿瘤体积相对溶媒对照减少24%相关。\",\n      \"does_not_support\": \"不能支持该候选物在人体中有疗效或安全性；不能支持人体疗效或因果性结论。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"当前提供的唯一来源为小鼠异种移植模型结果，未提供任何人体研究或人体疗效证据，因此无法回答该候选物是否有人体疗效证据。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle. No human participants were enrolled, and causality beyond this model was not assessed.",
+        "paraphrase_zh": "在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关；未纳入人类受试者，也未评估该模型之外的因果关系。",
+        "evidence_nature": "experimental_result",
+        "directness": "indirect",
+        "subject": "小鼠异种移植模型",
+        "conditions": "第14天评估；与溶媒对照比较",
+        "comparator": "溶媒对照（vehicle）",
+        "metric": "平均肿瘤体积变化",
+        "value": "24%",
+        "unit": "reduction in mean tumor volume",
+        "limitations": [
+          "仅小鼠异种移植模型结果",
+          "未纳入人类受试者",
+          "未评估该模型之外的因果关系",
+          "原文表述为 associated with（相关），未证明因果"
+        ],
+        "reading_scope": "full_text",
+        "supports": "该候选物在小鼠异种移植模型中与第14天平均肿瘤体积相对溶媒对照减少24%相关。",
+        "does_not_support": "不能支持该候选物在人体中有疗效或安全性；不能支持人体疗效或因果性结论。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前提供的唯一来源为小鼠异种移植模型结果，未提供任何人体研究或人体疗效证据，因此无法回答该候选物是否有人体疗效证据。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "mouse_subject",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "human_not_supported",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

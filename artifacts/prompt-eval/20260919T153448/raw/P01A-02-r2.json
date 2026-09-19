@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-02",
+  "step": "step_1a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.561,
+  "usage": {
+    "prompt_tokens": 2233,
+    "completion_tokens": 308,
+    "total_tokens": 2541,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 185
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-EP\",\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"专利族 F-SYN-01 的主选公开，claims 范围可直接用于识别递送结构的权利要求限定；与 S-US 同族，仅计为一项创新。\",\n      \"reading_scope\": \"claims\",\n      \"relation_group\": \"F-SYN-01\",\n      \"relation_type\": \"patent_family\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-US\",\n      \"reason_code\": \"duplicate\",\n      \"reason\": \"与 S-EP 同属专利族 F-SYN-01、同一优先权 P-SYN-001、同一名称，属于同一发明的同族公开，不重复计为独立来源。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"当前仅有同一专利族的一项发明，仅能覆盖该族公开的权利要求限定，无法说明递送结构的整体类型分布、非专利文献公开的递送结构或其他技术路线差异。\",\n      \"suggested_followup_query\": \"补充检索非专利文献与其他专利族：例如 lipid nanoparticle delivery, polymer carrier, peptide-based delivery 等递送结构相关论文与独立专利族。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-EP",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "专利族 F-SYN-01 的主选公开，claims 范围可直接用于识别递送结构的权利要求限定；与 S-US 同族，仅计为一项创新。",
+        "reading_scope": "claims",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-US",
+        "reason_code": "duplicate",
+        "reason": "与 S-EP 同属专利族 F-SYN-01、同一优先权 P-SYN-001、同一名称，属于同一发明的同族公开，不重复计为独立来源。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前仅有同一专利族的一项发明，仅能覆盖该族公开的权利要求限定，无法说明递送结构的整体类型分布、非专利文献公开的递送结构或其他技术路线差异。",
+        "suggested_followup_query": "补充检索非专利文献与其他专利族：例如 lipid nanoparticle delivery, polymer carrier, peptide-based delivery 等递送结构相关论文与独立专利族。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "patent_family_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "family_not_independent",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

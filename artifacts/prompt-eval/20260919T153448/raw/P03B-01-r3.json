@@ -1,0 +1,66 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.354,
+  "usage": {
+    "prompt_tokens": 2371,
+    "completion_tokens": 261,
+    "total_tokens": 2632,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 195
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n体外研究观察到信号变化 [E:E-KEEP]。\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\",\n  \"verification_note\": \"本稿依据核验结果对草稿做了最小必要修订：保留 1 条结论（C1），按审查修订 1 条结论（C3），删除 1 条不支持结论（C2，claim_id 见 open_issues 所列）。删除后已修补相应语义衔接，未引入新事实或新来源。核验范围限于本次提供的 claim 与证据记录，不代表对全部原始文献或专利全文的完整核查。\",\n  \"open_issues\": [\n    \"已删除一条不支持结论（claim_id: C2）。\",\n    \"部分结论的核验仅基于本次提供的记录，适用条件与样本细节可能不完整。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n体外研究观察到信号变化 [E:E-KEEP]。\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。",
+    "verification_note": "本稿依据核验结果对草稿做了最小必要修订：保留 1 条结论（C1），按审查修订 1 条结论（C3），删除 1 条不支持结论（C2，claim_id 见 open_issues 所列）。删除后已修补相应语义衔接，未引入新事实或新来源。核验范围限于本次提供的 claim 与证据记录，不代表对全部原始文献或专利全文的完整核查。",
+    "open_issues": [
+      "已删除一条不支持结论（claim_id: C2）。",
+      "部分结论的核验仅基于本次提供的记录，适用条件与样本细节可能不完整。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

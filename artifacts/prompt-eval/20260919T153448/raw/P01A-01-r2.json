@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.561,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 308,
+    "total_tokens": 2583,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-JOURNAL\",\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"与Q1直接相关，为同一研究的同行评审期刊版本，读取范围为全文，可支持效果与限制的结论；与S-PRE为同一工作的不同版本，仅保留期刊版代表该工作。\",\n      \"reading_scope\": \"full_text\",\n      \"relation_group\": \"Li A, Wang B 2024/2025 delivery route X\",\n      \"relation_type\": \"same_work_version\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-PRE\",\n      \"reason_code\": \"superseded\",\n      \"reason\": \"与S-JOURNAL标题、作者相同，version_note表明其为该工作的预印本；仅读取摘要，且已被同行评审期刊版取代，作为同一工作不重复计数。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"仅有一条同一工作的同行评审论文，缺少其他独立研究、替代递送路线或相反结果，无法交叉验证效果与限制，也无法评估路线差异。\",\n      \"suggested_followup_query\": \"delivery route X AND (efficacy OR limitation) 近五年论文及相应对递送方法的专利族\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与Q1直接相关，为同一研究的同行评审期刊版本，读取范围为全文，可支持效果与限制的结论；与S-PRE为同一工作的不同版本，仅保留期刊版代表该工作。",
+        "reading_scope": "full_text",
+        "relation_group": "Li A, Wang B 2024/2025 delivery route X",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与S-JOURNAL标题、作者相同，version_note表明其为该工作的预印本；仅读取摘要，且已被同行评审期刊版取代，作为同一工作不重复计数。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "仅有一条同一工作的同行评审论文，缺少其他独立研究、替代递送路线或相反结果，无法交叉验证效果与限制，也无法评估路线差异。",
+        "suggested_followup_query": "delivery route X AND (efficacy OR limitation) 近五年论文及相应对递送方法的专利族"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

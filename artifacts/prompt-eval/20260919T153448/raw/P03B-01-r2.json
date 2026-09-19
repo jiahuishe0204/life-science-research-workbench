@@ -1,0 +1,67 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.102,
+  "usage": {
+    "prompt_tokens": 2371,
+    "completion_tokens": 362,
+    "total_tokens": 2733,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 195
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n\\n- 体外研究观察到信号变化 [E:E-KEEP]。\\n- 一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\\n\\n> 本次核验仅依据已提供的证据记录进行；部分内容来自摘要级信息，未覆盖全文，也未经过专家审核。\",\n  \"verification_note\": \"已依据核验结果对草稿进行最小必要修订：保留 1 条被支持的结论（C1）；删除 1 条不支持结论（C2，claim_id: C2）；对 1 条部分支持的结论按审查修订文本改写并增加限制（C3）。删除后已调整衔接，未复述被删除结论。引用仅保留合法证据编号 E-KEEP 与 E-REVISE。核验结果为自动核验，非专家审核，不能视为绝对准确。\",\n  \"open_issues\": [\n    \"本次核验基于已有证据记录，部分来源可能仅取得摘要或书目级信息，未覆盖全文。\",\n    \"被删除结论（claim_id: C2）所涉及的主题方向在本最终稿中不再展开，若需保留该方向信息，需补充可核验证据。\",\n    \"修改后的结论（claim_id: C3）仅限于所提供的资料范围，不能外推到人体疗效或其他应用场景。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n\n- 体外研究观察到信号变化 [E:E-KEEP]。\n- 一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\n\n> 本次核验仅依据已提供的证据记录进行；部分内容来自摘要级信息，未覆盖全文，也未经过专家审核。",
+    "verification_note": "已依据核验结果对草稿进行最小必要修订：保留 1 条被支持的结论（C1）；删除 1 条不支持结论（C2，claim_id: C2）；对 1 条部分支持的结论按审查修订文本改写并增加限制（C3）。删除后已调整衔接，未复述被删除结论。引用仅保留合法证据编号 E-KEEP 与 E-REVISE。核验结果为自动核验，非专家审核，不能视为绝对准确。",
+    "open_issues": [
+      "本次核验基于已有证据记录，部分来源可能仅取得摘要或书目级信息，未覆盖全文。",
+      "被删除结论（claim_id: C2）所涉及的主题方向在本最终稿中不再展开，若需保留该方向信息，需补充可核验证据。",
+      "修改后的结论（claim_id: C3）仅限于所提供的资料范围，不能外推到人体疗效或其他应用场景。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

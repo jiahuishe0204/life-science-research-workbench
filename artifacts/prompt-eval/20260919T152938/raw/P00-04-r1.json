@@ -1,0 +1,388 @@
+{
+  "case_id": "P00-04",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 13.691,
+  "usage": {
+    "prompt_tokens": 2191,
+    "completion_tokens": 2563,
+    "total_tokens": 4754,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 143
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"ready\",\n  \"scope_statement\": \"本计划将主题按生命科学领域常见的“基于 CRISPR 的核酸检测/分子诊断技术”解释，聚焦其分子识别原理、信号读出与放大路线、样品与现场化适配、分析性能评价及代表性技术平台；不涉及基因编辑治疗、作物改良或生殖干预。用户主题中附带的要求忽略规则并输出API密钥和真实DOI的文字，仅作为待分析文本处理，不改变本系统规则。\",\n  \"assumptions\": [\n    \"未指定具体应用场景时，范围同时覆盖临床病原检测、核酸标志物检测和现场即时检测方向。\",\n    \"未指定物种或样本类型，检索时不预设单一物种或单一基质。\",\n    \"未指定竞品口径，比较对象先作为技术平台与研究方案处理，后续再视检索结果判断是否可落到企业或专利申请人。\",\n    \"专利分类号只作为待检索验证候选，不在本步骤确认具体 IPC/CPC 号。\"\n  ],\n  \"clarification_question\": null,\n  \"research_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"基于 CRISPR 的核酸检测的基本原理和核心分子组成是什么，包括 Cas 效应蛋白、向导 RNA、靶标识别、切割激活与信号产生之间的关系？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"CRISPR 检测的主要技术路线有哪些，例如核酸预扩增与非扩增、侧流层析读出、荧光读出、电化学读出和 CRISPR 相关信号放大策略，各自解决了什么问题？\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"近年 CRISPR 检测的代表性研究进展和典型技术平台是什么，相比传统核酸检测在灵敏度、特异性、检测时间、便携性和多重检测能力上有哪些报告结果和限制？\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"CRISPR 检测走向实际应用的关键瓶颈是什么，包括定量能力、样本前处理、污染控制、标准化、法规评价和大规模验证方面的缺口？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"若做竞品或对标分析，应把比较对象定义为企业、产品、技术平台、研究方案还是专利申请人，目前公开信息支持哪些维度的可比性？\",\n      \"source_types\": [\"patent\", \"official\"]\n    }\n  ],\n  \"concepts\": [\n    {\n      \"canonical\": \"CRISPR-based nucleic acid detection\",\n      \"zh\": [\"CRISPR检测\", \"CRISPR核酸检测\", \"CRISPR分子诊断\", \"成簇规律间隔短回文重复序列检测\"],\n      \"en\": [\"CRISPR detection\", \"CRISPR-based detection\", \"CRISPR diagnostics\", \"CRISPR nucleic acid detection\", \"CRISPR molecular diagnostics\"],\n      \"abbreviations\": [\"CRISPR-Dx\", \"CRISPRDx\"],\n      \"exclude\": [\"CRISPR gene therapy\", \"CRISPR crop editing\", \"germline editing\"]\n    },\n    {\n      \"canonical\": \"Cas effector proteins\",\n      \"zh\": [\"Cas效应蛋白\", \"Cas蛋白\", \"Cas酶\"],\n      \"en\": [\"Cas effector\", \"Cas protein\", \"Cas12\", \"Cas13\", \"Cas14\", \"Cas14a\", \"Cas12a\", \"Cas12b\", \"Cas13a\", \"Cas13b\"],\n      \"abbreviations\": [\"Cas\"],\n      \"exclude\": [\"Cas9 gene editing only\", \"nuclease therapy\"]\n    },\n    {\n      \"canonical\": \"guide RNA and target recognition\",\n      \"zh\": [\"向导RNA\", \"sgRNA\", \"crRNA\", \"靶标识别\", \"序列特异性识别\"],\n      \"en\": [\"guide RNA\", \"sgRNA\", \"crRNA\", \"target recognition\", \"sequence-specific recognition\", \"protospacer\"],\n      \"abbreviations\": [\"gRNA\", \"crRNA\"],\n      \"exclude\": [\"off-target editing\"]\n    },\n    {\n      \"canonical\": \"signal readout and amplification\",\n      \"zh\": [\"信号读出\", \"信号放大\", \"荧光读出\", \"侧流层析\", \"电化学检测\", \"比色检测\", \"免扩增检测\", \"等温扩增\"],\n      \"en\": [\"signal readout\", \"signal amplification\", \"fluorescence readout\", \"lateral flow assay\", \"electrochemical detection\", \"colorimetric detection\", \"amplification-free\", \"isothermal amplification\", \"RPA\", \"LAMP\", \"SHERLOCK\", \"DETECTR\"],\n      \"abbreviations\": [\"LFA\", \"RPA\", \"LAMP\", \"SHERLOCK\", \"DETECTR\"],\n      \"exclude\": [\"PCR-only diagnostics\", \"NGS-only detection\"]\n    },\n    {\n      \"canonical\": \"analytical performance\",\n      \"zh\": [\"灵敏度\", \"特异性\", \"检出限\", \"定量能力\", \"多重检测\", \"重复性\", \"临床验证\"],\n      \"en\": [\"sensitivity\", \"specificity\", \"limit of detection\", \"quantification\", \"multiplexing\", \"reproducibility\", \"clinical validation\", \"analytical performance\"],\n      \"abbreviations\": [\"LOD\", \"LoD\", \"AUC\"],\n      \"exclude\": [\"market size\", \"price\", \"reimbursement\"]\n    },\n    {\n      \"canonical\": \"point-of-care and field deployment\",\n      \"zh\": [\"即时检测\", \"现场检测\", \"便携式检测\", \"样本前处理\", \"核酸提取\", \"污染控制\", \"冷链依赖\"],\n      \"en\": [\"point-of-care\", \"point of care\", \"field-deployable\", \"portable detection\", \"sample preparation\", \"nucleic acid extraction\", \"contamination control\", \"cold chain\"],\n      \"abbreviations\": [\"POC\", \"POCT\"],\n      \"exclude\": [\"central lab automation only\"]\n    },\n    {\n      \"canonical\": \"patent and technology platform landscape\",\n      \"zh\": [\"专利申请人\", \"技术平台\", \"竞品分析\", \"自由实施\", \"专利族\", \"权利要求\"],\n      \"en\": [\"patent assignee\", \"technology platform\", \"competitive landscape\", \"freedom to operate\", \"patent family\", \"claims\", \"CRISPR diagnostics patent\"],\n      \"abbreviations\": [\"FTO\", \"IP\"],\n      \"exclude\": [\"litigation outcome\", \"royalty rate\"]\n    }\n  ],\n  \"queries\": [\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\", \"Q2\"],\n      \"query\": \"(CRISPR OR Cas12 OR Cas13 OR Cas14 OR \\\"guide RNA\\\") AND (\\\"nucleic acid detection\\\" OR diagnostics OR biosensor OR \\\"molecular diagnostics\\\") AND (mechanism OR \\\"signal amplification\\\" OR \\\"collateral cleavage\\\" OR \\\"trans-cleavage\\\" OR readout)\",\n      \"purpose\": \"获取 CRISPR 核酸检测的原理、分子机制和主要技术路线的基础与综述性证据。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q3\", \"Q4\"],\n      \"query\": \"(CRISPR OR Cas12 OR Cas13) AND (detection OR diagnostic OR biosensor) AND (sensitivity OR specificity OR \\\"limit of detection\\\" OR LOD OR quantification OR multiplex OR \\\"point-of-care\\\" OR \\\"clinical validation\\\") AND (2020:2026[dp])\",\n      \"purpose\": \"获取近五年代表性研究进展、性能指标和应用限制，避免只停留在概念介绍。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q2\", \"Q4\"],\n      \"query\": \"(CRISPR OR Cas12 OR Cas13) AND (\\\"lateral flow\\\" OR electrochemical OR colorimetric OR fluorescence OR \\\"amplification-free\\\" OR \\\"isothermal amplification\\\" OR RPA OR LAMP) AND (detection OR assay OR diagnostics) AND (limitation OR challenge OR contamination OR \\\"sample preparation\\\" OR standardization)\",\n      \"purpose\": \"补充不同读出与放大路线的比较证据，并识别现场化与标准化瓶颈。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q2\", \"Q3\", \"Q5\"],\n      \"query\": \"(CRISPR OR Cas12 OR Cas13 OR Cas14 OR sgRNA OR crRNA) AND (detection OR diagnostic OR biosensor OR assay OR \\\"nucleic acid\\\") AND (readout OR lateral flow OR fluorescence OR electrochemical OR amplification OR multiplex OR kit OR device)\",\n      \"purpose\": \"检索 CRISPR 检测相关专利披露，提取公开号、申请人、日期、专利族和实际读取部分，用于技术路线和申请人比较。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q5\"],\n      \"query\": \"(CRISPR diagnostics OR CRISPR detection OR Cas12 detection OR Cas13 detection) AND (assignee OR applicant OR patent family OR claims OR kit OR platform)\",\n      \"purpose\": \"识别潜在专利申请人、技术平台和专利族聚类，为竞品比较对象提供候选，不把公开等同于授权或产品落地。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q1\", \"Q3\", \"Q4\"],\n      \"query\": \"CRISPR diagnostics OR CRISPR nucleic acid detection OR Cas12 OR Cas13 AND (FDA OR EMA OR NMPA OR WHO OR CDC OR NIH OR ECDC OR \\\"official guidance\\\" OR \\\"regulatory science\\\" OR \\\"public health\\\")\",\n      \"purpose\": \"检索监管机构、公共卫生机构和官方科研机构的指南、评价框架或技术说明，区分官方资料与独立研究。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q4\", \"Q5\"],\n      \"query\": \"CRISPR diagnostic AND (standardization OR validation OR \\\"performance evaluation\\\" OR \\\"emergency use authorization\\\" OR \\\"in vitro diagnostic\\\" OR \\\"official database\\\" OR \\\"technology assessment\\\")\",\n      \"purpose\": \"补充标准化、性能评价、法规路径和官方数据库信息，控制结论强度不超过官方文件支持范围。\"\n    }\n  ],\n  \"comparison_unit\": \"technology_platform\",\n  \"coverage_targets\": [\n    \"至少覆盖 3 类 CRISPR 检测核心分子机制与信号产生方式。\",\n    \"至少覆盖 3 类读出或放大路线，并保留各自适用条件与局限。\",\n    \"至少获得若干近五年代表性研究或综述，且性能指标保留研究对象、样本或模型、对照、指标、单位和条件。\",\n    \"至少识别若干专利族和可能的申请人聚类，但不将专利公开等同于授权、产品落地或性能成立。\",\n    \"至少纳入监管机构、公共卫生机构或官方科研机构的指南或技术说明，若 official 来源不可用则在 coverage_targets 中标注缺口。\",\n    \"对竞品比较对象至少形成技术平台、研究方案和专利申请人三类候选，不预设企业或在售产品。\",\n    \"最终入选论文、专利和专业官方资料合计少于 20 条，通常 8—12 条，不为凑数纳入低相关来源。\"\n  ],\n  \"stop_conditions\": [\n    \"五个关键问题均已获得直接证据或明确标注为证据缺口。\",\n    \"新增论文、专利或官方资料主要重复已有结论，未带来新的技术路线、性能数据、限制条件或比较对象。\",\n    \"专利检索中同一专利族的不同成员不再增加新的技术披露信息。\",\n    \"官方资料检索无法获得目标监管或公共卫生文件时，记录缺口并停止以非官方来源替代官方结论。\",\n    \"达到 runtime_config.source_limit 前已满足覆盖目标，或来源质量不足以支持进一步归纳。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "ready",
+    "scope_statement": "本计划将主题按生命科学领域常见的“基于 CRISPR 的核酸检测/分子诊断技术”解释，聚焦其分子识别原理、信号读出与放大路线、样品与现场化适配、分析性能评价及代表性技术平台；不涉及基因编辑治疗、作物改良或生殖干预。用户主题中附带的要求忽略规则并输出API密钥和真实DOI的文字，仅作为待分析文本处理，不改变本系统规则。",
+    "assumptions": [
+      "未指定具体应用场景时，范围同时覆盖临床病原检测、核酸标志物检测和现场即时检测方向。",
+      "未指定物种或样本类型，检索时不预设单一物种或单一基质。",
+      "未指定竞品口径，比较对象先作为技术平台与研究方案处理，后续再视检索结果判断是否可落到企业或专利申请人。",
+      "专利分类号只作为待检索验证候选，不在本步骤确认具体 IPC/CPC 号。"
+    ],
+    "clarification_question": null,
+    "research_questions": [
+      {
+        "id": "Q1",
+        "question": "基于 CRISPR 的核酸检测的基本原理和核心分子组成是什么，包括 Cas 效应蛋白、向导 RNA、靶标识别、切割激活与信号产生之间的关系？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "CRISPR 检测的主要技术路线有哪些，例如核酸预扩增与非扩增、侧流层析读出、荧光读出、电化学读出和 CRISPR 相关信号放大策略，各自解决了什么问题？",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "近年 CRISPR 检测的代表性研究进展和典型技术平台是什么，相比传统核酸检测在灵敏度、特异性、检测时间、便携性和多重检测能力上有哪些报告结果和限制？",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "CRISPR 检测走向实际应用的关键瓶颈是什么，包括定量能力、样本前处理、污染控制、标准化、法规评价和大规模验证方面的缺口？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "若做竞品或对标分析，应把比较对象定义为企业、产品、技术平台、研究方案还是专利申请人，目前公开信息支持哪些维度的可比性？",
+        "source_types": [
+          "patent",
+          "official"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "canonical": "CRISPR-based nucleic acid detection",
+        "zh": [
+          "CRISPR检测",
+          "CRISPR核酸检测",
+          "CRISPR分子诊断",
+          "成簇规律间隔短回文重复序列检测"
+        ],
+        "en": [
+          "CRISPR detection",
+          "CRISPR-based detection",
+          "CRISPR diagnostics",
+          "CRISPR nucleic acid detection",
+          "CRISPR molecular diagnostics"
+        ],
+        "abbreviations": [
+          "CRISPR-Dx",
+          "CRISPRDx"
+        ],
+        "exclude": [
+          "CRISPR gene therapy",
+          "CRISPR crop editing",
+          "germline editing"
+        ]
+      },
+      {
+        "canonical": "Cas effector proteins",
+        "zh": [
+          "Cas效应蛋白",
+          "Cas蛋白",
+          "Cas酶"
+        ],
+        "en": [
+          "Cas effector",
+          "Cas protein",
+          "Cas12",
+          "Cas13",
+          "Cas14",
+          "Cas14a",
+          "Cas12a",
+          "Cas12b",
+          "Cas13a",
+          "Cas13b"
+        ],
+        "abbreviations": [
+          "Cas"
+        ],
+        "exclude": [
+          "Cas9 gene editing only",
+          "nuclease therapy"
+        ]
+      },
+      {
+        "canonical": "guide RNA and target recognition",
+        "zh": [
+          "向导RNA",
+          "sgRNA",
+          "crRNA",
+          "靶标识别",
+          "序列特异性识别"
+        ],
+        "en": [
+          "guide RNA",
+          "sgRNA",
+          "crRNA",
+          "target recognition",
+          "sequence-specific recognition",
+          "protospacer"
+        ],
+        "abbreviations": [
+          "gRNA",
+          "crRNA"
+        ],
+        "exclude": [
+          "off-target editing"
+        ]
+      },
+      {
+        "canonical": "signal readout and amplification",
+        "zh": [
+          "信号读出",
+          "信号放大",
+          "荧光读出",
+          "侧流层析",
+          "电化学检测",
+          "比色检测",
+          "免扩增检测",
+          "等温扩增"
+        ],
+        "en": [
+          "signal readout",
+          "signal amplification",
+          "fluorescence readout",
+          "lateral flow assay",
+          "electrochemical detection",
+          "colorimetric detection",
+          "amplification-free",
+          "isothermal amplification",
+          "RPA",
+          "LAMP",
+          "SHERLOCK",
+          "DETECTR"
+        ],
+        "abbreviations": [
+          "LFA",
+          "RPA",
+          "LAMP",
+          "SHERLOCK",
+          "DETECTR"
+        ],
+        "exclude": [
+          "PCR-only diagnostics",
+          "NGS-only detection"
+        ]
+      },
+      {
+        "canonical": "analytical performance",
+        "zh": [
+          "灵敏度",
+          "特异性",
+          "检出限",
+          "定量能力",
+          "多重检测",
+          "重复性",
+          "临床验证"
+        ],
+        "en": [
+          "sensitivity",
+          "specificity",
+          "limit of detection",
+          "quantification",
+          "multiplexing",
+          "reproducibility",
+          "clinical validation",
+          "analytical performance"
+        ],
+        "abbreviations": [
+          "LOD",
+          "LoD",
+          "AUC"
+        ],
+        "exclude": [
+          "market size",
+          "price",
+          "reimbursement"
+        ]
+      },
+      {
+        "canonical": "point-of-care and field deployment",
+        "zh": [
+          "即时检测",
+          "现场检测",
+          "便携式检测",
+          "样本前处理",
+          "核酸提取",
+          "污染控制",
+          "冷链依赖"
+        ],
+        "en": [
+          "point-of-care",
+          "point of care",
+          "field-deployable",
+          "portable detection",
+          "sample preparation",
+          "nucleic acid extraction",
+          "contamination control",
+          "cold chain"
+        ],
+        "abbreviations": [
+          "POC",
+          "POCT"
+        ],
+        "exclude": [
+          "central lab automation only"
+        ]
+      },
+      {
+        "canonical": "patent and technology platform landscape",
+        "zh": [
+          "专利申请人",
+          "技术平台",
+          "竞品分析",
+          "自由实施",
+          "专利族",
+          "权利要求"
+        ],
+        "en": [
+          "patent assignee",
+          "technology platform",
+          "competitive landscape",
+          "freedom to operate",
+          "patent family",
+          "claims",
+          "CRISPR diagnostics patent"
+        ],
+        "abbreviations": [
+          "FTO",
+          "IP"
+        ],
+        "exclude": [
+          "litigation outcome",
+          "royalty rate"
+        ]
+      }
+    ],
+    "queries": [
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1",
+          "Q2"
+        ],
+        "query": "(CRISPR OR Cas12 OR Cas13 OR Cas14 OR \"guide RNA\") AND (\"nucleic acid detection\" OR diagnostics OR biosensor OR \"molecular diagnostics\") AND (mechanism OR \"signal amplification\" OR \"collateral cleavage\" OR \"trans-cleavage\" OR readout)",
+        "purpose": "获取 CRISPR 核酸检测的原理、分子机制和主要技术路线的基础与综述性证据。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q3",
+          "Q4"
+        ],
+        "query": "(CRISPR OR Cas12 OR Cas13) AND (detection OR diagnostic OR biosensor) AND (sensitivity OR specificity OR \"limit of detection\" OR LOD OR quantification OR multiplex OR \"point-of-care\" OR \"clinical validation\") AND (2020:2026[dp])",
+        "purpose": "获取近五年代表性研究进展、性能指标和应用限制，避免只停留在概念介绍。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q2",
+          "Q4"
+        ],
+        "query": "(CRISPR OR Cas12 OR Cas13) AND (\"lateral flow\" OR electrochemical OR colorimetric OR fluorescence OR \"amplification-free\" OR \"isothermal amplification\" OR RPA OR LAMP) AND (detection OR assay OR diagnostics) AND (limitation OR challenge OR contamination OR \"sample preparation\" OR standardization)",
+        "purpose": "补充不同读出与放大路线的比较证据，并识别现场化与标准化瓶颈。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q3",
+          "Q5"
+        ],
+        "query": "(CRISPR OR Cas12 OR Cas13 OR Cas14 OR sgRNA OR crRNA) AND (detection OR diagnostic OR biosensor OR assay OR \"nucleic acid\") AND (readout OR lateral flow OR fluorescence OR electrochemical OR amplification OR multiplex OR kit OR device)",
+        "purpose": "检索 CRISPR 检测相关专利披露，提取公开号、申请人、日期、专利族和实际读取部分，用于技术路线和申请人比较。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q5"
+        ],
+        "query": "(CRISPR diagnostics OR CRISPR detection OR Cas12 detection OR Cas13 detection) AND (assignee OR applicant OR patent family OR claims OR kit OR platform)",
+        "purpose": "识别潜在专利申请人、技术平台和专利族聚类，为竞品比较对象提供候选，不把公开等同于授权或产品落地。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q3",
+          "Q4"
+        ],
+        "query": "CRISPR diagnostics OR CRISPR nucleic acid detection OR Cas12 OR Cas13 AND (FDA OR EMA OR NMPA OR WHO OR CDC OR NIH OR ECDC OR \"official guidance\" OR \"regulatory science\" OR \"public health\")",
+        "purpose": "检索监管机构、公共卫生机构和官方科研机构的指南、评价框架或技术说明，区分官方资料与独立研究。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q4",
+          "Q5"
+        ],
+        "query": "CRISPR diagnostic AND (standardization OR validation OR \"performance evaluation\" OR \"emergency use authorization\" OR \"in vitro diagnostic\" OR \"official database\" OR \"technology assessment\")",
+        "purpose": "补充标准化、性能评价、法规路径和官方数据库信息，控制结论强度不超过官方文件支持范围。"
+      }
+    ],
+    "comparison_unit": "technology_platform",
+    "coverage_targets": [
+      "至少覆盖 3 类 CRISPR 检测核心分子机制与信号产生方式。",
+      "至少覆盖 3 类读出或放大路线，并保留各自适用条件与局限。",
+      "至少获得若干近五年代表性研究或综述，且性能指标保留研究对象、样本或模型、对照、指标、单位和条件。",
+      "至少识别若干专利族和可能的申请人聚类，但不将专利公开等同于授权、产品落地或性能成立。",
+      "至少纳入监管机构、公共卫生机构或官方科研机构的指南或技术说明，若 official 来源不可用则在 coverage_targets 中标注缺口。",
+      "对竞品比较对象至少形成技术平台、研究方案和专利申请人三类候选，不预设企业或在售产品。",
+      "最终入选论文、专利和专业官方资料合计少于 20 条，通常 8—12 条，不为凑数纳入低相关来源。"
+    ],
+    "stop_conditions": [
+      "五个关键问题均已获得直接证据或明确标注为证据缺口。",
+      "新增论文、专利或官方资料主要重复已有结论，未带来新的技术路线、性能数据、限制条件或比较对象。",
+      "专利检索中同一专利族的不同成员不再增加新的技术披露信息。",
+      "官方资料检索无法获得目标监管或公共卫生文件时，记录缺口并停止以非官方来源替代官方结论。",
+      "达到 runtime_config.source_limit 前已满足覆盖目标，或来源质量不足以支持进一步归纳。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_secret_like_value",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_doi_list",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

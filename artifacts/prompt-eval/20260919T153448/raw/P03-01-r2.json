@@ -1,0 +1,80 @@
+{
+  "case_id": "P03-01",
+  "step": "step_3a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 1.571,
+  "usage": {
+    "prompt_tokens": 2190,
+    "completion_tokens": 173,
+    "total_tokens": 2363,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 142
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"results\": [\n    {\n      \"claim_id\": \"C1\",\n      \"source_identity\": \"matched\",\n      \"support_status\": \"unsupported\",\n      \"reading_scope\": \"full_text\",\n      \"issue_codes\": [\"wrong_number\", \"wrong_unit\"],\n      \"explanation\": \"证据为单位 µg、数值 5，结论写成 mg、数值 50，数值和单位均不一致。\",\n      \"action\": \"revise\",\n      \"revised_claim\": \"该处理使指标上升 5 µg。\",\n      \"valid_evidence_ids\": [\"E-NUM\"]\n    }\n  ],\n  \"summary\": {\n    \"supported\": 0,\n    \"partially_supported\": 0,\n    \"unsupported\": 1,\n    \"cannot_determine\": 0\n  }\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "matched",
+        "support_status": "unsupported",
+        "reading_scope": "full_text",
+        "issue_codes": [
+          "wrong_number",
+          "wrong_unit"
+        ],
+        "explanation": "证据为单位 µg、数值 5，结论写成 mg、数值 50，数值和单位均不一致。",
+        "action": "revise",
+        "revised_claim": "该处理使指标上升 5 µg。",
+        "valid_evidence_ids": [
+          "E-NUM"
+        ]
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 0,
+      "unsupported": 1,
+      "cannot_determine": 0
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "not_supported",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "number_or_unit_issue",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

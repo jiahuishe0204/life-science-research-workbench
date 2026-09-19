@@ -1,0 +1,79 @@
+{
+  "case_id": "P03-02",
+  "step": "step_3a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.048,
+  "usage": {
+    "prompt_tokens": 2153,
+    "completion_tokens": 195,
+    "total_tokens": 2348,
+    "prompt_tokens_details": {
+      "cached_tokens": 1920
+    },
+    "prompt_cache_hit_tokens": 1920,
+    "prompt_cache_miss_tokens": 233
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"results\": [\n    {\n      \"claim_id\": \"C1\",\n      \"source_identity\": \"unknown\",\n      \"support_status\": \"cannot_determine\",\n      \"reading_scope\": \"metadata\",\n      \"issue_codes\": [\n        \"source_mismatch\",\n        \"insufficient_text\",\n        \"scope_overreach\"\n      ],\n      \"explanation\": \"claim 引用的 E-UNKNOWN 不在 evidence_records 中；唯一存在的 E-KNOWN 仅含来源身份元数据，不能支持任何关于人体安全性和有效性的实验结论\",\n      \"action\": \"mark_unverified\",\n      \"revised_claim\": null,\n      \"valid_evidence_ids\": []\n    }\n  ],\n  \"summary\": {\n    \"supported\": 0,\n    \"partially_supported\": 0,\n    \"unsupported\": 0,\n    \"cannot_determine\": 1\n  }\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "unknown",
+        "support_status": "cannot_determine",
+        "reading_scope": "metadata",
+        "issue_codes": [
+          "source_mismatch",
+          "insufficient_text",
+          "scope_overreach"
+        ],
+        "explanation": "claim 引用的 E-UNKNOWN 不在 evidence_records 中；唯一存在的 E-KNOWN 仅含来源身份元数据，不能支持任何关于人体安全性和有效性的实验结论",
+        "action": "mark_unverified",
+        "revised_claim": null,
+        "valid_evidence_ids": []
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 0,
+      "unsupported": 0,
+      "cannot_determine": 1
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "unknown_rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_valid_evidence",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

@@ -1,0 +1,315 @@
+{
+  "case_id": "P00-03",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 9.644,
+  "usage": {
+    "prompt_tokens": 2243,
+    "completion_tokens": 1966,
+    "total_tokens": 4209,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 195
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"ready\",\n  \"scope_statement\": \"本主题按字面理解为新能源汽车动力电池包的热管理技术基础调研，覆盖热产生与散热机理、风冷/液冷/相变材料/热管/直冷等主要技术路线、典型代表进展、关键限制（安全性、快充、低温、成本与复杂度）以及可比较的技术平台或方案。检索将分别在论文、专利与专业官方资料接口执行；用户未限定单一技术路线、车型或物种，因此不预先收窄到某一具体路线。\",\n  \"assumptions\": [\n    \"主题按‘新能源汽车（含纯电与插混）动力电池热管理’解释，不扩展到燃料电池热管理或电机电控热管理，除非检索中出现强关联。\",\n    \"‘新能源汽车’对应英文检索中的 new energy vehicle / electric vehicle，以 EV 为更通用入口。\",\n    \"研究深度定位为基础技术调研，优先近年资料并补充必要奠基资料。\"\n  ],\n  \"clarification_question\": null,\n  \"research_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"动力电池为什么需要热管理：电池产热与传热的基本机理、温度对性能、寿命和安全的影响是什么？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"当前主要热管理技术路线各是什么：风冷、液冷、相变材料、热管、直冷和混合方案的工作原理与结构差异？\",\n      \"source_types\": [\"paper\", \"patent\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"各类路线在电池包层面有哪些代表性研究或工程进展，采用了什么对象、模型与评价指标？\",\n      \"source_types\": [\"paper\", \"patent\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"这些路线的主要限制与失效模式是什么：快充升温、低温加热、温度均匀性、泄漏、重量、成本与系统复杂度？\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"该主题可按什么单位做横向比较：企业、在售产品、技术平台、研究方案还是专利申请人？\",\n      \"source_types\": [\"patent\", \"official\"]\n    }\n  ],\n  \"concepts\": [\n    {\n      \"canonical\": \"动力电池热管理\",\n      \"zh\": [\"动力电池热管理系统\", \"电池热管理\", \"电池包热管理\", \"电池温度控制\", \"电池冷却\", \"电池加热\"],\n      \"en\": [\"battery thermal management\", \"battery thermal management system\", \"BTMS\", \"battery pack thermal management\", \"battery cooling\", \"battery heating\"],\n      \"abbreviations\": [\"BTMS\", \"BMS热管理\"],\n      \"exclude\": [\"数据中心冷却\", \"建筑暖通空调\", \"电机冷却\", \"电子芯片散热\"]\n    },\n    {\n      \"canonical\": \"新能源汽车\",\n      \"zh\": [\"新能源汽车\", \"电动汽车\", \"纯电动汽车\", \"插电式混合动力汽车\", \"动力电池\"],\n      \"en\": [\"new energy vehicle\", \"electric vehicle\", \"EV\", \"battery electric vehicle\", \"plug-in hybrid electric vehicle\", \"traction battery\", \"lithium-ion battery pack\"],\n      \"abbreviations\": [\"NEV\", \"EV\", \"BEV\", \"PHEV\"],\n      \"exclude\": [\"燃油车发动机冷却\", \"氢燃料电池热管理\"]\n    },\n    {\n      \"canonical\": \"电池产热与热失控\",\n      \"zh\": [\"电池产热\", \"锂离子电池产热\", \"热失控\", \"热扩散\", \"熵热\", \"欧姆热\", \"极化热\"],\n      \"en\": [\"battery heat generation\", \"lithium-ion battery heat generation\", \"thermal runaway\", \"thermal propagation\", \"entropic heat\", \"ohmic heat\", \"polarization heat\"],\n      \"abbreviations\": [\"TR\"],\n      \"exclude\": [\"燃烧实验无电池语境\", \"非电池热失控\"]\n    },\n    {\n      \"canonical\": \"冷却与加热技术路线\",\n      \"zh\": [\"风冷\", \"液冷\", \"冷板\", \"相变材料\", \"热管\", \"直冷\", \"浸没式冷却\", \"热泵加热\", \"PTC加热\", \"微通道冷却\"],\n      \"en\": [\"air cooling\", \"liquid cooling\", \"cold plate\", \"phase change material\", \"heat pipe\", \"direct refrigerant cooling\", \"immersion cooling\", \"heat pump heating\", \"PTC heating\", \"microchannel cooling\"],\n      \"abbreviations\": [\"PCM\", \"PTC\", \"HP\"],\n      \"exclude\": [\"仅家用空调冷却\", \"建筑相变材料\"]\n    },\n    {\n      \"canonical\": \"电池建模与评价指标\",\n      \"zh\": [\"电化学-热耦合模型\", \"CFD仿真\", \"温度均匀性\", \"最高温度\", \"温差\", \"冷却能耗\", \"充放电倍率\"],\n      \"en\": [\"electrochemical-thermal coupled model\", \"CFD simulation\", \"temperature uniformity\", \"maximum temperature\", \"temperature difference\", \"cooling energy consumption\", \"charge and discharge rate\", \"C-rate\"],\n      \"abbreviations\": [\"CFD\", \"SOC\", \"C-rate\"],\n      \"exclude\": [\"无电池的通用流体仿真\"]\n    }\n  ],\n  \"queries\": [\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"query\": \"(battery thermal management OR battery heat generation OR lithium-ion battery thermal runaway) AND (electric vehicle OR EV OR battery pack) AND (temperature effect OR performance OR safety OR degradation)\",\n      \"purpose\": \"获取产热机理、温度对性能寿命安全影响的基础与近年研究。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q2\", \"Q3\"],\n      \"query\": \"(EV battery pack OR lithium-ion battery pack) AND (air cooling OR liquid cooling OR cold plate OR phase change material OR heat pipe OR direct refrigerant cooling OR immersion cooling) AND (thermal management OR cooling performance OR temperature uniformity)\",\n      \"purpose\": \"对比各热管理路线的工作原理与代表性研究进展。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q4\"],\n      \"query\": \"(battery thermal management system OR BTMS) AND (fast charging OR low temperature heating OR thermal runaway OR temperature non-uniformity OR cost OR complexity) AND (limitation OR challenge OR failure)\",\n      \"purpose\": \"识别关键限制、失效模式与工况挑战。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q2\", \"Q3\", \"Q5\"],\n      \"query\": \"(battery thermal management OR battery cooling OR battery heating) AND (electric vehicle OR EV) AND (cold plate OR liquid cooling OR phase change material OR heat pipe OR refrigerant direct cooling OR thermal runaway propagation)\",\n      \"purpose\": \"检索电池热管理结构、系统与控制的专利披露，并观察主要申请人分布；IPC/CPC 分类方向需在检索中验证后再确认。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q4\", \"Q5\"],\n      \"query\": \"(battery pack thermal runaway OR thermal propagation prevention) AND (electric vehicle OR EV) AND (cooling structure OR thermal barrier OR venting OR control strategy)\",\n      \"purpose\": \"补充安全相关热管理专利，用于比较技术平台与专利申请人。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q1\", \"Q4\", \"Q5\"],\n      \"query\": \"(electric vehicle battery safety OR battery thermal management) AND (official guidance OR regulation OR testing standard OR government report)\",\n      \"purpose\": \"获取官方机构或标准组织对电池安全、热管理与测试要求的公开资料，注意区分官方新闻、技术报告与强制性法规。\"\n    }\n  ],\n  \"comparison_unit\": \"technology_platform\",\n  \"coverage_targets\": [\n    \"Q1—Q4 每个关键问题至少获得 1 条直接相关的论文或专业官方资料证据。\",\n    \"Q2 与 Q3 覆盖至少三种不同热管理技术路线（如风冷、液冷、PCM、热管或直冷）的独立来源。\",\n    \"Q5 通过专利检索形成可比较的技术平台或专利申请人维度，不默认等同于在售产品。\",\n    \"若有任一来源类型无可用结果，在交付中明确标注该缺口。\"\n  ],\n  \"stop_conditions\": [\n    \"Q1—Q5 均有直接可追溯证据，且新增论文、专利或官方资料主要重复已有结论。\",\n    \"同一技术路线的不同文献仅重复相同研究对象、指标与结论，无新增条件或限制信息。\",\n    \"专利检索中同一专利族成员仅重复同一技术披露，不再提供新结构或新控制策略。\",\n    \"达到 source_limit=19 或程序返回的来源数量上限。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "ready",
+    "scope_statement": "本主题按字面理解为新能源汽车动力电池包的热管理技术基础调研，覆盖热产生与散热机理、风冷/液冷/相变材料/热管/直冷等主要技术路线、典型代表进展、关键限制（安全性、快充、低温、成本与复杂度）以及可比较的技术平台或方案。检索将分别在论文、专利与专业官方资料接口执行；用户未限定单一技术路线、车型或物种，因此不预先收窄到某一具体路线。",
+    "assumptions": [
+      "主题按‘新能源汽车（含纯电与插混）动力电池热管理’解释，不扩展到燃料电池热管理或电机电控热管理，除非检索中出现强关联。",
+      "‘新能源汽车’对应英文检索中的 new energy vehicle / electric vehicle，以 EV 为更通用入口。",
+      "研究深度定位为基础技术调研，优先近年资料并补充必要奠基资料。"
+    ],
+    "clarification_question": null,
+    "research_questions": [
+      {
+        "id": "Q1",
+        "question": "动力电池为什么需要热管理：电池产热与传热的基本机理、温度对性能、寿命和安全的影响是什么？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "当前主要热管理技术路线各是什么：风冷、液冷、相变材料、热管、直冷和混合方案的工作原理与结构差异？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "各类路线在电池包层面有哪些代表性研究或工程进展，采用了什么对象、模型与评价指标？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "这些路线的主要限制与失效模式是什么：快充升温、低温加热、温度均匀性、泄漏、重量、成本与系统复杂度？",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "该主题可按什么单位做横向比较：企业、在售产品、技术平台、研究方案还是专利申请人？",
+        "source_types": [
+          "patent",
+          "official"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "canonical": "动力电池热管理",
+        "zh": [
+          "动力电池热管理系统",
+          "电池热管理",
+          "电池包热管理",
+          "电池温度控制",
+          "电池冷却",
+          "电池加热"
+        ],
+        "en": [
+          "battery thermal management",
+          "battery thermal management system",
+          "BTMS",
+          "battery pack thermal management",
+          "battery cooling",
+          "battery heating"
+        ],
+        "abbreviations": [
+          "BTMS",
+          "BMS热管理"
+        ],
+        "exclude": [
+          "数据中心冷却",
+          "建筑暖通空调",
+          "电机冷却",
+          "电子芯片散热"
+        ]
+      },
+      {
+        "canonical": "新能源汽车",
+        "zh": [
+          "新能源汽车",
+          "电动汽车",
+          "纯电动汽车",
+          "插电式混合动力汽车",
+          "动力电池"
+        ],
+        "en": [
+          "new energy vehicle",
+          "electric vehicle",
+          "EV",
+          "battery electric vehicle",
+          "plug-in hybrid electric vehicle",
+          "traction battery",
+          "lithium-ion battery pack"
+        ],
+        "abbreviations": [
+          "NEV",
+          "EV",
+          "BEV",
+          "PHEV"
+        ],
+        "exclude": [
+          "燃油车发动机冷却",
+          "氢燃料电池热管理"
+        ]
+      },
+      {
+        "canonical": "电池产热与热失控",
+        "zh": [
+          "电池产热",
+          "锂离子电池产热",
+          "热失控",
+          "热扩散",
+          "熵热",
+          "欧姆热",
+          "极化热"
+        ],
+        "en": [
+          "battery heat generation",
+          "lithium-ion battery heat generation",
+          "thermal runaway",
+          "thermal propagation",
+          "entropic heat",
+          "ohmic heat",
+          "polarization heat"
+        ],
+        "abbreviations": [
+          "TR"
+        ],
+        "exclude": [
+          "燃烧实验无电池语境",
+          "非电池热失控"
+        ]
+      },
+      {
+        "canonical": "冷却与加热技术路线",
+        "zh": [
+          "风冷",
+          "液冷",
+          "冷板",
+          "相变材料",
+          "热管",
+          "直冷",
+          "浸没式冷却",
+          "热泵加热",
+          "PTC加热",
+          "微通道冷却"
+        ],
+        "en": [
+          "air cooling",
+          "liquid cooling",
+          "cold plate",
+          "phase change material",
+          "heat pipe",
+          "direct refrigerant cooling",
+          "immersion cooling",
+          "heat pump heating",
+          "PTC heating",
+          "microchannel cooling"
+        ],
+        "abbreviations": [
+          "PCM",
+          "PTC",
+          "HP"
+        ],
+        "exclude": [
+          "仅家用空调冷却",
+          "建筑相变材料"
+        ]
+      },
+      {
+        "canonical": "电池建模与评价指标",
+        "zh": [
+          "电化学-热耦合模型",
+          "CFD仿真",
+          "温度均匀性",
+          "最高温度",
+          "温差",
+          "冷却能耗",
+          "充放电倍率"
+        ],
+        "en": [
+          "electrochemical-thermal coupled model",
+          "CFD simulation",
+          "temperature uniformity",
+          "maximum temperature",
+          "temperature difference",
+          "cooling energy consumption",
+          "charge and discharge rate",
+          "C-rate"
+        ],
+        "abbreviations": [
+          "CFD",
+          "SOC",
+          "C-rate"
+        ],
+        "exclude": [
+          "无电池的通用流体仿真"
+        ]
+      }
+    ],
+    "queries": [
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "query": "(battery thermal management OR battery heat generation OR lithium-ion battery thermal runaway) AND (electric vehicle OR EV OR battery pack) AND (temperature effect OR performance OR safety OR degradation)",
+        "purpose": "获取产热机理、温度对性能寿命安全影响的基础与近年研究。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q2",
+          "Q3"
+        ],
+        "query": "(EV battery pack OR lithium-ion battery pack) AND (air cooling OR liquid cooling OR cold plate OR phase change material OR heat pipe OR direct refrigerant cooling OR immersion cooling) AND (thermal management OR cooling performance OR temperature uniformity)",
+        "purpose": "对比各热管理路线的工作原理与代表性研究进展。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q4"
+        ],
+        "query": "(battery thermal management system OR BTMS) AND (fast charging OR low temperature heating OR thermal runaway OR temperature non-uniformity OR cost OR complexity) AND (limitation OR challenge OR failure)",
+        "purpose": "识别关键限制、失效模式与工况挑战。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q3",
+          "Q5"
+        ],
+        "query": "(battery thermal management OR battery cooling OR battery heating) AND (electric vehicle OR EV) AND (cold plate OR liquid cooling OR phase change material OR heat pipe OR refrigerant direct cooling OR thermal runaway propagation)",
+        "purpose": "检索电池热管理结构、系统与控制的专利披露，并观察主要申请人分布；IPC/CPC 分类方向需在检索中验证后再确认。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q4",
+          "Q5"
+        ],
+        "query": "(battery pack thermal runaway OR thermal propagation prevention) AND (electric vehicle OR EV) AND (cooling structure OR thermal barrier OR venting OR control strategy)",
+        "purpose": "补充安全相关热管理专利，用于比较技术平台与专利申请人。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q4",
+          "Q5"
+        ],
+        "query": "(electric vehicle battery safety OR battery thermal management) AND (official guidance OR regulation OR testing standard OR government report)",
+        "purpose": "获取官方机构或标准组织对电池安全、热管理与测试要求的公开资料，注意区分官方新闻、技术报告与强制性法规。"
+      }
+    ],
+    "comparison_unit": "technology_platform",
+    "coverage_targets": [
+      "Q1—Q4 每个关键问题至少获得 1 条直接相关的论文或专业官方资料证据。",
+      "Q2 与 Q3 覆盖至少三种不同热管理技术路线（如风冷、液冷、PCM、热管或直冷）的独立来源。",
+      "Q5 通过专利检索形成可比较的技术平台或专利申请人维度，不默认等同于在售产品。",
+      "若有任一来源类型无可用结果，在交付中明确标注该缺口。"
+    ],
+    "stop_conditions": [
+      "Q1—Q5 均有直接可追溯证据，且新增论文、专利或官方资料主要重复已有结论。",
+      "同一技术路线的不同文献仅重复相同研究对象、指标与结论，无新增条件或限制信息。",
+      "专利检索中同一专利族成员仅重复同一技术披露，不再提供新结构或新控制策略。",
+      "达到 source_limit=19 或程序返回的来源数量上限。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "scope_refusal",
+      "passed": false,
+      "detail": ""
+    }
+  ],
+  "auto_passed": false,
+  "manual_review_required": true
+}

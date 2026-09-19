@@ -1,0 +1,65 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.187,
+  "usage": {
+    "prompt_tokens": 2371,
+    "completion_tokens": 235,
+    "total_tokens": 2606,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 195
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n体外研究观察到信号变化 [E:E-KEEP]。\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\",\n  \"verification_note\": \"本次修订依据自动核验结果执行：1 条结论保留（C1，supported），1 条结论修订为限定表述（C3，partially_supported），1 条结论因缺乏支持证据已删除（claim_id: C2），其原结论文本不再在最终稿或本说明中复述。引用仅保留核验确认有效的证据编号。\",\n  \"open_issues\": [\n    \"本次核验基于自动核验结果与摘要级信息，未获提供完整全文或实验细节，结论适用范围有限。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n体外研究观察到信号变化 [E:E-KEEP]。\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。",
+    "verification_note": "本次修订依据自动核验结果执行：1 条结论保留（C1，supported），1 条结论修订为限定表述（C3，partially_supported），1 条结论因缺乏支持证据已删除（claim_id: C2），其原结论文本不再在最终稿或本说明中复述。引用仅保留核验确认有效的证据编号。",
+    "open_issues": [
+      "本次核验基于自动核验结果与摘要级信息，未获提供完整全文或实验细节，结论适用范围有限。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

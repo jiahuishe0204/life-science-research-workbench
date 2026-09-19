@@ -1,0 +1,66 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.798,
+  "usage": {
+    "prompt_tokens": 2371,
+    "completion_tokens": 401,
+    "total_tokens": 2772,
+    "prompt_tokens_details": {
+      "cached_tokens": 1280
+    },
+    "prompt_cache_hit_tokens": 1280,
+    "prompt_cache_miss_tokens": 1091
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n体外研究观察到信号变化 [E:E-KEEP]。\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\\n\\n---\\n\\n**核验范围与限制**\\n- 本次修订依据自动化核验结果，按 claim_id 对结论执行保留、修订与删除；核验非专家评审，亦不代表绝对准确。\\n- 本次核验基于现有证据记录，未获取未提供的全文或额外来源；未检索到不等于不存在。\\n- 已删除一条不支持结论（claim_id: C2），未保留其原有表述。\\n- 保留结论 C1 仅限体外研究条件；C3 经修订后仅限小鼠研究范围，不可外推至人体疗效。\",\n  \"verification_note\": \"按 claim_id 应用核验动作：C1（keep）保留原文；C3（revise）按 revised_claim 替换，明确不支持人体疗效；C2（remove）已删除，不保留、不复述其原结论，仅以 claim_id 说明删除动作。正文引用仅保留 C1、C3 的有效 evidence_id。本次核验属自动化核验，不构成专家审核或绝对准确性保证。\",\n  \"open_issues\": [\n    \"未提供 source_records 与 evidence_id 的对应关系，无法在最终稿中展开来源名称或类型。\",\n    \"C2 原结论已删除，其声称的治疗用途未在本次范围内另行评估。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n体外研究观察到信号变化 [E:E-KEEP]。\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\n\n---\n\n**核验范围与限制**\n- 本次修订依据自动化核验结果，按 claim_id 对结论执行保留、修订与删除；核验非专家评审，亦不代表绝对准确。\n- 本次核验基于现有证据记录，未获取未提供的全文或额外来源；未检索到不等于不存在。\n- 已删除一条不支持结论（claim_id: C2），未保留其原有表述。\n- 保留结论 C1 仅限体外研究条件；C3 经修订后仅限小鼠研究范围，不可外推至人体疗效。",
+    "verification_note": "按 claim_id 应用核验动作：C1（keep）保留原文；C3（revise）按 revised_claim 替换，明确不支持人体疗效；C2（remove）已删除，不保留、不复述其原结论，仅以 claim_id 说明删除动作。正文引用仅保留 C1、C3 的有效 evidence_id。本次核验属自动化核验，不构成专家审核或绝对准确性保证。",
+    "open_issues": [
+      "未提供 source_records 与 evidence_id 的对应关系，无法在最终稿中展开来源名称或类型。",
+      "C2 原结论已删除，其声称的治疗用途未在本次范围内另行评估。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

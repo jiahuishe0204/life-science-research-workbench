@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.181,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 301,
+    "total_tokens": 2576,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-JOURNAL\",\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"同一条研究的同行评审期刊版，已读全文，可直接支持递送方法效果与限制的分析；预印本为其早期版本，仅读摘要且内容被期刊版覆盖。\",\n      \"reading_scope\": \"full_text\",\n      \"relation_group\": \"RG-S-PRE-S-JOURNAL\",\n      \"relation_type\": \"same_work_version\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-PRE\",\n      \"reason_code\": \"superseded\",\n      \"reason\": \"与 S-JOURNAL 为同一研究的预印本版本（标题、作者一致），已读范围仅为摘要；期刊版为同行评审版本且已读全文，故保留期刊版、排除预印本以避免重复计数。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"候选来源仅限该递送方法的单一研究，缺少独立研究、对照路线或其他递送方法的证据，无法判断效果与限制的可重复性及路线差异。\",\n      \"suggested_followup_query\": \"delivery route X AND (comparison OR in vivo OR in vitro) AND limitations\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "同一条研究的同行评审期刊版，已读全文，可直接支持递送方法效果与限制的分析；预印本为其早期版本，仅读摘要且内容被期刊版覆盖。",
+        "reading_scope": "full_text",
+        "relation_group": "RG-S-PRE-S-JOURNAL",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与 S-JOURNAL 为同一研究的预印本版本（标题、作者一致），已读范围仅为摘要；期刊版为同行评审版本且已读全文，故保留期刊版、排除预印本以避免重复计数。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "候选来源仅限该递送方法的单一研究，缺少独立研究、对照路线或其他递送方法的证据，无法判断效果与限制的可重复性及路线差异。",
+        "suggested_followup_query": "delivery route X AND (comparison OR in vivo OR in vitro) AND limitations"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

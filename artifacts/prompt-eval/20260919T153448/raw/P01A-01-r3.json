@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.554,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 304,
+    "total_tokens": 2579,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-JOURNAL\",\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"已读取全文的同行评审期刊版本，与Q1（递送方法效果与限制）直接相关，且身份信息（标题、作者、DOI）完整，可支持对效果和限制的结论。\",\n      \"reading_scope\": \"full_text\",\n      \"relation_group\": \"delivery-route-X-study\",\n      \"relation_type\": \"same_work_version\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-PRE\",\n      \"reason_code\": \"superseded\",\n      \"reason\": \"同一论文的预印本版本，已被S-JOURNAL（同行评审期刊版）取代；仅读取摘要，且与S-JOURNAL为同一研究，不应作为独立来源重复计数。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"候选来源仅覆盖一项研究，缺少其他递送路线或独立研究的对照资料，无法评估该方法的相对效果、适用条件及潜在相反结果。\",\n      \"suggested_followup_query\": \"delivery route X AND (efficacy OR limitation OR comparison) AND (in vivo OR clinical) 近五年论文与相关专利\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "已读取全文的同行评审期刊版本，与Q1（递送方法效果与限制）直接相关，且身份信息（标题、作者、DOI）完整，可支持对效果和限制的结论。",
+        "reading_scope": "full_text",
+        "relation_group": "delivery-route-X-study",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "同一论文的预印本版本，已被S-JOURNAL（同行评审期刊版）取代；仅读取摘要，且与S-JOURNAL为同一研究，不应作为独立来源重复计数。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "候选来源仅覆盖一项研究，缺少其他递送路线或独立研究的对照资料，无法评估该方法的相对效果、适用条件及潜在相反结果。",
+        "suggested_followup_query": "delivery route X AND (efficacy OR limitation OR comparison) AND (in vivo OR clinical) 近五年论文与相关专利"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

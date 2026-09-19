@@ -1,0 +1,76 @@
+{
+  "case_id": "P01A-03",
+  "step": "step_1a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 1.883,
+  "usage": {
+    "prompt_tokens": 2177,
+    "completion_tokens": 161,
+    "total_tokens": 2338,
+    "prompt_tokens_details": {
+      "cached_tokens": 2043
+    },
+    "prompt_cache_hit_tokens": 2043,
+    "prompt_cache_miss_tokens": 134
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"selected\":[],\"excluded\":[{\"source_id\":\"S-IRR-1\",\"reason_code\":\"outside_scope\",\"reason\":\"题目为电池热管理，与 mRNA 递送主题无直接关系，且仅有摘要读取范围，无法支持递送载体路线结论。\"},{\"source_id\":\"S-IRR-2\",\"reason_code\":\"outside_scope\",\"reason\":\"题目为农业拖拉机维护，属于官方网页，但与 mRNA 递送载体路线无关。\"}],\"coverage_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"当前候选来源全部与 mRNA 递送无关，无法识别任何递送载体路线，也无法覆盖路线差异或限制。\",\"suggested_followup_query\":\"mRNA delivery vehicle lipid nanoparticle LNP polymer peptide conjugate review\"}]}",
+  "parsed_output": {
+    "selected": [],
+    "excluded": [
+      {
+        "source_id": "S-IRR-1",
+        "reason_code": "outside_scope",
+        "reason": "题目为电池热管理，与 mRNA 递送主题无直接关系，且仅有摘要读取范围，无法支持递送载体路线结论。"
+      },
+      {
+        "source_id": "S-IRR-2",
+        "reason_code": "outside_scope",
+        "reason": "题目为农业拖拉机维护，属于官方网页，但与 mRNA 递送载体路线无关。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选来源全部与 mRNA 递送无关，无法识别任何递送载体路线，也无法覆盖路线差异或限制。",
+        "suggested_followup_query": "mRNA delivery vehicle lipid nanoparticle LNP polymer peptide conjugate review"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "selected_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage_gap_present",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

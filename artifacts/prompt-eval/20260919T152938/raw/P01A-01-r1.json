@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.159,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 284,
+    "total_tokens": 2559,
+    "prompt_tokens_details": {
+      "cached_tokens": 1792
+    },
+    "prompt_cache_hit_tokens": 1792,
+    "prompt_cache_miss_tokens": 483
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"selected\":[{\"source_id\":\"S-JOURNAL\",\"source_type\":\"paper\",\"question_ids\":[\"Q1\"],\"selection_reason\":\"与 Q1 直接相关的同行评审期刊版，读取范围为全文，可支持效果与限制的分析；与 S-PRE 为同一研究的不同版本，按版本关系只保留信息更完整的期刊版。\",\"reading_scope\":\"full_text\",\"relation_group\":\"RG-delivery-route-X\",\"relation_type\":\"same_work_version\"}],\"excluded\":[{\"source_id\":\"S-PRE\",\"reason_code\":\"superseded\",\"reason\":\"与 S-JOURNAL 标题、作者一致，version_note 明确其为该期刊版的预印本；读取范围仅摘要，信息不优于期刊版，作为同一研究的重复版本排除，关系已由 S-JOURNAL 的 relation_group 记录。\"}],\"coverage_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"当前候选仅含一项研究的预印本和期刊版，实际独立来源为 1 条，无法覆盖不同技术路线、相反结果或方法间比较；也缺少专利与官方资料来支持技术现状与转化层面的判断。\",\"suggested_followup_query\":\"delivery route X AND (efficacy OR limitation OR comparison) AND (in vivo OR clinical) 近五年论文；以及 delivery route X 相关专利族\"}]}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与 Q1 直接相关的同行评审期刊版，读取范围为全文，可支持效果与限制的分析；与 S-PRE 为同一研究的不同版本，按版本关系只保留信息更完整的期刊版。",
+        "reading_scope": "full_text",
+        "relation_group": "RG-delivery-route-X",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与 S-JOURNAL 标题、作者一致，version_note 明确其为该期刊版的预印本；读取范围仅摘要，信息不优于期刊版，作为同一研究的重复版本排除，关系已由 S-JOURNAL 的 relation_group 记录。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选仅含一项研究的预印本和期刊版，实际独立来源为 1 条，无法覆盖不同技术路线、相反结果或方法间比较；也缺少专利与官方资料来支持技术现状与转化层面的判断。",
+        "suggested_followup_query": "delivery route X AND (efficacy OR limitation OR comparison) AND (in vivo OR clinical) 近五年论文；以及 delivery route X 相关专利族"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

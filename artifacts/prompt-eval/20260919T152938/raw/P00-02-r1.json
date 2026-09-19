@@ -1,0 +1,391 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 11.947,
+  "usage": {
+    "prompt_tokens": 2175,
+    "completion_tokens": 2469,
+    "total_tokens": 4644,
+    "prompt_tokens_details": {
+      "cached_tokens": 1920
+    },
+    "prompt_cache_hit_tokens": 1920,
+    "prompt_cache_miss_tokens": 255
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"ready\",\n  \"scope_statement\": \"本计划将“ADC”按生命科学领域最常见的解释处理为抗体偶联药物（antibody-drug conjugate），覆盖其基础概念、关键设计要素（抗体、连接子、载荷）、主要技术路线、代表性进展方向、关键限制与风险，以及可用于横向比较的对象类型。不预设某一适应症、靶点、企业或单一物种；用户未指定时，后续检索不自动收窄至医疗器械、单纯化疗药物或单一癌种。\",\n  \"assumptions\": [\n    \"将用户主题“ADC”解释为抗体偶联药物（antibody-drug conjugate），而非其他领域缩写。\",\n    \"默认中英文双语检索，优先近五年资料，并按需补充奠基性基础资料。\",\n    \"产品面向需要快速建立基础认识的用户，因此计划覆盖基础概念、主要路线、代表进展、关键限制和可比较对象。\",\n    \"在用户未指定竞品时，将比较对象定义为技术平台、研究方案或专利申请人等可比较单元，而非默认等同于在售产品。\",\n    \"专利检索计划中的 IPC/CPC 方向仅作为待检索验证的候选方向，不作为已确认分类。\"\n  ],\n  \"clarification_question\": null,\n  \"research_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"抗体偶联药物的基本构成与作用原理是什么？抗体、连接子和载荷各自承担什么角色，主要分类方式有哪些？\",\n      \"source_types\": [\"paper\", \"official\"]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"当前ADC的主要技术路线有哪些？例如连接子类型（可裂解/不可裂解）、载荷类别、偶联方式、DAR控制等方向各自的特点和取舍是什么？\",\n      \"source_types\": [\"paper\", \"patent\"]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"近年在ADC设计、靶点选择、递送和制造方面有哪些代表性进展方向？这些进展主要解决了哪些既往限制？\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"ADC研发和应用的关键限制与风险是什么？包括脱靶毒性、稳定性、耐药、药代动力学、治疗窗口和制造复杂性等。\",\n      \"source_types\": [\"paper\", \"patent\", \"official\"]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"对ADC进行横向比较时，适合以什么为比较单元？企业、产品、技术平台、研究方案或专利申请人各自能回答什么问题？\",\n      \"source_types\": [\"patent\", \"official\"]\n    }\n  ],\n  \"concepts\": [\n    {\n      \"canonical\": \"antibody-drug conjugate\",\n      \"zh\": [\"抗体偶联药物\", \"抗体药物偶联物\", \"抗体-药物偶联物\"],\n      \"en\": [\"antibody-drug conjugate\", \"antibody drug conjugate\", \"ADC\"],\n      \"abbreviations\": [\"ADC\", \"ADCs\"],\n      \"exclude\": [\"ADC（非抗体偶联药物语境）\", \"analog-to-digital converter\"]\n    },\n    {\n      \"canonical\": \"antibody\",\n      \"zh\": [\"抗体\", \"单克隆抗体\", \"靶向抗体\"],\n      \"en\": [\"antibody\", \"monoclonal antibody\", \"mAb\", \"targeting antibody\"],\n      \"abbreviations\": [\"mAb\", \"mAbs\"],\n      \"exclude\": [\"polyclonal antibody（除非比较需要）\"]\n    },\n    {\n      \"canonical\": \"linker\",\n      \"zh\": [\"连接子\", \"链接子\", \"连接体\"],\n      \"en\": [\"linker\", \"cleavable linker\", \"non-cleavable linker\"],\n      \"abbreviations\": [],\n      \"exclude\": [\"linker（非ADC语境）\"]\n    },\n    {\n      \"canonical\": \"payload\",\n      \"zh\": [\"载荷\", \"有效载荷\", \"细胞毒性载荷\", \"弹头\"],\n      \"en\": [\"payload\", \"cytotoxic payload\", \"warhead\", \"drug payload\"],\n      \"abbreviations\": [],\n      \"exclude\": [\"payload（非药物语境）\"]\n    },\n    {\n      \"canonical\": \"drug-to-antibody ratio\",\n      \"zh\": [\"药物抗体比\", \"药物载量\"],\n      \"en\": [\"drug-to-antibody ratio\", \"DAR\", \"drug loading\"],\n      \"abbreviations\": [\"DAR\"],\n      \"exclude\": []\n    },\n    {\n      \"canonical\": \"conjugation\",\n      \"zh\": [\"偶联\", \"偶联方式\", \"定点偶联\"],\n      \"en\": [\"conjugation\", \"site-specific conjugation\", \"chemical conjugation\", \"enzymatic conjugation\"],\n      \"abbreviations\": [],\n      \"exclude\": []\n    },\n    {\n      \"canonical\": \"targeted therapy\",\n      \"zh\": [\"靶向治疗\", \"靶向递送\"],\n      \"en\": [\"targeted therapy\", \"targeted delivery\"],\n      \"abbreviations\": [],\n      \"exclude\": [\"targeted therapy（非ADC语境）\"]\n    },\n    {\n      \"canonical\": \"bystander effect\",\n      \"zh\": [\"旁观者效应\"],\n      \"en\": [\"bystander effect\"],\n      \"abbreviations\": [],\n      \"exclude\": []\n    },\n    {\n      \"canonical\": \"tumor targeting\",\n      \"zh\": [\"肿瘤靶向\", \"肿瘤递送\"],\n      \"en\": [\"tumor targeting\", \"tumor delivery\", \"oncology\"],\n      \"abbreviations\": [],\n      \"exclude\": [\"非肿瘤适应症（除非作为限定词单独检索）\"]\n    },\n    {\n      \"canonical\": \"toxicity and safety\",\n      \"zh\": [\"毒性\", \"安全性\", \"治疗窗口\", \"脱靶毒性\"],\n      \"en\": [\"toxicity\", \"safety\", \"therapeutic window\", \"off-target toxicity\", \"adverse effects\"],\n      \"abbreviations\": [],\n      \"exclude\": [\"临床疗效结论（本步骤不预设）\"]\n    },\n    {\n      \"canonical\": \"resistance\",\n      \"zh\": [\"耐药\", \"耐药机制\"],\n      \"en\": [\"resistance\", \"drug resistance\", \"ADC resistance\"],\n      \"abbreviations\": [],\n      \"exclude\": []\n    },\n    {\n      \"canonical\": \"manufacturing and CMC\",\n      \"zh\": [\"生产制造\", \"工艺\", \"质量控制\"],\n      \"en\": [\"manufacturing\", \"CMC\", \"process development\", \"quality control\"],\n      \"abbreviations\": [\"CMC\"],\n      \"exclude\": [\"市场需求预测\", \"价格\", \"市场规模\"]\n    }\n  ],\n  \"queries\": [\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\", \"Q2\"],\n      \"query\": \"(antibody-drug conjugate OR antibody drug conjugate OR ADC) AND (structure OR mechanism OR linker OR payload OR conjugation OR drug-to-antibody ratio) NOT (analog-to-digital converter)\",\n      \"purpose\": \"覆盖ADC基础构成、作用原理和主要设计要素，重点获取综述和基础研究文献。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q2\", \"Q3\"],\n      \"query\": \"(ADC OR antibody-drug conjugate) AND (cleavable linker OR non-cleavable linker OR site-specific conjugation OR DAR OR payload OR warhead) AND (recent OR review OR advance)\",\n      \"purpose\": \"识别主要技术路线和近年代表性进展方向，避免限定单一靶点或癌种。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q4\"],\n      \"query\": \"(ADC OR antibody-drug conjugate) AND (toxicity OR safety OR therapeutic window OR resistance OR pharmacokinetics OR off-target) AND (review OR study)\",\n      \"purpose\": \"获取ADC关键限制、风险与失败原因的论文证据。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q2\", \"Q3\", \"Q5\"],\n      \"query\": \"(antibody-drug conjugate OR antibody drug conjugate OR ADC) AND (linker OR payload OR conjugation OR site-specific OR DAR) AND (cancer OR tumor OR oncology)\",\n      \"purpose\": \"从专利角度识别技术路线、申请人分布和可比较平台；IPC/CPC分类方向待检索验证，不在计划中预设具体分类号。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q4\", \"Q5\"],\n      \"query\": \"(ADC OR antibody-drug conjugate) AND (toxicity OR safety OR stability OR manufacturing OR CMC) AND (patent)\",\n      \"purpose\": \"检索专利中关于限制、制造工艺、稳定性和安全性的技术披露，用于识别可比较的技术方案和申请人。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q1\", \"Q4\", \"Q5\"],\n      \"query\": \"(antibody-drug conjugate OR ADC) AND (FDA OR EMA OR NMPA OR guidance OR regulatory OR safety OR clinical)\",\n      \"purpose\": \"获取监管机构、药典或官方技术指南中对ADC定义、安全性、质量和开发要求的口径；只作为官方资料，不冒充独立研究。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\"Q3\", \"Q5\"],\n      \"query\": \"(antibody-drug conjugate OR ADC) AND (clinical trial OR approval OR platform OR pipeline) AND (official OR regulatory OR government)\",\n      \"purpose\": \"获取官方登记或监管公开信息中关于研发阶段、技术平台和产品方向的线索，用于定义比较单元；不据此得出疗效或市场结论。\"\n    }\n  ],\n  \"comparison_unit\": \"technology_platform\",\n  \"coverage_targets\": [\n    \"每个研究问题至少由一类来源直接回答：Q1由论文和官方资料覆盖，Q2由论文和专利覆盖，Q3由论文、专利和官方资料覆盖，Q4由论文、专利和官方资料覆盖，Q5由专利和官方资料覆盖。\",\n    \"论文、专利和官方资料三类来源均有查询计划；若某类来源在运行中不可用，则在该类对应问题上标记为缺口。\",\n    \"概念覆盖应包括抗体、连接子、载荷、偶联方式、DAR、靶向递送、旁观者效应、毒性/安全性、耐药和制造等核心维度。\",\n    \"专利检索中IPC/CPC方向作为待验证项处理，不预设确认分类。\",\n    \"比较单元优先为技术平台；当证据支持时，可扩展至研究方案或专利申请人，但不默认等同于在售产品。\"\n  ],\n  \"stop_conditions\": [\n    \"Q1至Q5均有至少一条直接相关来源支持，且关键概念（抗体、连接子、载荷、偶联、DAR、限制）均有对应证据。\",\n    \"新增论文、专利或官方资料主要重复已有结论，未带来新的技术路线、限制维度或可比较对象。\",\n    \"同一专利族、同一论文不同版本或转载内容不重复计入独立来源。\",\n    \"三类来源中某一类不可用时，可停止该类检索，但需在覆盖目标中标明缺口，不凭记忆补齐。\",\n    \"当检索结果出现重大歧义（例如ADC指代非抗体偶联药物）时，返回澄清需求而不是继续扩大检索。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "ready",
+    "scope_statement": "本计划将“ADC”按生命科学领域最常见的解释处理为抗体偶联药物（antibody-drug conjugate），覆盖其基础概念、关键设计要素（抗体、连接子、载荷）、主要技术路线、代表性进展方向、关键限制与风险，以及可用于横向比较的对象类型。不预设某一适应症、靶点、企业或单一物种；用户未指定时，后续检索不自动收窄至医疗器械、单纯化疗药物或单一癌种。",
+    "assumptions": [
+      "将用户主题“ADC”解释为抗体偶联药物（antibody-drug conjugate），而非其他领域缩写。",
+      "默认中英文双语检索，优先近五年资料，并按需补充奠基性基础资料。",
+      "产品面向需要快速建立基础认识的用户，因此计划覆盖基础概念、主要路线、代表进展、关键限制和可比较对象。",
+      "在用户未指定竞品时，将比较对象定义为技术平台、研究方案或专利申请人等可比较单元，而非默认等同于在售产品。",
+      "专利检索计划中的 IPC/CPC 方向仅作为待检索验证的候选方向，不作为已确认分类。"
+    ],
+    "clarification_question": null,
+    "research_questions": [
+      {
+        "id": "Q1",
+        "question": "抗体偶联药物的基本构成与作用原理是什么？抗体、连接子和载荷各自承担什么角色，主要分类方式有哪些？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "当前ADC的主要技术路线有哪些？例如连接子类型（可裂解/不可裂解）、载荷类别、偶联方式、DAR控制等方向各自的特点和取舍是什么？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "近年在ADC设计、靶点选择、递送和制造方面有哪些代表性进展方向？这些进展主要解决了哪些既往限制？",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "ADC研发和应用的关键限制与风险是什么？包括脱靶毒性、稳定性、耐药、药代动力学、治疗窗口和制造复杂性等。",
+        "source_types": [
+          "paper",
+          "patent",
+          "official"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "对ADC进行横向比较时，适合以什么为比较单元？企业、产品、技术平台、研究方案或专利申请人各自能回答什么问题？",
+        "source_types": [
+          "patent",
+          "official"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "canonical": "antibody-drug conjugate",
+        "zh": [
+          "抗体偶联药物",
+          "抗体药物偶联物",
+          "抗体-药物偶联物"
+        ],
+        "en": [
+          "antibody-drug conjugate",
+          "antibody drug conjugate",
+          "ADC"
+        ],
+        "abbreviations": [
+          "ADC",
+          "ADCs"
+        ],
+        "exclude": [
+          "ADC（非抗体偶联药物语境）",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "canonical": "antibody",
+        "zh": [
+          "抗体",
+          "单克隆抗体",
+          "靶向抗体"
+        ],
+        "en": [
+          "antibody",
+          "monoclonal antibody",
+          "mAb",
+          "targeting antibody"
+        ],
+        "abbreviations": [
+          "mAb",
+          "mAbs"
+        ],
+        "exclude": [
+          "polyclonal antibody（除非比较需要）"
+        ]
+      },
+      {
+        "canonical": "linker",
+        "zh": [
+          "连接子",
+          "链接子",
+          "连接体"
+        ],
+        "en": [
+          "linker",
+          "cleavable linker",
+          "non-cleavable linker"
+        ],
+        "abbreviations": [],
+        "exclude": [
+          "linker（非ADC语境）"
+        ]
+      },
+      {
+        "canonical": "payload",
+        "zh": [
+          "载荷",
+          "有效载荷",
+          "细胞毒性载荷",
+          "弹头"
+        ],
+        "en": [
+          "payload",
+          "cytotoxic payload",
+          "warhead",
+          "drug payload"
+        ],
+        "abbreviations": [],
+        "exclude": [
+          "payload（非药物语境）"
+        ]
+      },
+      {
+        "canonical": "drug-to-antibody ratio",
+        "zh": [
+          "药物抗体比",
+          "药物载量"
+        ],
+        "en": [
+          "drug-to-antibody ratio",
+          "DAR",
+          "drug loading"
+        ],
+        "abbreviations": [
+          "DAR"
+        ],
+        "exclude": []
+      },
+      {
+        "canonical": "conjugation",
+        "zh": [
+          "偶联",
+          "偶联方式",
+          "定点偶联"
+        ],
+        "en": [
+          "conjugation",
+          "site-specific conjugation",
+          "chemical conjugation",
+          "enzymatic conjugation"
+        ],
+        "abbreviations": [],
+        "exclude": []
+      },
+      {
+        "canonical": "targeted therapy",
+        "zh": [
+          "靶向治疗",
+          "靶向递送"
+        ],
+        "en": [
+          "targeted therapy",
+          "targeted delivery"
+        ],
+        "abbreviations": [],
+        "exclude": [
+          "targeted therapy（非ADC语境）"
+        ]
+      },
+      {
+        "canonical": "bystander effect",
+        "zh": [
+          "旁观者效应"
+        ],
+        "en": [
+          "bystander effect"
+        ],
+        "abbreviations": [],
+        "exclude": []
+      },
+      {
+        "canonical": "tumor targeting",
+        "zh": [
+          "肿瘤靶向",
+          "肿瘤递送"
+        ],
+        "en": [
+          "tumor targeting",
+          "tumor delivery",
+          "oncology"
+        ],
+        "abbreviations": [],
+        "exclude": [
+          "非肿瘤适应症（除非作为限定词单独检索）"
+        ]
+      },
+      {
+        "canonical": "toxicity and safety",
+        "zh": [
+          "毒性",
+          "安全性",
+          "治疗窗口",
+          "脱靶毒性"
+        ],
+        "en": [
+          "toxicity",
+          "safety",
+          "therapeutic window",
+          "off-target toxicity",
+          "adverse effects"
+        ],
+        "abbreviations": [],
+        "exclude": [
+          "临床疗效结论（本步骤不预设）"
+        ]
+      },
+      {
+        "canonical": "resistance",
+        "zh": [
+          "耐药",
+          "耐药机制"
+        ],
+        "en": [
+          "resistance",
+          "drug resistance",
+          "ADC resistance"
+        ],
+        "abbreviations": [],
+        "exclude": []
+      },
+      {
+        "canonical": "manufacturing and CMC",
+        "zh": [
+          "生产制造",
+          "工艺",
+          "质量控制"
+        ],
+        "en": [
+          "manufacturing",
+          "CMC",
+          "process development",
+          "quality control"
+        ],
+        "abbreviations": [
+          "CMC"
+        ],
+        "exclude": [
+          "市场需求预测",
+          "价格",
+          "市场规模"
+        ]
+      }
+    ],
+    "queries": [
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1",
+          "Q2"
+        ],
+        "query": "(antibody-drug conjugate OR antibody drug conjugate OR ADC) AND (structure OR mechanism OR linker OR payload OR conjugation OR drug-to-antibody ratio) NOT (analog-to-digital converter)",
+        "purpose": "覆盖ADC基础构成、作用原理和主要设计要素，重点获取综述和基础研究文献。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q2",
+          "Q3"
+        ],
+        "query": "(ADC OR antibody-drug conjugate) AND (cleavable linker OR non-cleavable linker OR site-specific conjugation OR DAR OR payload OR warhead) AND (recent OR review OR advance)",
+        "purpose": "识别主要技术路线和近年代表性进展方向，避免限定单一靶点或癌种。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q4"
+        ],
+        "query": "(ADC OR antibody-drug conjugate) AND (toxicity OR safety OR therapeutic window OR resistance OR pharmacokinetics OR off-target) AND (review OR study)",
+        "purpose": "获取ADC关键限制、风险与失败原因的论文证据。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q3",
+          "Q5"
+        ],
+        "query": "(antibody-drug conjugate OR antibody drug conjugate OR ADC) AND (linker OR payload OR conjugation OR site-specific OR DAR) AND (cancer OR tumor OR oncology)",
+        "purpose": "从专利角度识别技术路线、申请人分布和可比较平台；IPC/CPC分类方向待检索验证，不在计划中预设具体分类号。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q4",
+          "Q5"
+        ],
+        "query": "(ADC OR antibody-drug conjugate) AND (toxicity OR safety OR stability OR manufacturing OR CMC) AND (patent)",
+        "purpose": "检索专利中关于限制、制造工艺、稳定性和安全性的技术披露，用于识别可比较的技术方案和申请人。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q4",
+          "Q5"
+        ],
+        "query": "(antibody-drug conjugate OR ADC) AND (FDA OR EMA OR NMPA OR guidance OR regulatory OR safety OR clinical)",
+        "purpose": "获取监管机构、药典或官方技术指南中对ADC定义、安全性、质量和开发要求的口径；只作为官方资料，不冒充独立研究。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q3",
+          "Q5"
+        ],
+        "query": "(antibody-drug conjugate OR ADC) AND (clinical trial OR approval OR platform OR pipeline) AND (official OR regulatory OR government)",
+        "purpose": "获取官方登记或监管公开信息中关于研发阶段、技术平台和产品方向的线索，用于定义比较单元；不据此得出疗效或市场结论。"
+      }
+    ],
+    "comparison_unit": "technology_platform",
+    "coverage_targets": [
+      "每个研究问题至少由一类来源直接回答：Q1由论文和官方资料覆盖，Q2由论文和专利覆盖，Q3由论文、专利和官方资料覆盖，Q4由论文、专利和官方资料覆盖，Q5由专利和官方资料覆盖。",
+      "论文、专利和官方资料三类来源均有查询计划；若某类来源在运行中不可用，则在该类对应问题上标记为缺口。",
+      "概念覆盖应包括抗体、连接子、载荷、偶联方式、DAR、靶向递送、旁观者效应、毒性/安全性、耐药和制造等核心维度。",
+      "专利检索中IPC/CPC方向作为待验证项处理，不预设确认分类。",
+      "比较单元优先为技术平台；当证据支持时，可扩展至研究方案或专利申请人，但不默认等同于在售产品。"
+    ],
+    "stop_conditions": [
+      "Q1至Q5均有至少一条直接相关来源支持，且关键概念（抗体、连接子、载荷、偶联、DAR、限制）均有对应证据。",
+      "新增论文、专利或官方资料主要重复已有结论，未带来新的技术路线、限制维度或可比较对象。",
+      "同一专利族、同一论文不同版本或转载内容不重复计入独立来源。",
+      "三类来源中某一类不可用时，可停止该类检索，但需在覆盖目标中标明缺口，不凭记忆补齐。",
+      "当检索结果出现重大歧义（例如ADC指代非抗体偶联药物）时，返回澄清需求而不是继续扩大检索。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": false,
+      "detail": ""
+    }
+  ],
+  "auto_passed": false,
+  "manual_review_required": true
+}

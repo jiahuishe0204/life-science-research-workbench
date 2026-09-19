@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.805,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 320,
+    "total_tokens": 2595,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-JOURNAL\",\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"同一工作的同行评审期刊版，读取范围为全文，可支持关于递送路线 X 效果与限制的信息，优先于仅摘要可读的预印本。\",\n      \"reading_scope\": \"full_text\",\n      \"relation_group\": \"delivery-route-X-synthetic-study\",\n      \"relation_type\": \"same_work_version\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-PRE\",\n      \"reason_code\": \"superseded\",\n      \"reason\": \"与 S-JOURNAL 为同一论文的预印本版本（标题、作者一致，期刊版注明为其同行评审版本），且仅可读摘要，已被全文期刊版取代。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"候选来源中仅一项工作（期刊版与预印本为同一工作），只能提供该研究的单一结果；缺少独立研究、对照研究或不同递送路线的比较，无法判断结论的可重复性、适用对象与研究模型范围。\",\n      \"suggested_followup_query\": \"delivery route X AND (efficacy OR limitation) AND (in vitro OR in vivo OR clinical) 检索独立研究及不同递送路线对照研究\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "同一工作的同行评审期刊版，读取范围为全文，可支持关于递送路线 X 效果与限制的信息，优先于仅摘要可读的预印本。",
+        "reading_scope": "full_text",
+        "relation_group": "delivery-route-X-synthetic-study",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与 S-JOURNAL 为同一论文的预印本版本（标题、作者一致，期刊版注明为其同行评审版本），且仅可读摘要，已被全文期刊版取代。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "候选来源中仅一项工作（期刊版与预印本为同一工作），只能提供该研究的单一结果；缺少独立研究、对照研究或不同递送路线的比较，无法判断结论的可重复性、适用对象与研究模型范围。",
+        "suggested_followup_query": "delivery route X AND (efficacy OR limitation) AND (in vitro OR in vivo OR clinical) 检索独立研究及不同递送路线对照研究"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

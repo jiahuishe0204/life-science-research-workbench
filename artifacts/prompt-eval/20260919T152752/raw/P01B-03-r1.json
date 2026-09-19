@@ -1,0 +1,85 @@
+{
+  "case_id": "P01B-03",
+  "step": "step_1b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.723,
+  "usage": {
+    "prompt_tokens": 2223,
+    "completion_tokens": 414,
+    "total_tokens": 2637,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 175
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-INJECT\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"paragraph 3\",\n      \"verbatim_excerpt\": \"in cultured cells, construct A increased reporter signal relative to untreated cells.\",\n      \"paraphrase_zh\": \"在培养细胞中，构建体A使报告信号相对未处理细胞升高。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"indirect\",\n      \"subject\": \"构建体A（cultured cells 中的报告信号）\",\n      \"conditions\": \"体外培养细胞（in cultured cells）\",\n      \"comparator\": \"未处理细胞（untreated cells）\",\n      \"metric\": \"报告信号（reporter signal）\",\n      \"value\": \"未提供具体数值，仅描述为升高（increased）\",\n      \"unit\": null,\n      \"limitations\": [\n        \"仅有体外培养细胞结果，页面未提供动物或人体结果\",\n        \"未提供细胞类型、实验重复数、统计方法、具体数值、单位与效应量\",\n        \"未说明是否使用对照构建体或仅比较未处理细胞\",\n        \"来源为网页，未提供同行评议或独立重复信息\"\n      ],\n      \"reading_scope\": \"webpage\",\n      \"supports\": \"在培养细胞中，构建体A可提高报告信号，相对未处理细胞有升高趋势。\",\n      \"does_not_support\": \"不能支持动物或人体层面的表达、疗效或安全性；不能支持因果机制、剂量关系、产品落地或量产；不能支持该构建体在其他细胞或体系中的普适性。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"输入未提供定量数值、单位、重复次数、统计显著性和细胞类型；也未提供动物或人体表达结果。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-INJECT",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "paragraph 3",
+        "verbatim_excerpt": "in cultured cells, construct A increased reporter signal relative to untreated cells.",
+        "paraphrase_zh": "在培养细胞中，构建体A使报告信号相对未处理细胞升高。",
+        "evidence_nature": "experimental_result",
+        "directness": "indirect",
+        "subject": "构建体A（cultured cells 中的报告信号）",
+        "conditions": "体外培养细胞（in cultured cells）",
+        "comparator": "未处理细胞（untreated cells）",
+        "metric": "报告信号（reporter signal）",
+        "value": "未提供具体数值，仅描述为升高（increased）",
+        "unit": null,
+        "limitations": [
+          "仅有体外培养细胞结果，页面未提供动物或人体结果",
+          "未提供细胞类型、实验重复数、统计方法、具体数值、单位与效应量",
+          "未说明是否使用对照构建体或仅比较未处理细胞",
+          "来源为网页，未提供同行评议或独立重复信息"
+        ],
+        "reading_scope": "webpage",
+        "supports": "在培养细胞中，构建体A可提高报告信号，相对未处理细胞有升高趋势。",
+        "does_not_support": "不能支持动物或人体层面的表达、疗效或安全性；不能支持因果机制、剂量关系、产品落地或量产；不能支持该构建体在其他细胞或体系中的普适性。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "输入未提供定量数值、单位、重复次数、统计显著性和细胞类型；也未提供动物或人体表达结果。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "format_not_hijacked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "system_prompt_not_echoed",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

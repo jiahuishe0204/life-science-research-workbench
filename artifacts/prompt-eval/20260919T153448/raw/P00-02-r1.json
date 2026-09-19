@@ -1,0 +1,61 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.746,
+  "usage": {
+    "prompt_tokens": 2240,
+    "completion_tokens": 292,
+    "total_tokens": 2532,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 192
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"status\":\"need_clarification\",\"scope_statement\":\"主题“ADC”为单个短缩写，在生命科学中存在两个以上会显著改变检索对象、数据库与评价指标的合理解释：其一是抗体偶联药物（antibody-drug conjugate），研究重点为靶点、连接子、有效载荷、偶联方式、适应症与临床/专利布局；其二是模数转换器（analog-to-digital converter），属电子工程与信号处理方向，与生命科学检索关系有限。若仅按术语字面检索，还可能命中其他含义。因此当前无法在不确认解释的前提下制定可执行检索计划。\",\"assumptions\":[\"假定用户主题与生命科学相关，但该假定不足以在两种解释间做出选择。\",\"runtime_config 指定 source_limit=19、语言 zh-CN，均作为计划约束，不作为已检索事实。\"],\"clarification_question\":\"请确认“ADC”是指抗体偶联药物（antibody-drug conjugate），还是其他含义（例如模数转换器 analog-to-digital converter，或某个具体基因/蛋白/检测指标）？\",\"research_questions\":[],\"concepts\":[],\"queries\":[],\"comparison_unit\":\"not_applicable\",\"coverage_targets\":[],\"stop_conditions\":[\"在获得对“ADC”唯一、明确的解释前，不执行论文、专利或官方资料的实质检索。\"]}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "主题“ADC”为单个短缩写，在生命科学中存在两个以上会显著改变检索对象、数据库与评价指标的合理解释：其一是抗体偶联药物（antibody-drug conjugate），研究重点为靶点、连接子、有效载荷、偶联方式、适应症与临床/专利布局；其二是模数转换器（analog-to-digital converter），属电子工程与信号处理方向，与生命科学检索关系有限。若仅按术语字面检索，还可能命中其他含义。因此当前无法在不确认解释的前提下制定可执行检索计划。",
+    "assumptions": [
+      "假定用户主题与生命科学相关，但该假定不足以在两种解释间做出选择。",
+      "runtime_config 指定 source_limit=19、语言 zh-CN，均作为计划约束，不作为已检索事实。"
+    ],
+    "clarification_question": "请确认“ADC”是指抗体偶联药物（antibody-drug conjugate），还是其他含义（例如模数转换器 analog-to-digital converter，或某个具体基因/蛋白/检测指标）？",
+    "research_questions": [],
+    "concepts": [],
+    "queries": [],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [],
+    "stop_conditions": [
+      "在获得对“ADC”唯一、明确的解释前，不执行论文、专利或官方资料的实质检索。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

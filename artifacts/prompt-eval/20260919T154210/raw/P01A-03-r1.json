@@ -1,0 +1,76 @@
+{
+  "case_id": "P01A-03",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.234,
+  "usage": {
+    "prompt_tokens": 2177,
+    "completion_tokens": 249,
+    "total_tokens": 2426,
+    "prompt_tokens_details": {
+      "cached_tokens": 2043
+    },
+    "prompt_cache_hit_tokens": 2043,
+    "prompt_cache_miss_tokens": 134
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"selected\":[],\"excluded\":[{\"source_id\":\"S-IRR-1\",\"reason_code\":\"outside_scope\",\"reason\":\"标题为电池热管理，属动力电池／储能领域，与 mRNA 递送载体路线无可见相关性；仅元信息，无法支持任何 mRNA 递送结论。\"},{\"source_id\":\"S-IRR-2\",\"reason_code\":\"outside_scope\",\"reason\":\"标题为农业拖拉机维护，且为官方机构网页性质来源，与 mRNA 递送载体路线无可见相关性；不可用于递送技术事实。\"}],\"coverage_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"当前候选来源全部与 mRNA 递送载体路线无关，无法覆盖该问题；缺少脂质纳米颗粒（LNP）、聚合物载体、脂质体、多肽／蛋白载体、病毒载体及靶向递送等路线的论文或专利资料，也缺少可说明各路线代表进展与限制的证据。\",\"suggested_followup_query\":\"(mRNA delivery OR mRNA vaccine delivery) AND (lipid nanoparticle OR LNP OR polymer carrier OR liposome OR peptide delivery) AND (review OR patent)，限近五年，中英文并行\"}]}",
+  "parsed_output": {
+    "selected": [],
+    "excluded": [
+      {
+        "source_id": "S-IRR-1",
+        "reason_code": "outside_scope",
+        "reason": "标题为电池热管理，属动力电池／储能领域，与 mRNA 递送载体路线无可见相关性；仅元信息，无法支持任何 mRNA 递送结论。"
+      },
+      {
+        "source_id": "S-IRR-2",
+        "reason_code": "outside_scope",
+        "reason": "标题为农业拖拉机维护，且为官方机构网页性质来源，与 mRNA 递送载体路线无可见相关性；不可用于递送技术事实。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选来源全部与 mRNA 递送载体路线无关，无法覆盖该问题；缺少脂质纳米颗粒（LNP）、聚合物载体、脂质体、多肽／蛋白载体、病毒载体及靶向递送等路线的论文或专利资料，也缺少可说明各路线代表进展与限制的证据。",
+        "suggested_followup_query": "(mRNA delivery OR mRNA vaccine delivery) AND (lipid nanoparticle OR LNP OR polymer carrier OR liposome OR peptide delivery) AND (review OR patent)，限近五年，中英文并行"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "selected_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage_gap_present",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

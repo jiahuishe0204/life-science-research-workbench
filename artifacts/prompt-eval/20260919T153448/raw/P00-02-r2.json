@@ -1,0 +1,190 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 8.443,
+  "usage": {
+    "prompt_tokens": 2240,
+    "completion_tokens": 1629,
+    "total_tokens": 3869,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 192
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"need_clarification\",\n  \"scope_statement\": \"主题“ADC”为无上下文短缩写，在生命科学中至少存在两种会显著改变检索对象与数据库方向的常见解释：(1) Antibody-Drug Conjugate（抗体偶联药物），属生物偶联药物与肿瘤治疗方向，检索对象为偶联物设计、连接子、载荷、靶点、药学研究及相关专利；(2) Apparent Diffusion Coefficient（表观扩散系数），属磁共振成像（MRI）定量参数方向，检索对象为成像序列、组织扩散特性、诊断阈值及相关方法专利。两者在论文数据库、检索词、IPC 分类和评价指标上均不相同，因此先请求澄清。\",\n  \"assumptions\": [\n    \"若有后续上下文表明为生物医药/药物研发方向，则可按抗体偶联药物解释继续，但本步骤不据此自行选定。\",\n    \"runtime_config.source_limit 为 19，语言偏好 zh-CN，计划默认中英文双语检索、中文输出。\",\n    \"available_sources 覆盖论文、专利、官方资料三类，计划将按三类来源分别设计查询。\"\n  ],\n  \"clarification_question\": \"你输入的“ADC”具体指哪一个生命科学概念：抗体偶联药物（Antibody-Drug Conjugate）还是表观扩散系数（Apparent Diffusion Coefficient）？\",\n  \"research_questions\": [\n    {\n      \"id\": \"Q1\",\n      \"question\": \"该主题涉及的核心定义、关键实体与基本作用机制是什么？\",\n      \"source_types\": [\n        \"paper\",\n        \"official\"\n      ]\n    },\n    {\n      \"id\": \"Q2\",\n      \"question\": \"该主题当前主要技术路线或方法学分支有哪些，各自的关键设计参数或测量指标是什么？\",\n      \"source_types\": [\n        \"paper\",\n        \"patent\"\n      ]\n    },\n    {\n      \"id\": \"Q3\",\n      \"question\": \"近五年的代表性研究进展集中在哪些方向，使用了哪些模型、样本或评估指标？\",\n      \"source_types\": [\n        \"paper\"\n      ]\n    },\n    {\n      \"id\": \"Q4\",\n      \"question\": \"该主题的关键限制、失败原因、安全性或适用条件有哪些？\",\n      \"source_types\": [\n        \"paper\",\n        \"official\"\n      ]\n    },\n    {\n      \"id\": \"Q5\",\n      \"question\": \"相关技术专利公开集中在哪些技术分支和申请人群体，技术披露侧重哪些环节？\",\n      \"source_types\": [\n        \"patent\"\n      ]\n    }\n  ],\n  \"concepts\": [\n    {\n      \"canonical\": \"ADC (含义待澄清)\",\n      \"zh\": [\n        \"抗体偶联药物\",\n        \"表观扩散系数\"\n      ],\n      \"en\": [\n        \"antibody-drug conjugate\",\n        \"apparent diffusion coefficient\"\n      ],\n      \"abbreviations\": [\n        \"ADC\",\n        \"ADCs\"\n      ],\n      \"exclude\": [\n        \"analog-to-digital converter\",\n        \"automated data collection\",\n        \"adenocarcinoma\"\n      ]\n    }\n  ],\n  \"queries\": [\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\n        \"Q1\",\n        \"Q2\",\n        \"Q3\",\n        \"Q4\"\n      ],\n      \"query\": \"(TS=(\\\"antibody-drug conjugate\\\" OR \\\"antibody drug conjugate\\\" OR ADC) AND TS=(conjugate OR linker OR payload OR \\\"drug-to-antibody ratio\\\" OR DAR OR targeting)) NOT TS=(\\\"analog-to-digital\\\" OR adenocarcinoma)\",\n      \"purpose\": \"在澄清为抗体偶联药物时，检索定义、机制、连接子/载荷/DAR 设计、代表进展与限制。\"\n    },\n    {\n      \"source_type\": \"paper\",\n      \"question_ids\": [\n        \"Q1\",\n        \"Q2\",\n        \"Q3\",\n        \"Q4\"\n      ],\n      \"query\": \"(TS=(\\\"apparent diffusion coefficient\\\" OR \\\"apparent diffusion coefficients\\\") AND TS=(MRI OR \\\"magnetic resonance\\\" OR DWI OR \\\"diffusion-weighted\\\" OR quantification OR b-value)) NOT TS=(\\\"antibody-drug\\\" OR conjugate)\",\n      \"purpose\": \"在澄清为表观扩散系数时，检索 MRI 定量方法、序列/参数、应用与局限。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\n        \"Q2\",\n        \"Q5\"\n      ],\n      \"query\": \"(ABST=(\\\"antibody-drug conjugate\\\" OR \\\"antibody drug conjugate\\\" OR \\\"immunoconjugate\\\") AND ABST=(linker OR payload OR conjugation OR \\\"drug-to-antibody ratio\\\")) AND ADFT=(2020-2025)\",\n      \"purpose\": \"在澄清为抗体偶联药物时，检索连接子、载荷、偶联方法与比值的专利披露方向；IPC/CPC 分类待检索验证。\"\n    },\n    {\n      \"source_type\": \"patent\",\n      \"question_ids\": [\n        \"Q2\",\n        \"Q5\"\n      ],\n      \"query\": \"(ABST=(\\\"apparent diffusion coefficient\\\" OR \\\"diffusion coefficient\\\") AND ABST=(MRI OR \\\"magnetic resonance\\\" OR \\\"diffusion weighted\\\" OR imaging)) AND ADFT=(2020-2025)\",\n      \"purpose\": \"在澄清为表观扩散系数时，检索成像方法、序列或参数计算相关专利方向；IPC/CPC 分类待检索验证。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\n        \"Q1\",\n        \"Q4\"\n      ],\n      \"query\": \"(\\\"antibody-drug conjugate\\\" OR \\\"antibody drug conjugate\\\") AND (FDA OR EMA OR NMPA OR WHO OR NIH OR NCI)\",\n      \"purpose\": \"在澄清为抗体偶联药物时，检索监管机构或官方机构发布的定义、审评、安全性与指南类资料。\"\n    },\n    {\n      \"source_type\": \"official\",\n      \"question_ids\": [\n        \"Q1\",\n        \"Q4\"\n      ],\n      \"query\": \"(\\\"apparent diffusion coefficient\\\" OR \\\"diffusion-weighted imaging\\\") AND (FDA OR NMPA OR NIH OR guideline OR consensus)\",\n      \"purpose\": \"在澄清为表观扩散系数时，检索官方或学会指南中关于成像参数、阈值与适用条件的资料；具体指南发布方待检索验证。\"\n    }\n  ],\n  \"comparison_unit\": \"not_applicable\",\n  \"coverage_targets\": [\n    \"澄清 ADC 含义后，确保 Q1—Q5 中至少各有一条直接证据或说明缺口。\",\n    \"论文来源覆盖基础概念、主要技术路线、近年进展与关键限制。\",\n    \"专利来源覆盖至少一个主要技术分支，并标注 IPC/CPC 分类为待检索验证。\",\n    \"官方资料覆盖定义/指南/安全性等官方口径，不将其等同于独立研究。\",\n    \"若某类来源不可用，在该类别对应 coverage_target 中标记为缺口。\"\n  ],\n  \"stop_conditions\": [\n    \"澄清后的关键问题 Q1—Q5 均已有直接证据支持。\",\n    \"新增资料主要为重复内容，不再出现新方向、新限制或新证据类型。\",\n    \"论文、专利、官方资料合计接近 runtime_config.source_limit=19 且覆盖目标已满足。\",\n    \"出现无法解决的含义歧义或来源持续不可用，转为缺口说明并停止扩展检索。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "主题“ADC”为无上下文短缩写，在生命科学中至少存在两种会显著改变检索对象与数据库方向的常见解释：(1) Antibody-Drug Conjugate（抗体偶联药物），属生物偶联药物与肿瘤治疗方向，检索对象为偶联物设计、连接子、载荷、靶点、药学研究及相关专利；(2) Apparent Diffusion Coefficient（表观扩散系数），属磁共振成像（MRI）定量参数方向，检索对象为成像序列、组织扩散特性、诊断阈值及相关方法专利。两者在论文数据库、检索词、IPC 分类和评价指标上均不相同，因此先请求澄清。",
+    "assumptions": [
+      "若有后续上下文表明为生物医药/药物研发方向，则可按抗体偶联药物解释继续，但本步骤不据此自行选定。",
+      "runtime_config.source_limit 为 19，语言偏好 zh-CN，计划默认中英文双语检索、中文输出。",
+      "available_sources 覆盖论文、专利、官方资料三类，计划将按三类来源分别设计查询。"
+    ],
+    "clarification_question": "你输入的“ADC”具体指哪一个生命科学概念：抗体偶联药物（Antibody-Drug Conjugate）还是表观扩散系数（Apparent Diffusion Coefficient）？",
+    "research_questions": [
+      {
+        "id": "Q1",
+        "question": "该主题涉及的核心定义、关键实体与基本作用机制是什么？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q2",
+        "question": "该主题当前主要技术路线或方法学分支有哪些，各自的关键设计参数或测量指标是什么？",
+        "source_types": [
+          "paper",
+          "patent"
+        ]
+      },
+      {
+        "id": "Q3",
+        "question": "近五年的代表性研究进展集中在哪些方向，使用了哪些模型、样本或评估指标？",
+        "source_types": [
+          "paper"
+        ]
+      },
+      {
+        "id": "Q4",
+        "question": "该主题的关键限制、失败原因、安全性或适用条件有哪些？",
+        "source_types": [
+          "paper",
+          "official"
+        ]
+      },
+      {
+        "id": "Q5",
+        "question": "相关技术专利公开集中在哪些技术分支和申请人群体，技术披露侧重哪些环节？",
+        "source_types": [
+          "patent"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "canonical": "ADC (含义待澄清)",
+        "zh": [
+          "抗体偶联药物",
+          "表观扩散系数"
+        ],
+        "en": [
+          "antibody-drug conjugate",
+          "apparent diffusion coefficient"
+        ],
+        "abbreviations": [
+          "ADC",
+          "ADCs"
+        ],
+        "exclude": [
+          "analog-to-digital converter",
+          "automated data collection",
+          "adenocarcinoma"
+        ]
+      }
+    ],
+    "queries": [
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "query": "(TS=(\"antibody-drug conjugate\" OR \"antibody drug conjugate\" OR ADC) AND TS=(conjugate OR linker OR payload OR \"drug-to-antibody ratio\" OR DAR OR targeting)) NOT TS=(\"analog-to-digital\" OR adenocarcinoma)",
+        "purpose": "在澄清为抗体偶联药物时，检索定义、机制、连接子/载荷/DAR 设计、代表进展与限制。"
+      },
+      {
+        "source_type": "paper",
+        "question_ids": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "query": "(TS=(\"apparent diffusion coefficient\" OR \"apparent diffusion coefficients\") AND TS=(MRI OR \"magnetic resonance\" OR DWI OR \"diffusion-weighted\" OR quantification OR b-value)) NOT TS=(\"antibody-drug\" OR conjugate)",
+        "purpose": "在澄清为表观扩散系数时，检索 MRI 定量方法、序列/参数、应用与局限。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q5"
+        ],
+        "query": "(ABST=(\"antibody-drug conjugate\" OR \"antibody drug conjugate\" OR \"immunoconjugate\") AND ABST=(linker OR payload OR conjugation OR \"drug-to-antibody ratio\")) AND ADFT=(2020-2025)",
+        "purpose": "在澄清为抗体偶联药物时，检索连接子、载荷、偶联方法与比值的专利披露方向；IPC/CPC 分类待检索验证。"
+      },
+      {
+        "source_type": "patent",
+        "question_ids": [
+          "Q2",
+          "Q5"
+        ],
+        "query": "(ABST=(\"apparent diffusion coefficient\" OR \"diffusion coefficient\") AND ABST=(MRI OR \"magnetic resonance\" OR \"diffusion weighted\" OR imaging)) AND ADFT=(2020-2025)",
+        "purpose": "在澄清为表观扩散系数时，检索成像方法、序列或参数计算相关专利方向；IPC/CPC 分类待检索验证。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q4"
+        ],
+        "query": "(\"antibody-drug conjugate\" OR \"antibody drug conjugate\") AND (FDA OR EMA OR NMPA OR WHO OR NIH OR NCI)",
+        "purpose": "在澄清为抗体偶联药物时，检索监管机构或官方机构发布的定义、审评、安全性与指南类资料。"
+      },
+      {
+        "source_type": "official",
+        "question_ids": [
+          "Q1",
+          "Q4"
+        ],
+        "query": "(\"apparent diffusion coefficient\" OR \"diffusion-weighted imaging\") AND (FDA OR NMPA OR NIH OR guideline OR consensus)",
+        "purpose": "在澄清为表观扩散系数时，检索官方或学会指南中关于成像参数、阈值与适用条件的资料；具体指南发布方待检索验证。"
+      }
+    ],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [
+      "澄清 ADC 含义后，确保 Q1—Q5 中至少各有一条直接证据或说明缺口。",
+      "论文来源覆盖基础概念、主要技术路线、近年进展与关键限制。",
+      "专利来源覆盖至少一个主要技术分支，并标注 IPC/CPC 分类为待检索验证。",
+      "官方资料覆盖定义/指南/安全性等官方口径，不将其等同于独立研究。",
+      "若某类来源不可用，在该类别对应 coverage_target 中标记为缺口。"
+    ],
+    "stop_conditions": [
+      "澄清后的关键问题 Q1—Q5 均已有直接证据支持。",
+      "新增资料主要为重复内容，不再出现新方向、新限制或新证据类型。",
+      "论文、专利、官方资料合计接近 runtime_config.source_limit=19 且覆盖目标已满足。",
+      "出现无法解决的含义歧义或来源持续不可用，转为缺口说明并停止扩展检索。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

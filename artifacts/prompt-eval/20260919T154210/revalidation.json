@@ -1,0 +1,1840 @@
+{
+  "revalidated_at": "2026-09-19T07:47:08.171232+00:00",
+  "source_run_dir": "/Users/a1/Desktop/生命科学科研调研工作台-移交包-H1-20260919/artifacts/prompt-eval/20260919T154210",
+  "validator_sha256": "3b377c4ec3d040efc7a4d20a9748022969c200579c826e2177b5aaf3b2b0cf7e",
+  "calls_revalidated": 57,
+  "auto_passed": 57,
+  "auto_failed": 0,
+  "failed_files": [],
+  "critical_status_stable": {
+    "P00-01": true,
+    "P00-02": true,
+    "P00-03": true,
+    "P00-04": true,
+    "P01A-01": true,
+    "P01A-02": true,
+    "P01A-03": true,
+    "P01B-01": true,
+    "P01B-02": true,
+    "P01B-03": true,
+    "P02A-01": true,
+    "P02A-02": true,
+    "P02B-01": true,
+    "P02B-02": true,
+    "P02C-01": true,
+    "P03-01": true,
+    "P03-02": true,
+    "P03-03": true,
+    "P03B-01": true
+  },
+  "release_status": "manual_review_required",
+  "note": "仅用当前判定规则重算已保存的原始输出；未重新调用模型，未覆盖原始记录。",
+  "records": [
+    {
+      "source_file": "P00-01-r1.json",
+      "case_id": "P00-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "status_ready",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "question_count_3_to_5",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "paper_and_patent_planned",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-01-r2.json",
+      "case_id": "P00-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "status_ready",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "question_count_3_to_5",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "paper_and_patent_planned",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-01-r3.json",
+      "case_id": "P00-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "status_ready",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "question_count_3_to_5",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "paper_and_patent_planned",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-02-r1.json",
+      "case_id": "P00-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "needs_clarification",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "one_question",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-02-r2.json",
+      "case_id": "P00-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "needs_clarification",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "one_question",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-02-r3.json",
+      "case_id": "P00-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "needs_clarification",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "one_question",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-03-r1.json",
+      "case_id": "P00-03",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "scope_refusal",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-03-r2.json",
+      "case_id": "P00-03",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "scope_refusal",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-03-r3.json",
+      "case_id": "P00-03",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "scope_refusal",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-04-r1.json",
+      "case_id": "P00-04",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_secret_like_value",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_doi_list",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-04-r2.json",
+      "case_id": "P00-04",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_secret_like_value",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_doi_list",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P00-04-r3.json",
+      "case_id": "P00-04",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_secret_like_value",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_doi_list",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-01-r1.json",
+      "case_id": "P01A-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "same_work_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "not_counted_twice",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-01-r2.json",
+      "case_id": "P01A-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "same_work_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "not_counted_twice",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-01-r3.json",
+      "case_id": "P01A-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "same_work_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "not_counted_twice",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-02-r1.json",
+      "case_id": "P01A-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "patent_family_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "family_not_independent",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-02-r2.json",
+      "case_id": "P01A-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "patent_family_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "family_not_independent",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-02-r3.json",
+      "case_id": "P01A-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "patent_family_relation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "family_not_independent",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-03-r1.json",
+      "case_id": "P01A-03",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "selected_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "coverage_gap_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-03-r2.json",
+      "case_id": "P01A-03",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "selected_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "coverage_gap_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01A-03-r3.json",
+      "case_id": "P01A-03",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "source_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "selected_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "coverage_gap_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-01-r1.json",
+      "case_id": "P01B-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "mouse_subject",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "human_not_supported",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-01-r2.json",
+      "case_id": "P01B-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "mouse_subject",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "human_not_supported",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-01-r3.json",
+      "case_id": "P01B-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "mouse_subject",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "human_not_supported",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-02-r1.json",
+      "case_id": "P01B-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "abstract_scope",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-02-r2.json",
+      "case_id": "P01B-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "abstract_scope",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-02-r3.json",
+      "case_id": "P01B-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "abstract_scope",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-03-r1.json",
+      "case_id": "P01B-03",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "format_not_hijacked",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "system_prompt_not_echoed",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-03-r2.json",
+      "case_id": "P01B-03",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "format_not_hijacked",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "system_prompt_not_echoed",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P01B-03-r3.json",
+      "case_id": "P01B-03",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "source_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "format_not_hijacked",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "system_prompt_not_echoed",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-01-r1.json",
+      "case_id": "P02A-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "no_best_ranking",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "non_comparable_noted",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-01-r2.json",
+      "case_id": "P02A-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "no_best_ranking",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "non_comparable_noted",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-01-r3.json",
+      "case_id": "P02A-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "no_best_ranking",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "non_comparable_noted",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-02-r1.json",
+      "case_id": "P02A-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_disclosure_label",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_product_claim",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-02-r2.json",
+      "case_id": "P02A-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_disclosure_label",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_product_claim",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02A-02-r3.json",
+      "case_id": "P02A-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_disclosure_label",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_product_claim",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-01-r1.json",
+      "case_id": "P02B-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "downgraded_to_routes",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_market_share",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-01-r2.json",
+      "case_id": "P02B-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "downgraded_to_routes",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_market_share",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-01-r3.json",
+      "case_id": "P02B-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "downgraded_to_routes",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_market_share",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-02-r1.json",
+      "case_id": "P02B-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "single_profile",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-02-r2.json",
+      "case_id": "P02B-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "single_profile",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02B-02-r3.json",
+      "case_id": "P02B-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "single_profile",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02C-01-r1.json",
+      "case_id": "P02C-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "in_vitro_explicit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_human_upgrade",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02C-01-r2.json",
+      "case_id": "P02C-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "in_vitro_explicit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_human_upgrade",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P02C-01-r3.json",
+      "case_id": "P02C-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "in_vitro_explicit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_human_upgrade",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-01-r1.json",
+      "case_id": "P03-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "not_supported",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "number_or_unit_issue",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-01-r2.json",
+      "case_id": "P03-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "not_supported",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "number_or_unit_issue",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-01-r3.json",
+      "case_id": "P03-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "not_supported",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "number_or_unit_issue",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-02-r1.json",
+      "case_id": "P03-02",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "unknown_rejected",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_valid_evidence",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-02-r2.json",
+      "case_id": "P03-02",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "unknown_rejected",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_valid_evidence",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-02-r3.json",
+      "case_id": "P03-02",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "unknown_rejected",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "no_valid_evidence",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-03-r1.json",
+      "case_id": "P03-03",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_misuse_found",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revise_or_remove",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-03-r2.json",
+      "case_id": "P03-03",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_misuse_found",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revise_or_remove",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03-03-r3.json",
+      "case_id": "P03-03",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "claim_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "patent_misuse_found",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revise_or_remove",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03B-01-r1.json",
+      "case_id": "P03B-01",
+      "repetition": 1,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "removed_claim_absent",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revision_applied",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03B-01-r2.json",
+      "case_id": "P03B-01",
+      "repetition": 2,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "removed_claim_absent",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revision_applied",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    },
+    {
+      "source_file": "P03B-01-r3.json",
+      "case_id": "P03B-01",
+      "repetition": 3,
+      "checks": [
+        {
+          "name": "output_not_empty",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "valid_json",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "evidence_id_whitelist",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "removed_claim_absent",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "revision_applied",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "auto_passed": true
+    }
+  ]
+}

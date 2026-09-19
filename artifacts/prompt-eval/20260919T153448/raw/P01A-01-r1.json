@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.452,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 280,
+    "total_tokens": 2555,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"selected\":[{\"source_id\":\"S-JOURNAL\",\"source_type\":\"paper\",\"question_ids\":[\"Q1\"],\"selection_reason\":\"与Q1直接相关；为同行评审期刊版，读取范围为全文，可支持效果与限制类事实；与S-PRE为同一研究的正式版本，优先保留。\",\"reading_scope\":\"full_text\",\"relation_group\":\"Li A & Wang B 2024-2025 delivery route X\",\"relation_type\":\"same_work_version\"}],\"excluded\":[{\"source_id\":\"S-PRE\",\"reason_code\":\"superseded\",\"reason\":\"与S-JOURNAL为同一篇研究（同标题、同作者、同年份区间），S-JOURNAL为经同行评审的期刊版且读取范围更完整，预印本不单独计入来源数。\"}],\"coverage_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"仅有一项研究（S-JOURNAL）可回答Q1，缺少独立研究、对照条件差异或相反结果的来源，效果与限制的结论代表性有限；且候选以英文合成数据为主，中英文检索覆盖未知。\",\"suggested_followup_query\":\"delivery route X AND (efficacy OR limitation OR safety) 近五年；并补充检索该递送路线的专利同族与官方指南，用不同路线来源检验结论稳健性。\"}]}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与Q1直接相关；为同行评审期刊版，读取范围为全文，可支持效果与限制类事实；与S-PRE为同一研究的正式版本，优先保留。",
+        "reading_scope": "full_text",
+        "relation_group": "Li A & Wang B 2024-2025 delivery route X",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与S-JOURNAL为同一篇研究（同标题、同作者、同年份区间），S-JOURNAL为经同行评审的期刊版且读取范围更完整，预印本不单独计入来源数。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "仅有一项研究（S-JOURNAL）可回答Q1，缺少独立研究、对照条件差异或相反结果的来源，效果与限制的结论代表性有限；且候选以英文合成数据为主，中英文检索覆盖未知。",
+        "suggested_followup_query": "delivery route X AND (efficacy OR limitation OR safety) 近五年；并补充检索该递送路线的专利同族与官方指南，用不同路线来源检验结论稳健性。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

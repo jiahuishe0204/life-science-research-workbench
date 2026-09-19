@@ -1,0 +1,83 @@
+{
+  "case_id": "P01A-01",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.858,
+  "usage": {
+    "prompt_tokens": 2275,
+    "completion_tokens": 329,
+    "total_tokens": 2604,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 227
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-JOURNAL\",\n      \"source_type\": \"paper\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"与Q1直接相关，为S-PRE的同行评审期刊版本，读取范围为全文，可同时支持效果与限制的结论，优先于预印本作为引用版本。\",\n      \"reading_scope\": \"full_text\",\n      \"relation_group\": \"G-DELIVERY-X\",\n      \"relation_type\": \"same_work_version\"\n    }\n  ],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-PRE\",\n      \"reason_code\": \"superseded\",\n      \"reason\": \"与S-JOURNAL为同一工作的预印本版本（标题、作者一致），已存在同行评审版本且读取范围为全文，故不重复计数，仅保留期刊版。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"当前候选仅覆盖递送路线X的单一研究，缺少其他递送路线或对照方案的独立来源，无法回答路线间差异与适用条件；亦无专利或官方资料支持技术披露与产品落地情况。\",\n      \"suggested_followup_query\": \"delivery route X AND (comparison OR alternative route) AND (efficacy OR limitation) 2020-2025；另检索 route X 相关专利族（同族归并）及监管/机构官方资料。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-JOURNAL",
+        "source_type": "paper",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与Q1直接相关，为S-PRE的同行评审期刊版本，读取范围为全文，可同时支持效果与限制的结论，优先于预印本作为引用版本。",
+        "reading_scope": "full_text",
+        "relation_group": "G-DELIVERY-X",
+        "relation_type": "same_work_version"
+      }
+    ],
+    "excluded": [
+      {
+        "source_id": "S-PRE",
+        "reason_code": "superseded",
+        "reason": "与S-JOURNAL为同一工作的预印本版本（标题、作者一致），已存在同行评审版本且读取范围为全文，故不重复计数，仅保留期刊版。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选仅覆盖递送路线X的单一研究，缺少其他递送路线或对照方案的独立来源，无法回答路线间差异与适用条件；亦无专利或官方资料支持技术披露与产品落地情况。",
+        "suggested_followup_query": "delivery route X AND (comparison OR alternative route) AND (efficacy OR limitation) 2020-2025；另检索 route X 相关专利族（同族归并）及监管/机构官方资料。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same_work_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "not_counted_twice",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

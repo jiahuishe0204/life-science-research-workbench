@@ -1,0 +1,76 @@
+{
+  "case_id": "P01A-03",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.007,
+  "usage": {
+    "prompt_tokens": 2177,
+    "completion_tokens": 201,
+    "total_tokens": 2378,
+    "prompt_tokens_details": {
+      "cached_tokens": 2043
+    },
+    "prompt_cache_hit_tokens": 2043,
+    "prompt_cache_miss_tokens": 134
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [],\n  \"excluded\": [\n    {\n      \"source_id\": \"S-IRR-1\",\n      \"reason_code\": \"outside_scope\",\n      \"reason\": \"题为 Battery thermal management，属电池热管理，与 mRNA 递送主题无相关性。\"\n    },\n    {\n      \"source_id\": \"S-IRR-2\",\n      \"reason_code\": \"outside_scope\",\n      \"reason\": \"题为 Agricultural tractor maintenance，属农业机械维护，与 mRNA 递送主题无相关性。\"\n    }\n  ],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"现有候选来源均与 mRNA 递送载体无关，无法覆盖任何递送载体路线（如脂质纳米颗粒、聚合物、多肽等）的信息。\",\n      \"suggested_followup_query\": \"mRNA delivery vector lipid nanoparticle polymer peptide review\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [],
+    "excluded": [
+      {
+        "source_id": "S-IRR-1",
+        "reason_code": "outside_scope",
+        "reason": "题为 Battery thermal management，属电池热管理，与 mRNA 递送主题无相关性。"
+      },
+      {
+        "source_id": "S-IRR-2",
+        "reason_code": "outside_scope",
+        "reason": "题为 Agricultural tractor maintenance，属农业机械维护，与 mRNA 递送主题无相关性。"
+      }
+    ],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "现有候选来源均与 mRNA 递送载体无关，无法覆盖任何递送载体路线（如脂质纳米颗粒、聚合物、多肽等）的信息。",
+        "suggested_followup_query": "mRNA delivery vector lipid nanoparticle polymer peptide review"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "selected_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage_gap_present",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

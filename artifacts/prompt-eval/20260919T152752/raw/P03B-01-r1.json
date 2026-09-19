@@ -1,0 +1,67 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.971,
+  "usage": {
+    "prompt_tokens": 2286,
+    "completion_tokens": 593,
+    "total_tokens": 2879,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 238
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n\\n体外研究观察到信号变化 [E:E-KEEP]。\\n\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\\n\\n> 原稿中“该方法已证明可治疗人类疾病”的表述因本次核验无有效证据支持，已在最终稿中删除。\\n\\n---\\n\\n**核验范围与未解决项说明**\\n\\n- 本次核验依据所提供的合成测试数据及核验结果完成，未重新检索或扩展证据。\\n- C1（体外研究观察到信号变化）核验为 supported，保留原文及引用 [E:E-KEEP]。\\n- C3（小鼠研究与人体疗效）核验为 partially_supported，已按修订文本改为“观察到相关指标变化”，并明确本次资料不支持人体疗效结论 [E:E-REVISE]。\\n- C2（可治疗人类疾病）核验为 unsupported，已删除，未残留相关肯定表述或悬空引用。\\n\\n---\\n\\n**来源清单**\\n\\n- S-KEEP（对应证据 E-KEEP）\\n- S-REVISE（对应证据 E-REVISE）\\n\\n> 本核验为程序自动核验，不等同于专家审核或绝对准确；部分结论仅基于当前返回资料，未获取全文或未提供的资料不在此列。\",\n  \"verification_note\": \"按 claim_id 应用核验结果：C1 保留；C2 删除；C3 使用 revised_claim 修订并附限制。已移除 C2 相关句子并补充删除说明，避免语义断裂；已检查引用，正文仅保留 E-KEEP 与 E-REVISE，无悬空编号。来源清单仅列实际使用的 S-KEEP、S-REVISE。本核验基于合成测试数据及程序返回结果，不构成专家审核或权威核实。\",\n  \"open_issues\": [\n    \"未提供原始研究全文，体外与小鼠研究的实验条件、样本量、指标单位及统计方法未在本次核验范围内。\",\n    \"C2 删除后，原稿涉及的“人类疾病治疗”方向在本最终稿中无任何可支持结论，如需保留相关讨论需另行补充证据。\",\n    \"本次核验基于程序自动结果与合成数据，无法核验未返回的专利、全文或补充资料。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n\n体外研究观察到信号变化 [E:E-KEEP]。\n\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\n\n> 原稿中“该方法已证明可治疗人类疾病”的表述因本次核验无有效证据支持，已在最终稿中删除。\n\n---\n\n**核验范围与未解决项说明**\n\n- 本次核验依据所提供的合成测试数据及核验结果完成，未重新检索或扩展证据。\n- C1（体外研究观察到信号变化）核验为 supported，保留原文及引用 [E:E-KEEP]。\n- C3（小鼠研究与人体疗效）核验为 partially_supported，已按修订文本改为“观察到相关指标变化”，并明确本次资料不支持人体疗效结论 [E:E-REVISE]。\n- C2（可治疗人类疾病）核验为 unsupported，已删除，未残留相关肯定表述或悬空引用。\n\n---\n\n**来源清单**\n\n- S-KEEP（对应证据 E-KEEP）\n- S-REVISE（对应证据 E-REVISE）\n\n> 本核验为程序自动核验，不等同于专家审核或绝对准确；部分结论仅基于当前返回资料，未获取全文或未提供的资料不在此列。",
+    "verification_note": "按 claim_id 应用核验结果：C1 保留；C2 删除；C3 使用 revised_claim 修订并附限制。已移除 C2 相关句子并补充删除说明，避免语义断裂；已检查引用，正文仅保留 E-KEEP 与 E-REVISE，无悬空编号。来源清单仅列实际使用的 S-KEEP、S-REVISE。本核验基于合成测试数据及程序返回结果，不构成专家审核或权威核实。",
+    "open_issues": [
+      "未提供原始研究全文，体外与小鼠研究的实验条件、样本量、指标单位及统计方法未在本次核验范围内。",
+      "C2 删除后，原稿涉及的“人类疾病治疗”方向在本最终稿中无任何可支持结论，如需保留相关讨论需另行补充证据。",
+      "本次核验基于程序自动结果与合成数据，无法核验未返回的专利、全文或补充资料。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": false,
+  "manual_review_required": true
+}

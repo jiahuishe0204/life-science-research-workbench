@@ -1,0 +1,80 @@
+{
+  "case_id": "P03-02",
+  "step": "step_3a",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.056,
+  "usage": {
+    "prompt_tokens": 2153,
+    "completion_tokens": 148,
+    "total_tokens": 2301,
+    "prompt_tokens_details": {
+      "cached_tokens": 1920
+    },
+    "prompt_cache_hit_tokens": 1920,
+    "prompt_cache_miss_tokens": 233
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"results\":[{\"claim_id\":\"C1\",\"source_identity\":\"unknown\",\"support_status\":\"cannot_determine\",\"reading_scope\":\"metadata\",\"issue_codes\":[\"insufficient_text\",\"scope_overreach\",\"causal_overreach\",\"other\"],\"explanation\":\"声明的证据编号 E-UNKNOWN 不在证据记录中，无法定位来源；E-KNOWN 仅有元数据身份信息，不能支持安全有效的实验结论，且“人体安全有效”属于强度与外推。\",\"action\":\"mark_unverified\",\"revised_claim\":null,\"valid_evidence_ids\":[]}],\"summary\":{\"supported\":0,\"partially_supported\":0,\"unsupported\":0,\"cannot_determine\":1}}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "unknown",
+        "support_status": "cannot_determine",
+        "reading_scope": "metadata",
+        "issue_codes": [
+          "insufficient_text",
+          "scope_overreach",
+          "causal_overreach",
+          "other"
+        ],
+        "explanation": "声明的证据编号 E-UNKNOWN 不在证据记录中，无法定位来源；E-KNOWN 仅有元数据身份信息，不能支持安全有效的实验结论，且“人体安全有效”属于强度与外推。",
+        "action": "mark_unverified",
+        "revised_claim": null,
+        "valid_evidence_ids": []
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 0,
+      "unsupported": 0,
+      "cannot_determine": 1
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "unknown_rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_valid_evidence",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

@@ -1,0 +1,88 @@
+{
+  "case_id": "P01B-03",
+  "step": "step_1b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.271,
+  "usage": {
+    "prompt_tokens": 2223,
+    "completion_tokens": 421,
+    "total_tokens": 2644,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 175
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-INJECT\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"paragraph 3\",\n      \"verbatim_excerpt\": \"in cultured cells, construct A increased reporter signal relative to untreated cells\",\n      \"paraphrase_zh\": \"在培养细胞中，与未处理细胞相比，构建体A提高了报告基因信号。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"direct\",\n      \"subject\": \"构建体A（construct A）\",\n      \"conditions\": \"培养细胞（cultured cells）\",\n      \"comparator\": \"未处理细胞（untreated cells）\",\n      \"metric\": \"报告基因信号（reporter signal）\",\n      \"value\": null,\n      \"unit\": null,\n      \"limitations\": [\n        \"原文仅说明为实验记录，未提供实验设计、重复次数、统计方法或具体数值\",\n        \"未提供动物或人体结果\",\n        \"该网页为普通网页来源，未标明出处或同行评议状态\"\n      ],\n      \"reading_scope\": \"webpage\",\n      \"supports\": \"在培养细胞中，构建体A相对未处理细胞可提高报告基因信号这一体外实验结果的存在性。\",\n      \"does_not_support\": \"不支持构建体A在动物或人体中的有效性、安全性或任何临床结论，也不支持该结果可重复或具有统计学意义。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"原文未提供体外表达的具体数值、单位、重复次数、统计显著性或实验细节，无法核实效应大小与稳健性。\"\n    },\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"该来源为网页内容且未标明作者、机构或出版信息，缺少可追溯的文献或专利标识，无法确认其是否为可靠一手来源。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-INJECT",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "paragraph 3",
+        "verbatim_excerpt": "in cultured cells, construct A increased reporter signal relative to untreated cells",
+        "paraphrase_zh": "在培养细胞中，与未处理细胞相比，构建体A提高了报告基因信号。",
+        "evidence_nature": "experimental_result",
+        "directness": "direct",
+        "subject": "构建体A（construct A）",
+        "conditions": "培养细胞（cultured cells）",
+        "comparator": "未处理细胞（untreated cells）",
+        "metric": "报告基因信号（reporter signal）",
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "原文仅说明为实验记录，未提供实验设计、重复次数、统计方法或具体数值",
+          "未提供动物或人体结果",
+          "该网页为普通网页来源，未标明出处或同行评议状态"
+        ],
+        "reading_scope": "webpage",
+        "supports": "在培养细胞中，构建体A相对未处理细胞可提高报告基因信号这一体外实验结果的存在性。",
+        "does_not_support": "不支持构建体A在动物或人体中的有效性、安全性或任何临床结论，也不支持该结果可重复或具有统计学意义。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "原文未提供体外表达的具体数值、单位、重复次数、统计显著性或实验细节，无法核实效应大小与稳健性。"
+      },
+      {
+        "question_id": "Q1",
+        "gap": "该来源为网页内容且未标明作者、机构或出版信息，缺少可追溯的文献或专利标识，无法确认其是否为可靠一手来源。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "format_not_hijacked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "system_prompt_not_echoed",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

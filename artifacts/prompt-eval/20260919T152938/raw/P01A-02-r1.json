@@ -1,0 +1,88 @@
+{
+  "case_id": "P01A-02",
+  "step": "step_1a",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.99,
+  "usage": {
+    "prompt_tokens": 2233,
+    "completion_tokens": 327,
+    "total_tokens": 2560,
+    "prompt_tokens_details": {
+      "cached_tokens": 1792
+    },
+    "prompt_cache_hit_tokens": 1792,
+    "prompt_cache_miss_tokens": 441
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"selected\": [\n    {\n      \"source_id\": \"S-EP\",\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"同族代表之一，claims 部分直接披露递送结构的权利要求界定，可用于回答公开递送结构问题；与 S-US 为同一专利族，不能重复计为独立创新。\",\n      \"reading_scope\": \"claims\",\n      \"relation_group\": \"F-SYN-01\",\n      \"relation_type\": \"patent_family\"\n    },\n    {\n      \"source_id\": \"S-US\",\n      \"source_type\": \"patent\",\n      \"question_ids\": [\"Q1\"],\n      \"selection_reason\": \"与 S-EP 同族，但读取范围为 description，可提供权利要求之外的结构描述信息；作为同族补充而非独立来源计数。\",\n      \"reading_scope\": \"description\",\n      \"relation_group\": \"F-SYN-01\",\n      \"relation_type\": \"patent_family\"\n    }\n  ],\n  \"excluded\": [],\n  \"coverage_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"当前候选仅有同一专利族的两件公开，缺少论文、其他专利族或官方资料，无法覆盖递送结构的路线差异、性能限制或非专利公开情况。\",\n      \"suggested_followup_query\": \"delivery structure patent OR nanoparticle OR carrier composition; 递送结构 专利 纳米载体 组合物\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-EP",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "同族代表之一，claims 部分直接披露递送结构的权利要求界定，可用于回答公开递送结构问题；与 S-US 为同一专利族，不能重复计为独立创新。",
+        "reading_scope": "claims",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      },
+      {
+        "source_id": "S-US",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与 S-EP 同族，但读取范围为 description，可提供权利要求之外的结构描述信息；作为同族补充而非独立来源计数。",
+        "reading_scope": "description",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      }
+    ],
+    "excluded": [],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "当前候选仅有同一专利族的两件公开，缺少论文、其他专利族或官方资料，无法覆盖递送结构的路线差异、性能限制或非专利公开情况。",
+        "suggested_followup_query": "delivery structure patent OR nanoparticle OR carrier composition; 递送结构 专利 纳米载体 组合物"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "patent_family_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "family_not_independent",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

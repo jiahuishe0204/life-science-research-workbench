@@ -1,0 +1,66 @@
+{
+  "case_id": "P03B-01",
+  "step": "step_3b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.107,
+  "usage": {
+    "prompt_tokens": 2371,
+    "completion_tokens": 224,
+    "total_tokens": 2595,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 195
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"verified_with_limitations\",\n  \"final_markdown\": \"# 技术摘要\\n体外研究观察到信号变化 [E:E-KEEP]。\\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。\",\n  \"verification_note\": \"本次核验已按 claim_id 逐条应用核验结果：C1 保留；C2 已删除一条不支持结论；C3 按修订表述保留。核验范围仅限已提供的声明与证据信息，自动核验不等同于专家审核。\",\n  \"open_issues\": [\n    \"C2 已被删除，最终稿未保留其原始表述。\",\n    \"C3 仅为部分支持，相关结论仅适用于本次资料所涵盖的小鼠观察范围。\"\n  ],\n  \"used_source_ids\": [\n    \"S-KEEP\",\n    \"S-REVISE\"\n  ],\n  \"used_evidence_ids\": [\n    \"E-KEEP\",\n    \"E-REVISE\"\n  ]\n}",
+  "parsed_output": {
+    "status": "verified_with_limitations",
+    "final_markdown": "# 技术摘要\n体外研究观察到信号变化 [E:E-KEEP]。\n一项小鼠研究观察到相关指标变化，本次资料不支持人体疗效结论 [E:E-REVISE]。",
+    "verification_note": "本次核验已按 claim_id 逐条应用核验结果：C1 保留；C2 已删除一条不支持结论；C3 按修订表述保留。核验范围仅限已提供的声明与证据信息，自动核验不等同于专家审核。",
+    "open_issues": [
+      "C2 已被删除，最终稿未保留其原始表述。",
+      "C3 仅为部分支持，相关结论仅适用于本次资料所涵盖的小鼠观察范围。"
+    ],
+    "used_source_ids": [
+      "S-KEEP",
+      "S-REVISE"
+    ],
+    "used_evidence_ids": [
+      "E-KEEP",
+      "E-REVISE"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "removed_claim_absent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revision_applied",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

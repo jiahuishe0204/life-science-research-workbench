@@ -1,0 +1,60 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.296,
+  "usage": {
+    "prompt_tokens": 2240,
+    "completion_tokens": 380,
+    "total_tokens": 2620,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 192
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"need_clarification\",\n  \"scope_statement\": \"主题“ADC”为单个短缩写，在生命科学中存在至少两个会改变检索对象、数据库侧重和评价指标的常见释义：(1) Antibody–Drug Conjugate（抗体偶联药物），检索会指向肿瘤/免疫治疗药物研发、靶点、连接子、载荷、DAR 及专利药物组合物；(2) Apparent Diffusion Coefficient（表观扩散系数），检索会指向磁共振弥散加权成像的定量指标、扫描参数及临床诊断阈值。此外在不同语境下还可能指 Adenylyl Cyclase（腺苷酸环化酶，cAMP 信号通路）或 Analog-to-Digital Converter（模数转换器，通常不属于生命科学）。在明确领域前无法生成可执行且不偏倚的检索计划。\",\n  \"assumptions\": [],\n  \"clarification_question\": \"你所说的“ADC”具体指以下哪一类生命科学主题：抗体偶联药物（Antibody–Drug Conjugate）、磁共振表观扩散系数（Apparent Diffusion Coefficient）、腺苷酸环化酶（Adenylyl Cyclase），还是其他含义？\",\n  \"research_questions\": [],\n  \"concepts\": [],\n  \"queries\": [],\n  \"comparison_unit\": \"not_applicable\",\n  \"coverage_targets\": [\n    \"待缩写释义确认后，方可制定论文、专利与官方资料的覆盖目标；当前不生成具体检索式，以免把不同对象（药物研发与影像定量指标）混合检索。\"\n  ],\n  \"stop_conditions\": [\n    \"缩写释义未确认前不进入实际检索；确认后按所选释义重新生成研究范围、关键问题、中英文检索词与分来源查询计划。\"\n  ]\n}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "主题“ADC”为单个短缩写，在生命科学中存在至少两个会改变检索对象、数据库侧重和评价指标的常见释义：(1) Antibody–Drug Conjugate（抗体偶联药物），检索会指向肿瘤/免疫治疗药物研发、靶点、连接子、载荷、DAR 及专利药物组合物；(2) Apparent Diffusion Coefficient（表观扩散系数），检索会指向磁共振弥散加权成像的定量指标、扫描参数及临床诊断阈值。此外在不同语境下还可能指 Adenylyl Cyclase（腺苷酸环化酶，cAMP 信号通路）或 Analog-to-Digital Converter（模数转换器，通常不属于生命科学）。在明确领域前无法生成可执行且不偏倚的检索计划。",
+    "assumptions": [],
+    "clarification_question": "你所说的“ADC”具体指以下哪一类生命科学主题：抗体偶联药物（Antibody–Drug Conjugate）、磁共振表观扩散系数（Apparent Diffusion Coefficient）、腺苷酸环化酶（Adenylyl Cyclase），还是其他含义？",
+    "research_questions": [],
+    "concepts": [],
+    "queries": [],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [
+      "待缩写释义确认后，方可制定论文、专利与官方资料的覆盖目标；当前不生成具体检索式，以免把不同对象（药物研发与影像定量指标）混合检索。"
+    ],
+    "stop_conditions": [
+      "缩写释义未确认前不进入实际检索；确认后按所选释义重新生成研究范围、关键问题、中英文检索词与分来源查询计划。"
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

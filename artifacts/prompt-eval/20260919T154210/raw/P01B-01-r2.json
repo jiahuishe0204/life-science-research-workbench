@@ -1,0 +1,108 @@
+{
+  "case_id": "P01B-01",
+  "step": "step_1b",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.753,
+  "usage": {
+    "prompt_tokens": 2235,
+    "completion_tokens": 657,
+    "total_tokens": 2892,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 187
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle.\",\n      \"paraphrase_zh\": \"在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"indirect\",\n      \"subject\": \"小鼠异种移植模型\",\n      \"conditions\": \"小鼠异种移植模型；治疗组对比溶媒对照组；第14天时间点\",\n      \"comparator\": \"溶媒对照（vehicle）\",\n      \"metric\": \"平均肿瘤体积（mean tumor volume）\",\n      \"value\": \"24% reduction\",\n      \"unit\": \"%\",\n      \"limitations\": [\n        \"为小鼠模型结果，不能直接外推到人体疗效或安全性\",\n        \"原文仅表述为相关性（associated with），未建立因果关系\",\n        \"仅报告平均值变化，未提供样本量、统计方法或变异度信息\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"该候选物在小鼠异种移植模型中，第14天与溶媒对照相比平均肿瘤体积减少24%这一事实。\",\n      \"does_not_support\": \"不能支持该候选物具有人体疗效证据，也不能支持人体安全性与有效性结论。\"\n    },\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"No human participants were enrolled, and causality beyond this model was not assessed.\",\n      \"paraphrase_zh\": \"该研究未入组人类受试者，且未评估该模型之外的因果关系。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"direct\",\n      \"subject\": \"小鼠异种移植模型研究\",\n      \"conditions\": \"研究所报告的范围限定陈述\",\n      \"comparator\": null,\n      \"metric\": null,\n      \"value\": null,\n      \"unit\": null,\n      \"limitations\": [\n        \"为作者对研究范围的自我限定陈述，不是独立验证\",\n        \"未提供研究设计、样本量或统计细节\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"该来源已明确说明研究未纳入人类受试者，也未评估超出该模型的因果关系。\",\n      \"does_not_support\": \"不能支持任何人体疗效、人体安全性或临床有效性结论。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"所选来源仅提供小鼠异种移植模型数据，未提供任何人体研究、临床试验或人体疗效数据，因此无法回答该候选物是否有人体疗效证据。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle.",
+        "paraphrase_zh": "在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。",
+        "evidence_nature": "experimental_result",
+        "directness": "indirect",
+        "subject": "小鼠异种移植模型",
+        "conditions": "小鼠异种移植模型；治疗组对比溶媒对照组；第14天时间点",
+        "comparator": "溶媒对照（vehicle）",
+        "metric": "平均肿瘤体积（mean tumor volume）",
+        "value": "24% reduction",
+        "unit": "%",
+        "limitations": [
+          "为小鼠模型结果，不能直接外推到人体疗效或安全性",
+          "原文仅表述为相关性（associated with），未建立因果关系",
+          "仅报告平均值变化，未提供样本量、统计方法或变异度信息"
+        ],
+        "reading_scope": "full_text",
+        "supports": "该候选物在小鼠异种移植模型中，第14天与溶媒对照相比平均肿瘤体积减少24%这一事实。",
+        "does_not_support": "不能支持该候选物具有人体疗效证据，也不能支持人体安全性与有效性结论。"
+      },
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "No human participants were enrolled, and causality beyond this model was not assessed.",
+        "paraphrase_zh": "该研究未入组人类受试者，且未评估该模型之外的因果关系。",
+        "evidence_nature": "experimental_result",
+        "directness": "direct",
+        "subject": "小鼠异种移植模型研究",
+        "conditions": "研究所报告的范围限定陈述",
+        "comparator": null,
+        "metric": null,
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "为作者对研究范围的自我限定陈述，不是独立验证",
+          "未提供研究设计、样本量或统计细节"
+        ],
+        "reading_scope": "full_text",
+        "supports": "该来源已明确说明研究未纳入人类受试者，也未评估超出该模型的因果关系。",
+        "does_not_support": "不能支持任何人体疗效、人体安全性或临床有效性结论。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "所选来源仅提供小鼠异种移植模型数据，未提供任何人体研究、临床试验或人体疗效数据，因此无法回答该候选物是否有人体疗效证据。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "mouse_subject",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "human_not_supported",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

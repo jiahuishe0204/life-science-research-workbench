@@ -1,0 +1,84 @@
+{
+  "case_id": "P01B-01",
+  "step": "step_1b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.863,
+  "usage": {
+    "prompt_tokens": 2235,
+    "completion_tokens": 375,
+    "total_tokens": 2610,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 187
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle. No human participants were enrolled, and causality beyond this model was not assessed.\",\n      \"paraphrase_zh\": \"在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。该研究未纳入人类受试者，也未评估该模型之外的因果关系。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"indirect\",\n      \"subject\": \"mouse xenograft model\",\n      \"conditions\": \"day 14, versus vehicle\",\n      \"comparator\": \"vehicle\",\n      \"metric\": \"mean tumor volume\",\n      \"value\": \"24% reduction\",\n      \"unit\": \"%\",\n      \"limitations\": [\n        \"No human participants were enrolled\",\n        \"Causality beyond this model was not assessed\",\n        \"Only associated, not proven causal\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"在小鼠异种移植模型中，治疗与第14天平均肿瘤体积较溶媒对照减少24%相关。\",\n      \"does_not_support\": \"不支持该候选物在人体中的疗效证据；不支持该模型之外的因果结论。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"所选来源仅包含小鼠异种移植模型数据，未提供任何人体疗效证据。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle. No human participants were enrolled, and causality beyond this model was not assessed.",
+        "paraphrase_zh": "在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。该研究未纳入人类受试者，也未评估该模型之外的因果关系。",
+        "evidence_nature": "experimental_result",
+        "directness": "indirect",
+        "subject": "mouse xenograft model",
+        "conditions": "day 14, versus vehicle",
+        "comparator": "vehicle",
+        "metric": "mean tumor volume",
+        "value": "24% reduction",
+        "unit": "%",
+        "limitations": [
+          "No human participants were enrolled",
+          "Causality beyond this model was not assessed",
+          "Only associated, not proven causal"
+        ],
+        "reading_scope": "full_text",
+        "supports": "在小鼠异种移植模型中，治疗与第14天平均肿瘤体积较溶媒对照减少24%相关。",
+        "does_not_support": "不支持该候选物在人体中的疗效证据；不支持该模型之外的因果结论。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "所选来源仅包含小鼠异种移植模型数据，未提供任何人体疗效证据。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "mouse_subject",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "human_not_supported",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

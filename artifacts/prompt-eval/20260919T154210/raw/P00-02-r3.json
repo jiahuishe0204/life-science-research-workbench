@@ -1,0 +1,56 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.624,
+  "usage": {
+    "prompt_tokens": 2383,
+    "completion_tokens": 265,
+    "total_tokens": 2648,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 207
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"status\":\"need_clarification\",\"scope_statement\":\"主题“ADC”为短缩写，存在多个会显著改变检索对象、数据库和评价指标的生命科学释义：最常见的是抗体偶联药物（antibody-drug conjugate），但也可能是腺苷脱氨酶（adenosine deaminase，ADA/ADCP相关语境中亦见ADC误写）、阿霉素-顺铂联合方案（adriamycin/cisplatin，化疗组合）、抗体依赖细胞吞噬（antibody-dependent cellular phagocytosis，通常缩写ADCP）、以及基因本体中的精氨酸脱羧酶（arginine decarboxylase，speA，亦称ADC）等。在未明确释义前，无法确定应检索的是药物管线与偶联技术、酶缺乏相关疾病，还是细胞功能机制，因此必须先行澄清。\",\"assumptions\":[],\"clarification_question\":\"请确认“ADC”在本主题中具体指哪一类对象：是抗体偶联药物（antibody-drug conjugate），还是腺苷脱氨酶（adenosine deaminase）相关研究方向，抑或其他生命科学含义？\",\"research_questions\":[],\"concepts\":[],\"queries\":[],\"comparison_unit\":\"not_applicable\",\"coverage_targets\":[],\"stop_conditions\":[]}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "主题“ADC”为短缩写，存在多个会显著改变检索对象、数据库和评价指标的生命科学释义：最常见的是抗体偶联药物（antibody-drug conjugate），但也可能是腺苷脱氨酶（adenosine deaminase，ADA/ADCP相关语境中亦见ADC误写）、阿霉素-顺铂联合方案（adriamycin/cisplatin，化疗组合）、抗体依赖细胞吞噬（antibody-dependent cellular phagocytosis，通常缩写ADCP）、以及基因本体中的精氨酸脱羧酶（arginine decarboxylase，speA，亦称ADC）等。在未明确释义前，无法确定应检索的是药物管线与偶联技术、酶缺乏相关疾病，还是细胞功能机制，因此必须先行澄清。",
+    "assumptions": [],
+    "clarification_question": "请确认“ADC”在本主题中具体指哪一类对象：是抗体偶联药物（antibody-drug conjugate），还是腺苷脱氨酶（adenosine deaminase）相关研究方向，抑或其他生命科学含义？",
+    "research_questions": [],
+    "concepts": [],
+    "queries": [],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [],
+    "stop_conditions": []
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

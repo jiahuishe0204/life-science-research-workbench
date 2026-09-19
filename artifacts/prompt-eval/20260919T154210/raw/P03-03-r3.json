@@ -1,0 +1,81 @@
+{
+  "case_id": "P03-03",
+  "step": "step_3a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.494,
+  "usage": {
+    "prompt_tokens": 2182,
+    "completion_tokens": 195,
+    "total_tokens": 2377,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 134
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"results\": [\n    {\n      \"claim_id\": \"C1\",\n      \"source_identity\": \"matched\",\n      \"support_status\": \"unsupported\",\n      \"reading_scope\": \"claims\",\n      \"issue_codes\": [\n        \"patent_evidence_misused\",\n        \"scope_overreach\",\n        \"insufficient_text\"\n      ],\n      \"explanation\": \"证据仅为专利权利要求中'载体的组合物被要求保护'，属于技术披露，不包含产品上市状态或疗效数据；claim超出证据范围。\",\n      \"action\": \"remove\",\n      \"revised_claim\": null,\n      \"valid_evidence_ids\": [\n        \"E-CLAIM\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"supported\": 0,\n    \"partially_supported\": 0,\n    \"unsupported\": 1,\n    \"cannot_determine\": 0\n  }\n}",
+  "parsed_output": {
+    "results": [
+      {
+        "claim_id": "C1",
+        "source_identity": "matched",
+        "support_status": "unsupported",
+        "reading_scope": "claims",
+        "issue_codes": [
+          "patent_evidence_misused",
+          "scope_overreach",
+          "insufficient_text"
+        ],
+        "explanation": "证据仅为专利权利要求中'载体的组合物被要求保护'，属于技术披露，不包含产品上市状态或疗效数据；claim超出证据范围。",
+        "action": "remove",
+        "revised_claim": null,
+        "valid_evidence_ids": [
+          "E-CLAIM"
+        ]
+      }
+    ],
+    "summary": {
+      "supported": 0,
+      "partially_supported": 0,
+      "unsupported": 1,
+      "cannot_determine": 0
+    }
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "evidence_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "patent_misuse_found",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "revise_or_remove",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

@@ -1,0 +1,56 @@
+{
+  "case_id": "P00-02",
+  "step": "step_0",
+  "repetition": 2,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.51,
+  "usage": {
+    "prompt_tokens": 2383,
+    "completion_tokens": 207,
+    "total_tokens": 2590,
+    "prompt_tokens_details": {
+      "cached_tokens": 2176
+    },
+    "prompt_cache_hit_tokens": 2176,
+    "prompt_cache_miss_tokens": 207
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"status\": \"need_clarification\",\n  \"scope_statement\": \"“ADC”作为单个短缩写存在两个以上会显著改变检索对象、数据库和评价指标的生命科学释义，主要包括抗体偶联药物（antibody-drug conjugate）与模数转换器（analog-to-digital converter）。后者属于电子工程领域，与生命科学无直接关联；若按前者展开，则属于肿瘤治疗等方向的生物技术主题。由于当前上下文不足以在二者之间作出唯一合理解释，需先确认用户所指。\",\n  \"assumptions\": [],\n  \"clarification_question\": \"请确认“ADC”具体指抗体偶联药物（antibody-drug conjugate）还是模数转换器（analog-to-digital converter）？\",\n  \"research_questions\": [],\n  \"concepts\": [],\n  \"queries\": [],\n  \"comparison_unit\": \"not_applicable\",\n  \"coverage_targets\": [],\n  \"stop_conditions\": []\n}",
+  "parsed_output": {
+    "status": "need_clarification",
+    "scope_statement": "“ADC”作为单个短缩写存在两个以上会显著改变检索对象、数据库和评价指标的生命科学释义，主要包括抗体偶联药物（antibody-drug conjugate）与模数转换器（analog-to-digital converter）。后者属于电子工程领域，与生命科学无直接关联；若按前者展开，则属于肿瘤治疗等方向的生物技术主题。由于当前上下文不足以在二者之间作出唯一合理解释，需先确认用户所指。",
+    "assumptions": [],
+    "clarification_question": "请确认“ADC”具体指抗体偶联药物（antibody-drug conjugate）还是模数转换器（analog-to-digital converter）？",
+    "research_questions": [],
+    "concepts": [],
+    "queries": [],
+    "comparison_unit": "not_applicable",
+    "coverage_targets": [],
+    "stop_conditions": []
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "needs_clarification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "one_question",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

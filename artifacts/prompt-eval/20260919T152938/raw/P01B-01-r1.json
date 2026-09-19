@@ -1,0 +1,106 @@
+{
+  "case_id": "P01B-01",
+  "step": "step_1b",
+  "repetition": 1,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 3.202,
+  "usage": {
+    "prompt_tokens": 2235,
+    "completion_tokens": 565,
+    "total_tokens": 2800,
+    "prompt_tokens_details": {
+      "cached_tokens": 1920
+    },
+    "prompt_cache_hit_tokens": 1920,
+    "prompt_cache_miss_tokens": 315
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\n  \"evidence_candidates\": [\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle.\",\n      \"paraphrase_zh\": \"在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"indirect\",\n      \"subject\": \"小鼠异种移植模型\",\n      \"conditions\": \"第14天；与溶媒对照比较\",\n      \"comparator\": \"溶媒对照\",\n      \"metric\": \"平均肿瘤体积\",\n      \"value\": \"24\",\n      \"unit\": \"% reduction\",\n      \"limitations\": [\n        \"研究对象为小鼠异种移植模型，非人体\",\n        \"结果为关联，未评估该模型之外的因果关系\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"该候选物在小鼠异种移植模型中与第14天平均肿瘤体积相对溶媒对照减少24%相关。\",\n      \"does_not_support\": \"该候选物在人体中的疗效；因果关系；临床有效性或安全性。\"\n    },\n    {\n      \"source_id\": \"S-MOUSE\",\n      \"question_ids\": [\"Q1\"],\n      \"location\": \"Results, paragraph 2\",\n      \"verbatim_excerpt\": \"No human participants were enrolled, and causality beyond this model was not assessed.\",\n      \"paraphrase_zh\": \"未纳入人体受试者，且未评估该模型之外的因果关系。\",\n      \"evidence_nature\": \"experimental_result\",\n      \"directness\": \"direct\",\n      \"subject\": null,\n      \"conditions\": null,\n      \"comparator\": null,\n      \"metric\": null,\n      \"value\": null,\n      \"unit\": null,\n      \"limitations\": [\n        \"该陈述本身说明研究未纳入人体受试者及未评估模型外因果关系\"\n      ],\n      \"reading_scope\": \"full_text\",\n      \"supports\": \"该研究未纳入人体受试者，且未评估小鼠模型之外的因果关系。\",\n      \"does_not_support\": \"该候选物的人体疗效证据。\"\n    }\n  ],\n  \"evidence_gaps\": [\n    {\n      \"question_id\": \"Q1\",\n      \"gap\": \"所选来源未提供人体受试者数据，无法回答该候选物是否有人体疗效证据。\"\n    }\n  ]\n}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "In a mouse xenograft model, treatment was associated with a 24% reduction in mean tumor volume at day 14 versus vehicle.",
+        "paraphrase_zh": "在小鼠异种移植模型中，与溶媒对照相比，治疗在第14天与平均肿瘤体积减少24%相关。",
+        "evidence_nature": "experimental_result",
+        "directness": "indirect",
+        "subject": "小鼠异种移植模型",
+        "conditions": "第14天；与溶媒对照比较",
+        "comparator": "溶媒对照",
+        "metric": "平均肿瘤体积",
+        "value": "24",
+        "unit": "% reduction",
+        "limitations": [
+          "研究对象为小鼠异种移植模型，非人体",
+          "结果为关联，未评估该模型之外的因果关系"
+        ],
+        "reading_scope": "full_text",
+        "supports": "该候选物在小鼠异种移植模型中与第14天平均肿瘤体积相对溶媒对照减少24%相关。",
+        "does_not_support": "该候选物在人体中的疗效；因果关系；临床有效性或安全性。"
+      },
+      {
+        "source_id": "S-MOUSE",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "Results, paragraph 2",
+        "verbatim_excerpt": "No human participants were enrolled, and causality beyond this model was not assessed.",
+        "paraphrase_zh": "未纳入人体受试者，且未评估该模型之外的因果关系。",
+        "evidence_nature": "experimental_result",
+        "directness": "direct",
+        "subject": null,
+        "conditions": null,
+        "comparator": null,
+        "metric": null,
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "该陈述本身说明研究未纳入人体受试者及未评估模型外因果关系"
+        ],
+        "reading_scope": "full_text",
+        "supports": "该研究未纳入人体受试者，且未评估小鼠模型之外的因果关系。",
+        "does_not_support": "该候选物的人体疗效证据。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "所选来源未提供人体受试者数据，无法回答该候选物是否有人体疗效证据。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "mouse_subject",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "human_not_supported",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

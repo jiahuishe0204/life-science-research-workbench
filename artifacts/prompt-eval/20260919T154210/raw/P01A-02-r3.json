@@ -1,0 +1,88 @@
+{
+  "case_id": "P01A-02",
+  "step": "step_1a",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.765,
+  "usage": {
+    "prompt_tokens": 2233,
+    "completion_tokens": 281,
+    "total_tokens": 2514,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 185
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"selected\":[{\"source_id\":\"S-EP\",\"source_type\":\"patent\",\"question_ids\":[\"Q1\"],\"selection_reason\":\"专利权利要求直接披露一种递送载体组成（合成载体组合物），可回答 Q1 关于公开递送结构的问题；读取范围为 claims，信息直接。\",\"reading_scope\":\"claims\",\"relation_group\":\"F-SYN-01\",\"relation_type\":\"patent_family\"},{\"source_id\":\"S-US\",\"source_type\":\"patent\",\"question_ids\":[\"Q1\"],\"selection_reason\":\"与 S-EP 属同一专利族（priority P-SYN-001）的同族公开，读取范围为 description，可补充说明书层面的结构描述，作为同族补充而非独立创新计入。\",\"reading_scope\":\"description\",\"relation_group\":\"F-SYN-01\",\"relation_type\":\"patent_family\"}],\"excluded\":[],\"coverage_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"候选仅覆盖同一专利族的两种公开，Q1 可能指向的递送结构路线差异（如不同载体类型、材料或机制）缺乏非专利文献及其他专利族支持，且无全文/实施例数据。\",\"suggested_followup_query\":\"请补充候选记录：递送结构相关论文（含 DOI/PMID）与其他专利族公开，以覆盖不同技术路线。\"}]}",
+  "parsed_output": {
+    "selected": [
+      {
+        "source_id": "S-EP",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "专利权利要求直接披露一种递送载体组成（合成载体组合物），可回答 Q1 关于公开递送结构的问题；读取范围为 claims，信息直接。",
+        "reading_scope": "claims",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      },
+      {
+        "source_id": "S-US",
+        "source_type": "patent",
+        "question_ids": [
+          "Q1"
+        ],
+        "selection_reason": "与 S-EP 属同一专利族（priority P-SYN-001）的同族公开，读取范围为 description，可补充说明书层面的结构描述，作为同族补充而非独立创新计入。",
+        "reading_scope": "description",
+        "relation_group": "F-SYN-01",
+        "relation_type": "patent_family"
+      }
+    ],
+    "excluded": [],
+    "coverage_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "候选仅覆盖同一专利族的两种公开，Q1 可能指向的递送结构路线差异（如不同载体类型、材料或机制）缺乏非专利文献及其他专利族支持，且无全文/实施例数据。",
+        "suggested_followup_query": "请补充候选记录：递送结构相关论文（含 DOI/PMID）与其他专利族公开，以覆盖不同技术路线。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "source_limit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "patent_family_relation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "family_not_independent",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

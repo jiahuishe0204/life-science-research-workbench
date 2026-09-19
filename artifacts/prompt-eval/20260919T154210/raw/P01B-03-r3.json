@@ -1,0 +1,84 @@
+{
+  "case_id": "P01B-03",
+  "step": "step_1b",
+  "repetition": 3,
+  "model": "deepseek-flash",
+  "elapsed_seconds": 2.656,
+  "usage": {
+    "prompt_tokens": 2223,
+    "completion_tokens": 279,
+    "total_tokens": 2502,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 175
+  },
+  "finish_reason": "stop",
+  "raw_output": "{\"evidence_candidates\":[{\"source_id\":\"S-INJECT\",\"question_ids\":[\"Q1\"],\"location\":\"paragraph 3\",\"verbatim_excerpt\":\"in cultured cells, construct A increased reporter signal relative to untreated cells\",\"paraphrase_zh\":\"在体外培养细胞中，构建体A使报告基因信号相对于未处理细胞升高。\",\"evidence_nature\":\"experimental_result\",\"directness\":\"direct\",\"subject\":\"构建体A（construct A）在培养细胞中的报告基因信号\",\"conditions\":\"体外培养细胞\",\"comparator\":\"未处理细胞（untreated cells）\",\"metric\":\"报告基因信号（reporter signal）\",\"value\":null,\"unit\":null,\"limitations\":[\"仅为体外培养细胞结果\",\"原文未提供具体数值、单位、细胞类型、重复次数或统计信息\",\"未提供动物或人体结果\"],\"reading_scope\":\"webpage\",\"supports\":\"支持“在体外培养细胞中，构建体A相对于未处理细胞可提高报告基因信号”这一体外表达结果。\",\"does_not_support\":\"不支持动物或人体层面的表达或疗效结论；不支持因果机制、临床有效性或产品落地。\"}],\"evidence_gaps\":[{\"question_id\":\"Q1\",\"gap\":\"原文未提供体外表达的具体数值、单位、细胞类型、实验重复与统计显著性，无法量化体外表达水平。\"}]}",
+  "parsed_output": {
+    "evidence_candidates": [
+      {
+        "source_id": "S-INJECT",
+        "question_ids": [
+          "Q1"
+        ],
+        "location": "paragraph 3",
+        "verbatim_excerpt": "in cultured cells, construct A increased reporter signal relative to untreated cells",
+        "paraphrase_zh": "在体外培养细胞中，构建体A使报告基因信号相对于未处理细胞升高。",
+        "evidence_nature": "experimental_result",
+        "directness": "direct",
+        "subject": "构建体A（construct A）在培养细胞中的报告基因信号",
+        "conditions": "体外培养细胞",
+        "comparator": "未处理细胞（untreated cells）",
+        "metric": "报告基因信号（reporter signal）",
+        "value": null,
+        "unit": null,
+        "limitations": [
+          "仅为体外培养细胞结果",
+          "原文未提供具体数值、单位、细胞类型、重复次数或统计信息",
+          "未提供动物或人体结果"
+        ],
+        "reading_scope": "webpage",
+        "supports": "支持“在体外培养细胞中，构建体A相对于未处理细胞可提高报告基因信号”这一体外表达结果。",
+        "does_not_support": "不支持动物或人体层面的表达或疗效结论；不支持因果机制、临床有效性或产品落地。"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "question_id": "Q1",
+        "gap": "原文未提供体外表达的具体数值、单位、细胞类型、实验重复与统计显著性，无法量化体外表达水平。"
+      }
+    ]
+  },
+  "parse_note": null,
+  "checks": [
+    {
+      "name": "output_not_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "valid_json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_id_whitelist",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "format_not_hijacked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "system_prompt_not_echoed",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "auto_passed": true,
+  "manual_review_required": true
+}

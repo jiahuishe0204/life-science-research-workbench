@@ -1,0 +1,54 @@
+{
+  "project": "生命科学科研调研工作台",
+  "snapshot_version": "H1",
+  "updated_at": "2026-09-19",
+  "phase": "产品与技术方案定稿",
+  "active_item_id": "paper_source_selection",
+  "active_item": "论文数据源最终选择",
+  "overall_status": "in_progress",
+  "confirmed_decisions": {
+    "domain": "生命科学科研调研",
+    "runtime_model_preference": "deepseek-flash",
+    "patent_source": "EPO OPS",
+    "source_limit": 19,
+    "deployment_trial": "Tencent EdgeOne free tier",
+    "deployment_fallback": "Hong Kong lightweight server",
+    "repository_visibility": "private_first",
+    "ordinary_user_login": "deferred_for_demo",
+    "admin_dashboard": "creator_only"
+  },
+  "completed": [
+    {"id": "requirements", "evidence": ["科研调研工作台-PROMPT.md"]},
+    {"id": "prompt_template", "evidence": ["提示词通用模板.md"]},
+    {"id": "prompt_chain_static_v0_2", "evidence": ["科研调研工作台-PROMPT.md"]},
+    {"id": "prompt_eval_cases", "evidence": ["tests/prompt-eval-cases.json", "提示词固定测试集与验收.md"]},
+    {"id": "prompt_eval_runner_prepared", "status": "prepared_and_runtime_used", "evidence": ["tests/run_prompt_eval.py", "tests/fixtures/prompt-eval-fixtures.json", "提示词固定测试集与验收.md"]},
+    {"id": "prompt_eval_runtime", "status": "runtime_verified_with_recorded_limitation", "evidence": ["artifacts/prompt-eval/20260919T154210/summary.json", "artifacts/prompt-eval/20260919T154210/revalidation.json", "artifacts/prompt-eval/20260919T154210/manual-review.md", "提示词固定测试集与验收.md"]},
+    {"id": "secret_exclusion_files_prepared", "status": "files_present_not_git_verified", "evidence": [".gitignore", ".env.example"]}
+  ],
+  "pending_in_order": [
+    "paper_source_selection",
+    "epo_ops_account_and_api_test",
+    "official_media_allowlist",
+    "deepseek_budget_limits",
+    "edgeone_deployment_test",
+    "domain_backup_admin_auth",
+    "github_remote_private_repo",
+    "website_build_content_test_docs_final"
+  ],
+  "current_blockers": [
+    {
+      "item": "github_remote_private_repo",
+      "reason": "2026-09-19 实际检查确认当前目录不是 Git 仓库，与旧快照中的 local_git_initialized 记录不一致",
+      "required_action": "到第 8 项时实际初始化本地仓库、检查密钥排除后再创建远程私有仓库"
+    }
+  ],
+  "not_executed": [
+    "网站编码",
+    "EPO OPS 注册与真实调用",
+    "论文数据源真实对比",
+    "EdgeOne 项目创建与部署",
+    "GitHub 远程仓库创建与推送",
+    "公开发布"
+  ]
+}

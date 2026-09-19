@@ -1,0 +1,28 @@
+{
+  "run_id": "20260919T153303",
+  "created_at": "2026-09-19T07:33:12.200833+00:00",
+  "suite_version": "0.1",
+  "prompt_document_sha256": "54e03bfe469a6c4a8aeb48b18cf56ff6788173818ed011e11facb067b5fb63e8",
+  "cases_sha256": "a238c37cad8f7a9ba6c6b5b6976c49a7441ff8c7814e6ca09b60e474cee0b029",
+  "fixtures_sha256": "a72c3e0c7c9339dbe9d422c460553178e16ea63db7a5a9f1a60c3609532a35da",
+  "model": "deepseek-flash",
+  "case_ids": [
+    "P00-02",
+    "P02A-01"
+  ],
+  "repeat": 1,
+  "totals": {
+    "calls": 2,
+    "auto_passed": 1,
+    "auto_failed": 1,
+    "prompt_tokens": 4529,
+    "completion_tokens": 1114,
+    "total_tokens": 5643
+  },
+  "critical_status_stable": {
+    "P00-02": null,
+    "P02A-01": null
+  },
+  "release_status": "failed",
+  "note": "自动检查通过不等于放行；人工语义评分完成前不得标记验收通过。"
+}
