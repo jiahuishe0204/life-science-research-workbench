@@ -40,7 +40,13 @@
     "domain_backup_admin_auth",
     "website_build_content_test_docs_final"
   ],
-  "current_blockers": [],
+  "current_blockers": [
+    {
+      "item": "epo_ops_account_and_api_test",
+      "reason": "本地 .env 已预留 EPO OPS 变量，但 Consumer Key 和 Consumer Secret 尚未配置",
+      "required_action": "用户在 EPO 官方开发者账户创建凭据后，仅将值写入本地 .env；不得发送到聊天或提交到 GitHub"
+    }
+  ],
   "not_executed": [
     "网站编码",
     "EPO OPS 注册与真实调用",
