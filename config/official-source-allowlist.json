@@ -1,0 +1,140 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-09-19",
+  "default_policy": "deny",
+  "require_https": true,
+  "sources": [
+    {
+      "id": "cn_nmpa",
+      "name": "国家药品监督管理局",
+      "tier": "regulator",
+      "domains": ["nmpa.gov.cn"],
+      "allow_subdomains": true,
+      "allowed_uses": ["approval_status", "safety_notice", "recall", "regulatory_guidance"],
+      "limitations": "仅证明中国监管状态和监管机构公开内容，不替代论文证据。"
+    },
+    {
+      "id": "cn_nhc",
+      "name": "中华人民共和国国家卫生健康委员会",
+      "tier": "public_health_authority",
+      "domains": ["nhc.gov.cn"],
+      "allow_subdomains": true,
+      "allowed_uses": ["official_standard", "public_health_guidance", "policy", "statistics"],
+      "limitations": "按页面发布日期和文件效力使用；新闻稿不能替代正式标准。"
+    },
+    {
+      "id": "cn_cdc",
+      "name": "中国疾病预防控制中心",
+      "tier": "public_health_authority",
+      "domains": ["chinacdc.cn"],
+      "allow_subdomains": true,
+      "allowed_uses": ["surveillance", "public_health_guidance", "risk_assessment", "institutional_update"],
+      "limitations": "机构动态只作为机构行为或发现线索；科学结论优先回到报告、数据或论文。"
+    },
+    {
+      "id": "who",
+      "name": "World Health Organization",
+      "tier": "public_health_authority",
+      "domains": ["who.int"],
+      "allow_subdomains": true,
+      "allowed_uses": ["fact_sheet", "guideline", "disease_outbreak", "global_health_statistics", "policy"],
+      "limitations": "记录版本和更新时间；全球建议不自动等同于本地监管要求。"
+    },
+    {
+      "id": "us_fda",
+      "name": "U.S. Food and Drug Administration",
+      "tier": "regulator",
+      "domains": ["fda.gov"],
+      "allow_subdomains": true,
+      "allowed_uses": ["approval_status", "label", "safety_notice", "recall", "regulatory_guidance"],
+      "limitations": "仅代表美国监管范围；批准新闻应回链 Drugs@FDA、标签或审评文件。"
+    },
+    {
+      "id": "eu_ema",
+      "name": "European Medicines Agency",
+      "tier": "regulator",
+      "domains": ["ema.europa.eu"],
+      "allow_subdomains": true,
+      "allowed_uses": ["evaluation_status", "medicine_information", "safety_notice", "regulatory_guidance"],
+      "limitations": "EMA 网站主要覆盖其评估范围；成员国批准须查看国家登记。"
+    },
+    {
+      "id": "eu_health",
+      "name": "European Commission Directorate-General for Health and Food Safety",
+      "tier": "regulator",
+      "domains": ["health.ec.europa.eu"],
+      "allow_subdomains": false,
+      "allowed_uses": ["union_register", "legislation", "regulatory_policy", "public_health_policy"],
+      "limitations": "区分法规、委员会决定、提案和一般新闻。"
+    },
+    {
+      "id": "uk_mhra",
+      "name": "UK Medicines and Healthcare products Regulatory Agency",
+      "tier": "regulator",
+      "domains": ["gov.uk"],
+      "allow_subdomains": true,
+      "allowed_path_prefixes": ["/government/organisations/medicines-and-healthcare-products-regulatory-agency", "/drug-safety-update", "/guidance/find-product-information-about-medicines"],
+      "allowed_uses": ["approval_status", "safety_notice", "recall", "regulatory_guidance"],
+      "limitations": "gov.uk 不是整站放行；只允许列出的 MHRA 路径。"
+    },
+    {
+      "id": "jp_pmda",
+      "name": "Pharmaceuticals and Medical Devices Agency",
+      "tier": "regulator",
+      "domains": ["pmda.go.jp"],
+      "allow_subdomains": true,
+      "allowed_uses": ["review_report", "safety_notice", "label", "regulatory_guidance"],
+      "limitations": "英文页面可能不是最新或完整版本，必要时核对日文原页和发布日期。"
+    },
+    {
+      "id": "us_cdc",
+      "name": "U.S. Centers for Disease Control and Prevention",
+      "tier": "public_health_authority",
+      "domains": ["cdc.gov"],
+      "allow_subdomains": true,
+      "allowed_uses": ["surveillance", "outbreak", "public_health_guidance", "statistics"],
+      "limitations": "面向美国的建议不自动适用于其他地区；新闻稿应回链数据或正式指南。"
+    },
+    {
+      "id": "eu_ecdc",
+      "name": "European Centre for Disease Prevention and Control",
+      "tier": "public_health_authority",
+      "domains": ["ecdc.europa.eu"],
+      "allow_subdomains": true,
+      "allowed_uses": ["surveillance", "threat_assessment", "public_health_guidance", "statistics"],
+      "limitations": "适用范围以欧盟／欧洲经济区及页面说明为准。"
+    },
+    {
+      "id": "clinicaltrials_gov",
+      "name": "ClinicalTrials.gov",
+      "tier": "registry",
+      "domains": ["clinicaltrials.gov"],
+      "allow_subdomains": true,
+      "allowed_uses": ["trial_registration", "trial_status", "posted_results"],
+      "limitations": "注册内容由提交方提供；已注册、已完成或已发布结果均不等于结果可靠或产品获批。"
+    },
+    {
+      "id": "us_nih",
+      "name": "U.S. National Institutes of Health",
+      "tier": "research_institution",
+      "domains": ["nih.gov"],
+      "allow_subdomains": true,
+      "allowed_uses": ["institutional_update", "research_program", "funding_announcement", "research_discovery"],
+      "limitations": "科研新闻只作为线索或机构声明；结果性结论必须回到论文、数据或正式报告。"
+    },
+    {
+      "id": "cn_cas",
+      "name": "中国科学院",
+      "tier": "research_institution",
+      "domains": ["cas.cn"],
+      "allow_subdomains": true,
+      "allowed_uses": ["institutional_update", "research_program", "research_discovery"],
+      "limitations": "科研进展新闻只作为线索或机构声明；结果性结论必须回到论文、数据或正式报告。"
+    }
+  ],
+  "dynamic_source_rules": {
+    "company_official_site": "仅在竞品或产品状态任务中逐项核验官方域名，标记为 company_claim；不得单独证明疗效、安全性或监管批准。",
+    "university_or_society_site": "不做全域名永久放行；逐项核验机构归属，新闻只作线索，正式指南需记录版本、制定组织和证据等级。",
+    "publisher_or_news_site": "不纳入官方来源白名单；论文走论文数据源，媒体报道只作发现线索。"
+  }
+}

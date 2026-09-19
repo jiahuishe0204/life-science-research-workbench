@@ -1,0 +1,12 @@
+[
+  {"url": "https://www.fda.gov/drugs/drug-safety-and-availability", "allowed": true, "source_id": "us_fda"},
+  {"url": "https://www.ema.europa.eu/en/medicines", "allowed": true, "source_id": "eu_ema"},
+  {"url": "https://www.nhc.gov.cn/wjw/wsbzxx/wsbz.shtml", "allowed": true, "source_id": "cn_nhc"},
+  {"url": "https://www.chinacdc.cn/", "allowed": true, "source_id": "cn_cdc"},
+  {"url": "https://clinicaltrials.gov/study/NCT00000000", "allowed": true, "source_id": "clinicaltrials_gov"},
+  {"url": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency", "allowed": true, "source_id": "uk_mhra"},
+  {"url": "https://www.gov.uk/random-unrelated-page", "allowed": false},
+  {"url": "https://fda.gov.evil.example/fake", "allowed": false},
+  {"url": "http://www.fda.gov/drugs", "allowed": false},
+  {"url": "https://example.com/nih.gov/research", "allowed": false}
+]

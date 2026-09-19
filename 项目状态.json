@@ -13,6 +13,9 @@
     "paper_primary_source": "PubMed",
     "paper_enrichment_source": "Europe PMC",
     "paper_identity_source": "Crossref",
+    "official_source_policy": "default_deny_explicit_allow_by_use",
+    "deepseek_task_hard_stop_cny": 1.0,
+    "deepseek_daily_hard_stop_cny": 10.0,
     "source_limit": 19,
     "deployment_trial": "Tencent EdgeOne free tier",
     "deployment_fallback": "Hong Kong lightweight server",
@@ -30,12 +33,12 @@
     {"id": "prompt_eval_runtime", "status": "runtime_verified_with_recorded_limitation", "evidence": ["artifacts/prompt-eval/20260919T154210/summary.json", "artifacts/prompt-eval/20260919T154210/revalidation.json", "artifacts/prompt-eval/20260919T154210/manual-review.md", "提示词固定测试集与验收.md"]},
     {"id": "local_git_initialized", "status": "verified", "evidence": [".gitignore", ".env.example", "git_commit:07d647b"]},
     {"id": "github_remote_private_repo", "status": "verified_and_pushed", "evidence": ["https://github.com/jiahuishe0204/life-science-research-workbench", "git_remote:origin", "git_branch:main"]},
-    {"id": "paper_source_selection", "status": "runtime_verified", "evidence": ["论文数据源选择与实测.md", "artifacts/paper-source-eval/20260919T083041Z/summary.json", "tests/run_paper_source_eval.py", "tests/fixtures/paper-source-queries.json"]}
+    {"id": "paper_source_selection", "status": "runtime_verified", "evidence": ["论文数据源选择与实测.md", "artifacts/paper-source-eval/20260919T083041Z/summary.json", "tests/run_paper_source_eval.py", "tests/fixtures/paper-source-queries.json"]},
+    {"id": "official_media_allowlist", "status": "policy_and_local_validation_complete", "evidence": ["官方来源白名单与使用规则.md", "config/official-source-allowlist.json", "tests/validate_official_source_allowlist.py", "tests/fixtures/official-source-url-cases.json"]},
+    {"id": "deepseek_budget_limits", "status": "policy_and_usage_calibration_complete_balance_pending", "evidence": ["DeepSeek费用与限额.md", "config/deepseek-budget.json", "tests/validate_deepseek_budget.py", "artifacts/prompt-eval/20260919T154210/summary.json"]}
   ],
   "pending_in_order": [
     "epo_ops_account_and_api_test",
-    "official_media_allowlist",
-    "deepseek_budget_limits",
     "edgeone_deployment_test",
     "domain_backup_admin_auth",
     "website_build_content_test_docs_final"
@@ -43,13 +46,13 @@
   "current_blockers": [
     {
       "item": "epo_ops_account_and_api_test",
-      "reason": "本地 .env 已预留 EPO OPS 变量，但 Consumer Key 和 Consumer Secret 尚未配置",
-      "required_action": "用户在 EPO 官方开发者账户创建凭据后，仅将值写入本地 .env；不得发送到聊天或提交到 GitHub"
+      "reason": "EPO OPS 开发者账号已注册，但当前忘记登录密码，尚未创建应用 Consumer Key 和 Consumer Secret",
+      "required_action": "稍后通过 EPO 官方密码恢复流程重新登录并创建应用凭据；凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
     }
   ],
   "not_executed": [
     "网站编码",
-    "EPO OPS 注册与真实调用",
+    "EPO OPS 应用凭据创建与真实调用",
     "EdgeOne 项目创建与部署",
     "公开发布"
   ]
