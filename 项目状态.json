@@ -1,7 +1,7 @@
 {
   "project": "生命科学科研调研工作台",
   "snapshot_version": "H1",
-  "updated_at": "2026-09-19",
+  "updated_at": "2026-09-20",
   "phase": "产品与技术方案定稿",
   "active_item_id": "epo_ops_account_and_api_test",
   "active_item": "EPO OPS 账户权限与真实 API 测试",
@@ -35,12 +35,12 @@
     {"id": "github_remote_private_repo", "status": "verified_and_pushed", "evidence": ["https://github.com/jiahuishe0204/life-science-research-workbench", "git_remote:origin", "git_branch:main"]},
     {"id": "paper_source_selection", "status": "runtime_verified", "evidence": ["论文数据源选择与实测.md", "artifacts/paper-source-eval/20260919T083041Z/summary.json", "tests/run_paper_source_eval.py", "tests/fixtures/paper-source-queries.json"]},
     {"id": "official_media_allowlist", "status": "policy_and_local_validation_complete", "evidence": ["官方来源白名单与使用规则.md", "config/official-source-allowlist.json", "tests/validate_official_source_allowlist.py", "tests/fixtures/official-source-url-cases.json"]},
-    {"id": "deepseek_budget_limits", "status": "policy_and_usage_calibration_complete_balance_pending", "evidence": ["DeepSeek费用与限额.md", "config/deepseek-budget.json", "tests/validate_deepseek_budget.py", "artifacts/prompt-eval/20260919T154210/summary.json"]}
+    {"id": "deepseek_budget_limits", "status": "policy_and_usage_calibration_complete_balance_pending", "evidence": ["DeepSeek费用与限额.md", "config/deepseek-budget.json", "tests/validate_deepseek_budget.py", "artifacts/prompt-eval/20260919T154210/summary.json"]},
+    {"id": "domain_backup_admin_auth", "status": "policy_and_local_validation_complete_deployment_pending", "evidence": ["域名备份与创建者鉴权.md", "config/security-retention.json", "tests/validate_security_retention.py", ".env.example"]}
   ],
   "pending_in_order": [
     "epo_ops_account_and_api_test",
     "edgeone_deployment_test",
-    "domain_backup_admin_auth",
     "website_build_content_test_docs_final"
   ],
   "current_blockers": [

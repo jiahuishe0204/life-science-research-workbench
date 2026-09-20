@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-09-20",
+  "domain": {
+    "demo_hostname": "edgeone_managed_domain",
+    "custom_domain_status": "deferred_until_deployment_verified",
+    "acceleration_region_without_icp": "global_excluding_mainland_china",
+    "require_https": true,
+    "redirect_http_to_https": true,
+    "enable_hsts_after_https_validation": true,
+    "api_origin": "same_origin",
+    "cors_policy": "deny_by_default"
+  },
+  "storage": {
+    "task_artifact_candidate": "edgeone_blob",
+    "kv_usage": "small_configuration_and_counters_only",
+    "source_of_truth_requires_exportable_copy": true,
+    "quota_monitoring_required": true,
+    "deployment_validation_required": true
+  },
+  "secrets": {
+    "storage": "server_environment_only",
+    "required_environment_variables": [
+      "DEEPSEEK_API_KEY",
+      "ADMIN_PASSWORD_HASH",
+      "ADMIN_SESSION_SECRET",
+      "ADMIN_TOTP_SECRET",
+      "TASK_ACCESS_TOKEN_SECRET"
+    ],
+    "forbidden_locations": ["client_bundle", "git_repository", "application_logs", "analytics_events"]
+  },
+  "creator_auth": {
+    "public_signup": false,
+    "protected_route_prefixes": ["/creator", "/api/creator"],
+    "password_hash_algorithm": "argon2id",
+    "totp_required_before_public_trial": true,
+    "session": {
+      "cookie_http_only": true,
+      "cookie_secure": true,
+      "cookie_same_site": "Strict",
+      "idle_timeout_minutes": 30,
+      "absolute_timeout_hours": 8,
+      "rotate_on_login": true
+    },
+    "csrf_protection_for_state_changes": true,
+    "login_rate_limit": {
+      "max_failures": 5,
+      "window_minutes": 15,
+      "lockout_minutes": 15,
+      "keys": ["account", "ip"]
+    },
+    "audit_events": ["login_success", "login_failure", "logout", "data_export", "configuration_change"]
+  },
+  "anonymous_task_access": {
+    "opaque_token_bits": 128,
+    "task_id_alone_grants_access": false,
+    "cookie_http_only": true,
+    "cookie_secure": true,
+    "cookie_same_site": "Lax"
+  },
+  "retention": {
+    "task_and_report_days": 7,
+    "security_audit_days": 30,
+    "aggregate_metrics_days": 90,
+    "aggregate_metrics_include_raw_user_input": false
+  },
+  "backup": {
+    "contains_user_data": true,
+    "allowed_destination": "encrypted_operator_controlled_storage_outside_git",
+    "never_commit_to_git": true,
+    "schedule": "daily_and_after_schema_change",
+    "daily_copies": 7,
+    "weekly_copies": 4,
+    "manifest_hash": "sha256",
+    "restore_test": "before_release_and_monthly",
+    "deletion_must_cover_backups": true
+  }
+}
