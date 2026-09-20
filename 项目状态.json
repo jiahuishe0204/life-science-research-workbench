@@ -37,7 +37,8 @@
     {"id": "official_media_allowlist", "status": "policy_and_local_validation_complete", "evidence": ["官方来源白名单与使用规则.md", "config/official-source-allowlist.json", "tests/validate_official_source_allowlist.py", "tests/fixtures/official-source-url-cases.json"]},
     {"id": "deepseek_budget_limits", "status": "policy_and_usage_calibration_complete_balance_pending", "evidence": ["DeepSeek费用与限额.md", "config/deepseek-budget.json", "tests/validate_deepseek_budget.py", "artifacts/prompt-eval/20260919T154210/summary.json"]},
     {"id": "domain_backup_admin_auth", "status": "policy_and_local_validation_complete_deployment_pending", "evidence": ["域名备份与创建者鉴权.md", "config/security-retention.json", "tests/validate_security_retention.py", ".env.example"]},
-    {"id": "website_skeleton", "status": "static_skeleton_browser_verified_backend_not_connected", "evidence": ["web/index.html", "web/creator.html", "web/styles.css", "web/app.js", "tests/validate_web_skeleton.py", "README.md"]}
+    {"id": "website_skeleton", "status": "static_skeleton_browser_verified", "evidence": ["web/index.html", "web/creator.html", "web/styles.css", "web/app.js", "tests/validate_web_skeleton.py", "README.md"]},
+    {"id": "website_backend_local", "status": "runtime_verified_five_topics_with_revalidation", "evidence": ["server.py", "tests/test_server_core.py", "tests/run_backend_e2e_eval.py", "网站后端真实验收.md", "artifacts/backend-e2e/20260920T090405Z/summary.json", "artifacts/backend-e2e/20260920T090659Z/summary.json"]}
   ],
   "pending_in_order": [
     "epo_ops_account_and_api_test",
@@ -47,12 +48,12 @@
   "current_blockers": [
     {
       "item": "epo_ops_account_and_api_test",
-      "reason": "EPO OPS 开发者账号已注册，但当前忘记登录密码，尚未创建应用 Consumer Key 和 Consumer Secret",
-      "required_action": "稍后通过 EPO 官方密码恢复流程重新登录并创建应用凭据；凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
+      "reason": "EPO OPS 新账号邮箱已确认，页面显示正在等待 EPO 管理员审批，尚未创建应用 Consumer Key 和 Consumer Secret",
+      "required_action": "等待 EPO 审批邮件；批准后登录并创建应用凭据，凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
     }
   ],
   "not_executed": [
-    "网站后端与真实数据链接入",
+    "创建者真实登录与部署后端迁移",
     "EPO OPS 应用凭据创建与真实调用",
     "EdgeOne 项目创建与部署",
     "公开发布"

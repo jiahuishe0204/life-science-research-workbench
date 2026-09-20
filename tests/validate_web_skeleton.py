@@ -58,9 +58,10 @@ def main():
 
     html = (WEB / "index.html").read_text(encoding="utf-8")
     js = (WEB / "app.js").read_text(encoding="utf-8")
-    require("未连接检索" in html, "prototype must disclose that real retrieval is disconnected")
+    require("EPO 审批" in html, "page must disclose the patent retrieval limitation")
     require("maxlength=\"120\"" in html, "topic length must be constrained")
     require("preventDefault" in js and "submit.disabled = true" in js, "duplicate submission guard is missing")
+    require("idempotency_key" in js and "sessionStorage" in js, "idempotency or reconnect support is missing")
     require("innerHTML" not in js, "prototype must avoid unsafe HTML injection")
     print("web skeleton validation: PASS")
 

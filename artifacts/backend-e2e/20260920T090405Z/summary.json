@@ -1,0 +1,116 @@
+{
+  "run_id": "20260920T090405Z",
+  "started_at": "2026-09-20T09:04:05.686748+00:00",
+  "finished_at": "2026-09-20T09:05:58.774852+00:00",
+  "topic_count": 5,
+  "passed": 4,
+  "completed": 5,
+  "total_estimated_cost_cny": 0.3112,
+  "results": [
+    {
+      "topic": "CRISPR分子诊断的主要技术路线与关键限制",
+      "status": "completed",
+      "source_count": 12,
+      "providers": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "estimated_cost_cny": 0.063,
+      "passed": true,
+      "checks": {
+        "ended": true,
+        "completed": true,
+        "source_count_valid": true,
+        "has_pubmed": true,
+        "has_europe_pmc": true,
+        "citation_ids_valid": true,
+        "patent_gap_disclosed": true,
+        "under_task_budget": true
+      }
+    },
+    {
+      "topic": "mRNA药物递送系统的主要技术路线与关键限制",
+      "status": "completed",
+      "source_count": 12,
+      "providers": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "estimated_cost_cny": 0.062,
+      "passed": true,
+      "checks": {
+        "ended": true,
+        "completed": true,
+        "source_count_valid": true,
+        "has_pubmed": true,
+        "has_europe_pmc": true,
+        "citation_ids_valid": true,
+        "patent_gap_disclosed": true,
+        "under_task_budget": true
+      }
+    },
+    {
+      "topic": "肠道微生物与衰老研究的主要证据和局限",
+      "status": "completed",
+      "source_count": 12,
+      "providers": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "estimated_cost_cny": 0.0636,
+      "passed": true,
+      "checks": {
+        "ended": true,
+        "completed": true,
+        "source_count_valid": true,
+        "has_pubmed": true,
+        "has_europe_pmc": true,
+        "citation_ids_valid": true,
+        "patent_gap_disclosed": true,
+        "under_task_budget": true
+      }
+    },
+    {
+      "topic": "单细胞测序在肿瘤微环境研究中的应用",
+      "status": "completed",
+      "source_count": 12,
+      "providers": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "estimated_cost_cny": 0.0636,
+      "passed": false,
+      "checks": {
+        "ended": true,
+        "completed": true,
+        "source_count_valid": true,
+        "has_pubmed": true,
+        "has_europe_pmc": true,
+        "citation_ids_valid": true,
+        "patent_gap_disclosed": false,
+        "under_task_budget": true
+      }
+    },
+    {
+      "topic": "合成生物学发酵的主要技术路线与产业化限制",
+      "status": "completed",
+      "source_count": 12,
+      "providers": [
+        "Europe PMC",
+        "PubMed"
+      ],
+      "estimated_cost_cny": 0.059,
+      "passed": true,
+      "checks": {
+        "ended": true,
+        "completed": true,
+        "source_count_valid": true,
+        "has_pubmed": true,
+        "has_europe_pmc": true,
+        "citation_ids_valid": true,
+        "patent_gap_disclosed": true,
+        "under_task_budget": true
+      }
+    }
+  ]
+}

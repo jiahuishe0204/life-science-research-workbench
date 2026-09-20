@@ -63,15 +63,15 @@
             <span class="section-kicker">调研任务</span>
             <h2 id="workspace-topic"></h2>
           </div>
-          <span class="demo-badge">界面骨架 · 未连接检索</span>
+          <span id="job-status" class="demo-badge">准备创建任务</span>
         </div>
         <div class="notice">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5m0 4h.01M4 20h16L12 4 4 20Z" /></svg>
-          <p><strong>当前仅展示任务流程。</strong> 真实资料接口和模型任务尚未接入，本页面不会生成或伪造调研结论。</p>
+          <p id="job-message"><strong>任务说明：</strong> 专利接口等待 EPO 审批；论文检索和模型报告可在本地后端运行。</p>
         </div>
         <div class="workspace-grid">
-          <ol class="steps" aria-label="调研阶段">
-            <li class="active"><span>01</span><div><b>理解研究主题</b><small>等待后端接入</small></div></li>
+          <ol id="job-steps" class="steps" aria-label="调研阶段">
+            <li class="active"><span>01</span><div><b>理解研究主题</b><small>等待开始</small></div></li>
             <li><span>02</span><div><b>检索与筛选资料</b><small>论文 · 专利 · 官方来源</small></div></li>
             <li><span>03</span><div><b>建立证据库</b><small>原文片段与读取范围</small></div></li>
             <li><span>04</span><div><b>生成并核验</b><small>删除或修订不支持结论</small></div></li>
@@ -82,11 +82,14 @@
               <button role="tab" aria-selected="false" disabled>竞品／方案分析</button>
               <button role="tab" aria-selected="false" disabled>科普内容</button>
             </div>
-            <div class="empty-report">
+            <div id="empty-report" class="empty-report">
               <div class="empty-orbit"><span></span></div>
-              <h3>任务接口接入后，报告将在这里逐步显示</h3>
-              <p>草稿与已核验版本会明确区分；来源、证据片段和适用限制可逐项查看。</p>
+              <h3>任务开始后，报告将在这里显示</h3>
+              <p>最终报告经过第二次引用核验；专利接口未启用时会明确披露。</p>
             </div>
+            <article id="report" class="report" hidden></article>
+            <section id="source-list" class="source-list" hidden><h3>本次读取的来源</h3><ol></ol></section>
+            <div class="job-actions"><button id="cancel-job" type="button" hidden>取消任务</button><span id="usage"></span></div>
           </div>
         </div>
       </section>

@@ -2,21 +2,22 @@
 
 当前仓库包含产品与技术方案、数据源实测记录、提示词验证、预算与安全规则，以及第一版零依赖网站骨架。
 
-## 预览网站骨架
+## 运行本地真实后端
 
 在项目目录运行：
 
 ```bash
-python3 -m http.server 4173 --directory web
+python3 server.py
 ```
 
-然后打开 `http://localhost:4173`。当前页面会明确提示“未连接检索”，不会用演示数据冒充真实调研结果。
+然后打开 `http://127.0.0.1:4173`。服务会从本地 `.env` 读取 DeepSeek 密钥，真实调用 PubMed、Europe PMC、Crossref 和 DeepSeek；EPO 未获批时会明确降级，不会冒充已经检索专利。
 
 ## 本地检查
 
 ```bash
 python3 tests/validate_web_skeleton.py
 python3 tests/validate_security_retention.py
+PYTHONPATH=. python3 tests/test_server_core.py
 shasum -a 256 -c 文件校验清单.sha256
 ```
 
@@ -26,7 +27,7 @@ shasum -a 256 -c 文件校验清单.sha256
 
 ## 当前边界
 
-- 已完成：静态页面骨架、提示词验证、论文数据源选择、官方来源白名单、DeepSeek 预算规则、域名／备份／创建者鉴权规则。
-- 待完成：EPO OPS 应用凭据与真实调用、网站后端与真实数据链、EdgeOne 真实部署、端到端内容与权限验收。
+- 已完成：网站页面、本地真实论文／模型后端、五主题端到端验收、提示词验证、论文数据源选择、官方来源白名单、DeepSeek 预算规则、域名／备份／创建者鉴权规则。
+- 待完成：EPO OPS 应用凭据与真实调用、创建者真实登录、EdgeOne 真实部署、部署后的权限／备份／移动端验收与公开发布决定。
 
 详细状态以 `项目状态.json` 和 `移交说明.md` 为准。

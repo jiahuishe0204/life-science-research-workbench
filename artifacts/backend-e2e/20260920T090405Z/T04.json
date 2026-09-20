@@ -1,0 +1,161 @@
+{
+  "topic": "单细胞测序在肿瘤微环境研究中的应用",
+  "job": {
+    "id": "yfVOtBdF_lQSHsBCbC9Q37wg",
+    "topic": "单细胞测序在肿瘤微环境研究中的应用",
+    "search_query": "single-cell sequencing in tumor microenvironment research",
+    "status": "completed",
+    "stage": 4,
+    "stages": [
+      "理解研究主题",
+      "检索与筛选资料",
+      "建立证据库",
+      "生成技术摘要",
+      "核验引用"
+    ],
+    "message": "技术摘要已完成引用核验",
+    "report": "# 单细胞测序在肿瘤微环境研究中的应用：证据综述\n\n> **证据范围说明**：本综述仅基于所提供文献的题录与摘要信息撰写。所有文献均为摘要级证据（abstract-only），未获取全文；标注为 open_full_text_signal 的文献亦未逐条核验全文内容。**专利检索尚未完成**，本综述不包含专利证据。所有实质性事实陈述均标注来源编号 [S#]。\n\n---\n\n## 一、范围（Scope）\n\n单细胞测序（single-cell sequencing, SCS）技术旨在克服 bulk 测序将信号在细胞群体间平均化的局限，从而在单细胞分辨率上解析肿瘤内异质性（intratumoral heterogeneity）与肿瘤微环境（TME）[S10]。其应用范围涵盖：\n\n- **免疫细胞表型图谱构建**：如乳腺癌 TME 中免疫细胞表型的多样性 [S1]。\n- **治疗响应与耐药机制解析**：如非小细胞肺癌（NSCLC）新辅助免疫治疗后的 TME 重塑 [S2]、胰腺导管腺癌（PDAC）化疗后的 TME 变化 [S6]。\n- **髓系靶向治疗机制研究**：如结肠癌中巨噬细胞与树突状细胞亚群的作用 [S3]。\n- **特定瘤种的组织结构刻画**：如高级别浆液性卵巢癌（HGSOC）[S4]、胃癌器官特异性转移 [S5]。\n- **泛癌层面的共性机制提炼**：如跨组织来源的保守分子程序 [S10]、免疫检查点抑制剂（ICI）治疗相关的免疫微环境重塑图谱 [S11]。\n- **与空间转录组学（ST）的互补整合**：如肺癌 TME 分析 [S7]、肿瘤免疫微环境的空间维度解析 [S12]。\n\n---\n\n## 二、当前技术路线（Current Technical Routes）\n\n### 2.1 单细胞 RNA 测序（scRNA-seq）\n\nscRNA-seq 是所提供证据中最核心的技术路线，能够实现细胞多样性与转录状态的高分辨率分析，但需要组织解离，因而丢失空间背景信息 [S7]。多项研究基于该技术开展：\n\n- 乳腺癌：对 45,000 个免疫细胞进行 scRNA-seq，并开发了预处理流程 SEQC 及贝叶斯聚类与归一化方法 Biscuit [S1]。\n- NSCLC：对约 92,000 个单细胞进行转录组刻画 [S2]。\n- 结肠癌：对免疫与基质细胞群体进行 scRNA-seq 分析 [S3]。\n- HGSOC：对 59,324 个单细胞进行深度 scRNA-seq [S4]。\n- 胃癌：对 10 份新鲜人组织样本（含原发灶与多器官转移灶）进行 scRNA-seq [S5]。\n- PDAC：对化疗前后新鲜人 PDAC 样本进行 scRNA-seq [S6]。\n\n### 2.2 配对单细胞 RNA 与 TCR 测序\n\n乳腺癌研究中，对额外 27,000 个 T 细胞进行了配对的单细胞 RNA 与 T 细胞受体（TCR）测序，揭示了 TCR 使用对表型多样性的组合效应 [S1]。\n\n### 2.3 空间转录组学（ST）\n\nST 保留组织架构，可提供 TME 内基因表达程序组织方式的见解，但目前尚无空间平台能在较大组织面积上同时实现全转录组覆盖与真正的单细胞分辨率 [S7]。ST 已被用于解析肿瘤免疫微环境中关键细胞亚群的空间分布与功能状态 [S12]。\n\n### 2.4 多组学整合与计算工具\n\n- 乳腺癌研究开发了 SEQC 与 Biscuit 以应对单细胞数据的计算挑战 [S1]。\n- COVID-19 mRNA 疫苗相关研究整合公共单细胞、bulk 与多组学数据集，使用 Seurat、CellChat 和 WGCNA 进行分析 [S8]。\n- 泛癌研究提及人工智能（AI）工具通过整合多组学数据预测药物响应与耐药机制 [S10]。\n- ICI 相关研究采用分层参考引导的深度表型分析框架 [S11]。\n- 机器学习算法与 ST 的深度整合被认为有助于克服 ST 的技术局限 [S12]。\n\n### 2.5 与 bulk 测序及组织学验证的结合\n\n胃癌研究使用组织学检测与 bulk 转录组数据集进行验证 [S5]；DLBCL 研究结合 DNA（n=934）与 RNA（n=524）测序，并以突变特征引导后续 scRNA-seq [S9]。\n\n---\n\n## 三、代表性发现（Representative Findings）\n\n### 3.1 免疫细胞表型的连续性扩张\n\n乳腺癌研究观察到，尽管正常与肿瘤组织驻留免疫细胞高度相似，但存在特异于 TME 的连续性表型扩张；结果支持 T 细胞连续激活模型，**与癌症中巨噬细胞极化模型不相符** [S1]。\n\n### 3.2 治疗诱导的 TME 重塑\n\n- **NSCLC**：治疗后所有患者均出现细胞毒性 T 细胞与 CD16+ NK 细胞扩增与活化、免疫抑制性 Treg 减少、记忆 CD8+ T 细胞向效应表型活化；组织驻留巨噬细胞扩增，肿瘤相关巨噬细胞（TAM）被重塑为中性而非抗肿瘤表型 [S2]。MPR 患者癌细胞表现出经 MHC-II 激活抗原呈递的特征；FCRL4+FCRL5+ 记忆 B 细胞与 CD16+CX3CR1+ 单核细胞的转录特征在 MPR 患者中富集，并是免疫治疗响应的预测因子；NMPR 患者癌细胞表现出雌激素代谢酶过表达与血清雌二醇升高 [S2]。研究还揭示了中性粒细胞异质性，发现衰老 CCL3+ 中性粒细胞亚群在 MPR 患者中减少，并被预测通过正反馈环路与 SPP1+ TAM 相互作用，导致治疗响应不佳 [S2]。\n- **PDAC**：化疗后样本中配体-受体相互作用减少，尤其是 CD8+ T 细胞上的 TIGIT 与其在癌细胞上的受体之间；TIGIT 被鉴定为 CD8+ T 细胞的主要抑制性检查点分子；结果提示化疗深刻影响 PDAC TME，并可能促进免疫治疗耐药 [S6]。\n\n### 3.3 髓系靶向治疗机制\n\n结肠癌研究中，抗 CSF1R 治疗优先耗竭具有炎症特征的巨噬细胞，但保留了在小鼠和人中表达促血管生成/致瘤基因的巨噬细胞群体；CD40 激动剂抗体优先激活 cDC 群体，并增加 Bhlhe40+ Th1 样细胞与 CD8+ 记忆 T 细胞 [S3]。\n\n### 3.4 瘤种特异性 TME 图谱\n\n- **HGSOC**：肿瘤细胞以 EMT 相关基因特征为特点，NOTCH1、SNAI2、TGFBR1 与 WNT11 组合被选为预测不良预后的基因 panel；表达 α-SMA、vimentin、COL3A、COL10A 与 MMP11 的基质癌相关成纤维细胞（mCAF）是 HGSOC 肿瘤中的优势 CAF，可在共培养体系中诱导卵巢癌细胞的 EMT 特性；C7-APOBEC3A M1 巨噬细胞、CD8+ TRM 与 TEX 细胞优先富集于早期肿瘤；TIGIT 在 CD8+ TEX 细胞上高表达，TIGIT 阻断可显著减少小鼠模型中的卵巢癌肿瘤生长 [S4]。\n- **胃癌**：发现与侵袭特征、腹腔内转移倾向、EMT 诱导的肿瘤干细胞表型或休眠样特征相关的恶性上皮亚群；前三类亚群相关基因高表达者在含 407 例样本的 GC 队列中总生存期更差；获得一个 20 基因的淋巴结来源耗竭 CD8+ T 细胞特征用于预测淋巴结转移；尽管抗 NKG2A（KLRC1）抗体尚未用于 GC 患者治疗甚至临床试验，研究提示多种细胞可能通过 HLA-E-KLRC1/KLRC2 相互作用参与其中 [S5]。\n- **DLBCL**：肿瘤直径与 CD58、STAT6、EBF1 突变发生率增加相关，与 EZB-like MYC+ 和 TP53Mut 等不良遗传亚型相关，并伴随致癌通路（JAK/STAT、BCR、PI3K、MYC）激活与免疫抑制性 TME；免疫检查点分子随 bulky 分期变化，CTLA-4、TIGIT、ICOS、CD28 表达与肿瘤直径负相关，而 CD70 与 4-1BBL 表达正相关；CD58 突变肿瘤呈现深度免疫荒漠化微环境，STAT6 突变肿瘤与成纤维细胞及 CD4+ T 细胞（尤其 Treg 与 Th1 样细胞）增加相关 [S9]。\n\n### 3.5 泛癌与跨瘤种规律\n\n- 泛癌层面，SCS 揭示超越组织来源的保守分子程序，如普遍性 T 细胞耗竭特征、复发性基质重编程，以及 EMT 与血管生成等基本通路 [S10]。\n- ICI 相关研究构建了来自 10 种癌症类型、241 例患者、441 份样本的纵向 scRNA-seq 图谱，定义了 77 种免疫与基质亚型，并解析出 4 种保守 TIME 亚型；约 40% 的肿瘤在治疗期间发生状态转换，且转换比基线状态更能预测结局；向炎症型或 B 细胞富集亚型的有利转换与改善的响应和生存相关，而持续或转向髓系主导则提示耐药；衍生出 59 基因特征，在 19 个独立队列的 1,383 例基线肿瘤中预测响应与生存 [S11]。\n\n### 3.6 疫苗相关的 TME 重塑（机制探索性）\n\nCOVID-19 mRNA 疫苗相关研究提出，IFN-I 活性在接种后第 3 天达峰、第 14 天恢复基线，伴随抗肿瘤免疫群体扩增与 M2 样巨噬细胞减少；提出双调控模型：mRNA 疫苗通过 IFN-I 介导的免疫招募驱动\"冷肿瘤转热\"，同时提升肿瘤内在 PD-L1 以放大 ICI 疗效 [S8]。**该研究基于公共数据集整合与小鼠模型验证，属于机制探索性证据 [S8]。**\n\n---\n\n## 四、局限性（Limitations）\n\n1. **空间信息丢失**：scRNA-seq 需要组织解离，因而丢失空间背景 [S7]。\n2. **空间平台的分辨率权衡**：目前尚无空间平台能在较大组织面积上同时实现全转录组覆盖与真正的单细胞分辨率 [S7]。\n3. **标准化与成本挑战**：泛癌研究提及标准化与成本方面的挑战 [S10]。\n4. **临床转化障碍**：技术、分析与后勤方面的障碍目前阻碍空间分辨特征进入常规诊断病理学 [S7]；ST 在临床实践中的应用也受关键技术挑战制约 [S12]。\n5. **样本量与队列规模有限**：多项研究的样本量较小，如乳腺癌 8 例癌组织 [S1]、NSCLC 3 例治疗前与 12 例治疗后患者 [S2]、HGSOC 7 例初治患者 [S4]、胃癌 6 例患者的 10 份样本 [S5]。\n6. **证据成熟度不一**：部分文献为叙述性综述 [S7][S12] 或预印本 [S8]，其结论强度与原始研究不同。\n\n---\n\n## 五、证据缺口（Evidence Gaps）\n\n1. **全文获取受限**：本综述所依据的全部文献仅获取到题录与摘要（bibliographic_and_abstract），未获取全文；标注为 open",
+    "error": null,
+    "usage": {
+      "input_tokens": 10985,
+      "output_tokens": 5207,
+      "estimated_cost_cny": 0.0636
+    },
+    "sources": [
+      {
+        "source_id": "S1",
+        "provider": "PubMed",
+        "title": "Single-Cell Map of Diverse Immune Phenotypes in the Breast Tumor Microenvironment.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29961579/",
+        "doi": "10.1016/j.cell.2018.05.060",
+        "published": "2018",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S10",
+        "provider": "Europe PMC",
+        "title": "Single-cell sequencing in pan-cancer research: Decoding heterogeneity, tumor microenvironment, and clinical translation.",
+        "url": "https://europepmc.org/article/MED/42679437",
+        "doi": "10.1016/j.seminoncol.2026.152540",
+        "published": "2026",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S11",
+        "provider": "Europe PMC",
+        "title": "Tumor immune microenvironment remodeling predicts response to checkpoint inhibitor therapy.",
+        "url": "https://europepmc.org/article/MED/42679812",
+        "doi": "10.1016/j.ccell.2026.08.007",
+        "published": "2026",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S12",
+        "provider": "Europe PMC",
+        "title": "Unveiling the role of spatial transcriptomics in the analysis of the tumor immune microenvironment (Review).",
+        "url": "https://europepmc.org/article/MED/42535370",
+        "doi": "10.3892/ijmm.2026.5940",
+        "published": "2026",
+        "read_scope": "open_full_text_signal",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S2",
+        "provider": "PubMed",
+        "title": "Tumor microenvironment remodeling after neoadjuvant immunotherapy in non-small cell lung cancer revealed by single-cell RNA sequencing.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36869384/",
+        "doi": "10.1038/s41586-022-05400-x",
+        "published": "2023",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 1
+      },
+      {
+        "source_id": "S3",
+        "provider": "PubMed",
+        "title": "Single-Cell Analyses Inform Mechanisms of Myeloid-Targeted Therapies in Colon Cancer.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32302573/",
+        "doi": "10.1016/j.cell.2020.03.048",
+        "published": "2020",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 1
+      },
+      {
+        "source_id": "S4",
+        "provider": "PubMed",
+        "title": "Single-Cell RNA Sequencing Reveals the Tissue Architecture in Human High-Grade Serous Ovarian Cancer.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35675036/",
+        "doi": "10.1158/1078-0432.CCR-22-0296",
+        "published": "2022",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 1
+      },
+      {
+        "source_id": "S5",
+        "provider": "PubMed",
+        "title": "Revealing the transcriptional heterogeneity of organ-specific metastasis in human gastric cancer using single-cell RNA Sequencing.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35184420/",
+        "doi": "10.1002/ctm2.730",
+        "published": "2022",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S6",
+        "provider": "PubMed",
+        "title": "Single-cell RNA sequencing reveals the effects of chemotherapy on human pancreatic adenocarcinoma and its tumor microenvironment.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36781852/",
+        "doi": "10.18637/jss.v033.i01",
+        "published": "2023",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S7",
+        "provider": "Europe PMC",
+        "title": "Single-cell and spatial transcriptomic technologies for lung cancer tumor microenvironment analysis.",
+        "url": "https://europepmc.org/article/MED/42727896",
+        "doi": "10.1016/j.bbcan.2026.189710",
+        "published": "2026",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S8",
+        "provider": "Europe PMC",
+        "title": "Single-cell sequencing-based elucidation of the molecular mechanisms by which the COVID-19 mRNA vaccine remodels the tumor microenvironment and sensitizes immune checkpoint inhibitors via the IFN-I pathway",
+        "url": "https://europepmc.org/article/PPR/PPR1322199",
+        "doi": "10.21203/rs.3.rs-10953445/v1",
+        "published": "2026",
+        "read_scope": "bibliographic_and_abstract",
+        "crossref_validated": 0
+      },
+      {
+        "source_id": "S9",
+        "provider": "Europe PMC",
+        "title": "Oncogenic Mutations and Tumor Microenvironment Alterations in Diffuse Large B-Cell Lymphoma With Bulky Disease.",
+        "url": "https://europepmc.org/article/MED/42702822",
+        "doi": "10.1002/cam4.72204",
+        "published": "2026",
+        "read_scope": "open_full_text_signal",
+        "crossref_validated": 0
+      }
+    ],
+    "patent_status": "EPO OPS 账号等待管理员审批，当前任务未执行专利检索",
+    "created_at": "2026-09-20T09:04:43.380653+00:00",
+    "updated_at": "2026-09-20T09:05:19.062207+00:00"
+  },
+  "checks": {
+    "ended": true,
+    "completed": true,
+    "source_count_valid": true,
+    "has_pubmed": true,
+    "has_europe_pmc": true,
+    "citation_ids_valid": true,
+    "patent_gap_disclosed": false,
+    "under_task_budget": true
+  },
+  "passed": false
+}
