@@ -36,7 +36,8 @@
     {"id": "paper_source_selection", "status": "runtime_verified", "evidence": ["论文数据源选择与实测.md", "artifacts/paper-source-eval/20260919T083041Z/summary.json", "tests/run_paper_source_eval.py", "tests/fixtures/paper-source-queries.json"]},
     {"id": "official_media_allowlist", "status": "policy_and_local_validation_complete", "evidence": ["官方来源白名单与使用规则.md", "config/official-source-allowlist.json", "tests/validate_official_source_allowlist.py", "tests/fixtures/official-source-url-cases.json"]},
     {"id": "deepseek_budget_limits", "status": "policy_and_usage_calibration_complete_balance_pending", "evidence": ["DeepSeek费用与限额.md", "config/deepseek-budget.json", "tests/validate_deepseek_budget.py", "artifacts/prompt-eval/20260919T154210/summary.json"]},
-    {"id": "domain_backup_admin_auth", "status": "policy_and_local_validation_complete_deployment_pending", "evidence": ["域名备份与创建者鉴权.md", "config/security-retention.json", "tests/validate_security_retention.py", ".env.example"]}
+    {"id": "domain_backup_admin_auth", "status": "policy_and_local_validation_complete_deployment_pending", "evidence": ["域名备份与创建者鉴权.md", "config/security-retention.json", "tests/validate_security_retention.py", ".env.example"]},
+    {"id": "website_skeleton", "status": "static_skeleton_browser_verified_backend_not_connected", "evidence": ["web/index.html", "web/creator.html", "web/styles.css", "web/app.js", "tests/validate_web_skeleton.py", "README.md"]}
   ],
   "pending_in_order": [
     "epo_ops_account_and_api_test",
@@ -51,7 +52,7 @@
     }
   ],
   "not_executed": [
-    "网站编码",
+    "网站后端与真实数据链接入",
     "EPO OPS 应用凭据创建与真实调用",
     "EdgeOne 项目创建与部署",
     "公开发布"

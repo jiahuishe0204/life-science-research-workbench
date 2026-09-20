@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从真实论文、专利与官方资料出发的生命科学科研调研工作台。" />
+    <title>生命科学科研调研工作台</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M14 9c12 0 20 10 20 22M34 9C22 9 14 19 14 31M10 17h28M10 31h28" /></svg>
+        </span>
+        <span>生命科学科研调研</span>
+      </a>
+      <nav aria-label="主要导航">
+        <a href="#how-it-works">工作方式</a>
+        <a href="#source-policy">资料边界</a>
+        <a class="creator-link" href="./creator.html">创建者入口</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span></span> 面向真实研发问题的资料工作台</div>
+        <h1 id="hero-title">从一个主题开始，<br /><em>把证据理清楚。</em></h1>
+        <p class="hero-copy">检索论文、专利和专业官方资料，形成可追溯的技术调研。重要结论必须对应真实来源，不用搜索摘要冒充原文。</p>
+
+        <form id="research-form" class="research-form" novalidate>
+          <label for="topic">你想调研什么？</label>
+          <div class="input-shell">
+            <textarea id="topic" name="topic" rows="3" maxlength="120" placeholder="例如：用于肿瘤早筛的液体活检技术路线" aria-describedby="topic-help topic-error"></textarea>
+            <div class="input-actions">
+              <span id="topic-help"><b id="topic-count">0</b>/120</span>
+              <button id="submit-button" type="submit">
+                <span>开始调研</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14-7-5 14-2.5-5.5L5 12Z" /></svg>
+              </button>
+            </div>
+          </div>
+          <p id="topic-error" class="field-error" role="alert"></p>
+          <div class="examples" aria-label="示例主题">
+            <span>试试：</span>
+            <button type="button" data-topic="CRISPR 分子诊断的主要技术路线">CRISPR 分子诊断</button>
+            <button type="button" data-topic="mRNA 药物的递送系统与关键限制">mRNA 递送</button>
+            <button type="button" data-topic="单细胞测序在肿瘤微环境研究中的应用">单细胞测序</button>
+          </div>
+        </form>
+
+        <div class="trust-row" aria-label="服务特点">
+          <span><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></svg>逐条核验引用</span>
+          <span><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></svg>论文、专利、官方资料</span>
+          <span><svg viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v11H5z" /></svg>任务默认保留 7 天</span>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace" hidden aria-live="polite">
+        <div class="workspace-head">
+          <div>
+            <span class="section-kicker">调研任务</span>
+            <h2 id="workspace-topic"></h2>
+          </div>
+          <span class="demo-badge">界面骨架 · 未连接检索</span>
+        </div>
+        <div class="notice">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5m0 4h.01M4 20h16L12 4 4 20Z" /></svg>
+          <p><strong>当前仅展示任务流程。</strong> 真实资料接口和模型任务尚未接入，本页面不会生成或伪造调研结论。</p>
+        </div>
+        <div class="workspace-grid">
+          <ol class="steps" aria-label="调研阶段">
+            <li class="active"><span>01</span><div><b>理解研究主题</b><small>等待后端接入</small></div></li>
+            <li><span>02</span><div><b>检索与筛选资料</b><small>论文 · 专利 · 官方来源</small></div></li>
+            <li><span>03</span><div><b>建立证据库</b><small>原文片段与读取范围</small></div></li>
+            <li><span>04</span><div><b>生成并核验</b><small>删除或修订不支持结论</small></div></li>
+          </ol>
+          <div class="output-panel">
+            <div class="output-tabs" role="tablist" aria-label="输出类型">
+              <button class="selected" role="tab" aria-selected="true">技术摘要 <span>默认</span></button>
+              <button role="tab" aria-selected="false" disabled>竞品／方案分析</button>
+              <button role="tab" aria-selected="false" disabled>科普内容</button>
+            </div>
+            <div class="empty-report">
+              <div class="empty-orbit"><span></span></div>
+              <h3>任务接口接入后，报告将在这里逐步显示</h3>
+              <p>草稿与已核验版本会明确区分；来源、证据片段和适用限制可逐项查看。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="method-section">
+        <div class="section-intro">
+          <span class="section-kicker">不是一次普通搜索</span>
+          <h2>先找证据，再写结论</h2>
+          <p>把检索、阅读范围、证据和核验状态分开保存，让每个结论都能回到它的资料出处。</p>
+        </div>
+        <div class="method-grid">
+          <article><span>01</span><h3>多源检索</h3><p>PubMed 主检索，Europe PMC 补充开放获取信息，Crossref 核对 DOI；专利接口待完成授权实测。</p></article>
+          <article><span>02</span><h3>证据提取</h3><p>保存实际读取的原文片段、条件与局限，不从标题或搜索摘要猜测研究结果。</p></article>
+          <article><span>03</span><h3>引用核验</h3><p>支持的结论保留；证据不足的结论修订、删除或明确标记为本次无法判断。</p></article>
+        </div>
+      </section>
+
+      <section id="source-policy" class="source-section">
+        <div>
+          <span class="section-kicker">资料边界</span>
+          <h2>可靠，不等于夸大</h2>
+        </div>
+        <ul>
+          <li><b>不把未检索到写成不存在</b><span>展示检索范围、时间和数据缺口。</span></li>
+          <li><b>不把摘要写成全文结论</b><span>明确记录实际读取范围。</span></li>
+          <li><b>不把企业声明写成独立证据</b><span>企业资料只用于适合的竞品语境。</span></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div><b>生命科学科研调研工作台</b><span>小范围试用版 · 结论不替代专业判断</span></div>
+      <p>真实密钥仅存服务端。任务与报告默认保留 7 天。</p>
+    </footer>
+  </body>
+</html>
