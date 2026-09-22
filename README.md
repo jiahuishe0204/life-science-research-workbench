@@ -17,9 +17,16 @@ python3 server.py
 ```bash
 python3 tests/validate_web_skeleton.py
 python3 tests/validate_security_retention.py
+python3 tests/validate_edgeone_scaffold.py
 PYTHONPATH=. python3 tests/test_server_core.py
 shasum -a 256 -c 文件校验清单.sha256
 ```
+
+## EdgeOne Makers
+
+仓库根目录的 `edgeone.json` 将静态输出目录固定为 `web/`，并把 Node.js Cloud Functions 最长执行时间设为 120 秒。`cloud-functions/api/health.js` 是第一个上线探针：它只返回环境变量是否已配置，不返回任何密钥值，并使用强一致读取验证 Blob 可读写。
+
+上线后检查 `/api/health`。只有返回 `ok: true` 且 `storage: "read_write"` 时，才继续迁移真实任务链。
 
 ## 密钥
 

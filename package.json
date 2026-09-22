@@ -1,0 +1,12 @@
+{
+  "name": "life-science-research-workbench",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@edgeone/pages-blob": "0.0.16"
+  }
+}
