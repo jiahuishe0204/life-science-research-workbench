@@ -13,21 +13,16 @@ function json(payload, status = 200) {
   });
 }
 
-function environmentValue(context, name) {
-  return context.env?.[name] ?? process.env[name] ?? "";
-}
-
 export async function onRequestGet(context) {
-  const required = [
-    "DEEPSEEK_API_KEY",
-    "ADMIN_PASSWORD_HASH",
-    "ADMIN_SESSION_SECRET",
-    "ADMIN_TOTP_SECRET",
-    "TASK_ACCESS_TOKEN_SECRET"
-  ];
-  const configured = Object.fromEntries(
-    required.map((name) => [name, Boolean(environmentValue(context, name))])
-  );
+  // Use direct property access so the Makers bundler can detect every secret.
+  // Only booleans are returned; secret values never leave the function.
+  const configured = {
+    DEEPSEEK_API_KEY: Boolean(context.env?.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEY),
+    ADMIN_PASSWORD_HASH: Boolean(context.env?.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD_HASH),
+    ADMIN_SESSION_SECRET: Boolean(context.env?.ADMIN_SESSION_SECRET || process.env.ADMIN_SESSION_SECRET),
+    ADMIN_TOTP_SECRET: Boolean(context.env?.ADMIN_TOTP_SECRET || process.env.ADMIN_TOTP_SECRET),
+    TASK_ACCESS_TOKEN_SECRET: Boolean(context.env?.TASK_ACCESS_TOKEN_SECRET || process.env.TASK_ACCESS_TOKEN_SECRET)
+  };
 
   try {
     const store = getStore({ name: STORE_NAME, consistency: "strong" });

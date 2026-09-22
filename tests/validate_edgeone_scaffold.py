@@ -22,6 +22,7 @@ require(edgeone["cloudFunctions"]["overseasRegions"] == ["ap-singapore"], "Use o
 require(package["dependencies"]["@edgeone/pages-blob"] == "0.0.16", "Blob SDK must be pinned")
 require("consistency: \"strong\"" in health, "Health storage check must use strong consistency")
 require("configured" in health and "DEEPSEEK_API_KEY" in health, "Health endpoint must report names only")
-require("process.env[name]" in health, "Local/runtime environment fallback is missing")
+require("context.env?.DEEPSEEK_API_KEY" in health, "Direct Makers context access is missing")
+require("process.env.DEEPSEEK_API_KEY" in health, "Direct Node runtime fallback is missing")
 
 print("edgeone scaffold validation: PASS")
