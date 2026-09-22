@@ -28,6 +28,8 @@ shasum -a 256 -c 文件校验清单.sha256
 
 上线后检查 `/api/health`。只有返回 `ok: true` 且 `storage: "read_write"` 时，才继续迁移真实任务链。
 
+线上任务 API 位于 `cloud-functions/api/[[default]].js`。流程被拆成检索式、论文检索／DOI 核对、报告生成、引用复核四步，每步通过 `/advance` 单独执行并将状态强一致保存到 Blob。创建任务前生产环境必须配置 `TASK_ACCESS_TOKEN_SECRET`；缺失时接口主动返回 503，不会使用不安全降级。
+
 ## 密钥
 
 把 `.env.example` 复制为 `.env` 后只在本机填写。不要把 `.env`、密钥、数据库、日志、用户输入或备份提交到 GitHub。生产密钥只配置在部署平台的服务端环境变量中。

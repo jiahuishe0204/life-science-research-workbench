@@ -15,6 +15,8 @@ def require(condition, message):
 edgeone = json.loads((ROOT / "edgeone.json").read_text(encoding="utf-8"))
 package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
 health = (ROOT / "cloud-functions/api/health.js").read_text(encoding="utf-8")
+jobs = (ROOT / "cloud-functions/api/[[default]].js").read_text(encoding="utf-8")
+client = (ROOT / "web/app.js").read_text(encoding="utf-8")
 
 require(edgeone["outputDirectory"] == "./web", "Static output must remain web/")
 require(edgeone["cloudFunctions"]["nodejs"]["maxDuration"] == 120, "Cloud Function duration must be 120s")
@@ -24,5 +26,10 @@ require("consistency: \"strong\"" in health, "Health storage check must use stro
 require("configured" in health and "DEEPSEEK_API_KEY" in health, "Health endpoint must report names only")
 require("context.env?.DEEPSEEK_API_KEY" in health, "Direct Makers context access is missing")
 require("process.env.DEEPSEEK_API_KEY" in health, "Direct Node runtime fallback is missing")
+require("TASK_ACCESS_TOKEN_SECRET" in jobs and "createHmac" in jobs, "Anonymous task ownership is not signed")
+require("consistency: \"strong\"" in jobs, "Task state must use strong consistency")
+require("/advance" in client and "method: \"POST\"" in client, "Client does not advance staged cloud jobs")
+require("estimated_cost_cny >= 1" in jobs, "Per-task model cost hard stop is missing")
+require("EPO OPS" in jobs and "未执行专利检索" in jobs, "Patent retrieval gap is not disclosed")
 
 print("edgeone scaffold validation: PASS")

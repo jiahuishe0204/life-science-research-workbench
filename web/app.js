@@ -130,7 +130,15 @@ async function pollJob() {
     if (!response.ok) throw new Error("无法读取任务状态");
     const job = await response.json();
     workspace.hidden = false;
-    if (!renderJob(job)) pollTimer = window.setTimeout(pollJob, 1200);
+    if (!renderJob(job)) {
+      const advance = await fetch(`/api/research-jobs/${encodeURIComponent(activeJobId)}/advance`, { method: "POST" });
+      if (!advance.ok) {
+        const details = await advance.json().catch(() => ({}));
+        throw new Error(details.error || "无法继续调研步骤");
+      }
+      renderJob(await advance.json());
+      pollTimer = window.setTimeout(pollJob, 700);
+    }
   } catch (problem) {
     jobMessage.textContent = `${problem.message}，正在重试。`;
     pollTimer = window.setTimeout(pollJob, 3000);
