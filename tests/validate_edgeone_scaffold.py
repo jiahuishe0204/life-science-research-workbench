@@ -31,5 +31,6 @@ require("consistency: \"strong\"" in jobs, "Task state must use strong consisten
 require("/advance" in client and "method: \"POST\"" in client, "Client does not advance staged cloud jobs")
 require("estimated_cost_cny >= 1" in jobs, "Per-task model cost hard stop is missing")
 require("EPO OPS" in jobs and "未执行专利检索" in jobs, "Patent retrieval gap is not disclosed")
+require("const relaxed" in jobs and "ids = await search(relaxed)" in jobs, "PubMed relaxed-query fallback is missing")
 
 print("edgeone scaffold validation: PASS")

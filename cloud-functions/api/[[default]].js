@@ -154,11 +154,19 @@ function fallbackQuery(topic) {
 }
 
 async function pubmed(query) {
-  const searchUrl = new URL("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi");
-  searchUrl.search = new URLSearchParams({ db: "pubmed", term: query, retmax: "6", sort: "relevance", retmode: "json" });
-  const search = await fetch(searchUrl, { headers: { "User-Agent": "LifeScienceResearchWorkbench/0.2" } });
-  if (!search.ok) throw new Error(`PubMed 检索返回 ${search.status}`);
-  const ids = (await search.json()).esearchresult?.idlist || [];
+  async function search(term) {
+    const searchUrl = new URL("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi");
+    searchUrl.search = new URLSearchParams({ db: "pubmed", term, retmax: "6", sort: "relevance", retmode: "json" });
+    const result = await fetch(searchUrl, { headers: { "User-Agent": "LifeScienceResearchWorkbench/0.2" } });
+    if (!result.ok) throw new Error(`PubMed 检索返回 ${result.status}`);
+    return (await result.json()).esearchresult?.idlist || [];
+  }
+  let ids = await search(query);
+  if (!ids.length) {
+    const stop = new Set(["main", "technical", "routes", "route", "approaches", "current", "key", "limitations", "challenges", "and", "the", "of", "in"]);
+    const relaxed = (query.match(/[A-Za-z0-9+-]+/g) || []).filter((word) => !stop.has(word.toLowerCase())).join(" ");
+    if (relaxed && relaxed !== query) ids = await search(relaxed);
+  }
   if (!ids.length) return [];
   const summaryUrl = new URL("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi");
   summaryUrl.search = new URLSearchParams({ db: "pubmed", id: ids.join(","), retmode: "json" });
@@ -169,11 +177,18 @@ async function pubmed(query) {
     const row = data[id] || {};
     const doi = (row.articleids || []).find((item) => item.idtype === "doi")?.value || "";
     return {
-      provider: "PubMed", title: row.title || "Untitled", url: `https://pubmed.ncbi.nlm.nih.gov/${id}/`,
+      provider: "PubMed", title: cleanText(row.title || "Untitled"), url: `https://pubmed.ncbi.nlm.nih.gov/${id}/`,
       doi, abstract: "", published: row.pubdate || "", read_scope: "bibliographic_record",
       crossref_validated: false
     };
   });
+}
+
+function cleanText(value) {
+  return String(value)
+    .replace(/<[^>]*>/g, "")
+    .replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&")
+    .replaceAll("&quot;", "\"").replaceAll("&#39;", "'").replace(/\s+/g, " ").trim();
 }
 
 async function europePmc(query) {
@@ -185,7 +200,7 @@ async function europePmc(query) {
   return (data.resultList?.result || []).map((row) => {
     const id = row.pmid || row.pmcid || row.id || "";
     return {
-      provider: "Europe PMC", title: row.title || "Untitled",
+      provider: "Europe PMC", title: cleanText(row.title || "Untitled"),
       url: `https://europepmc.org/article/${row.source || "MED"}/${id}`,
       doi: row.doi || "", abstract: row.abstractText || "", published: String(row.pubYear || ""),
       read_scope: row.isOpenAccess === "Y" ? "abstract_and_open_access_signal" : "bibliographic_and_abstract",
