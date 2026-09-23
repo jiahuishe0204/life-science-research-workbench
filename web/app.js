@@ -118,7 +118,9 @@ function renderJob(job) {
       link.href = source.url; link.target = "_blank"; link.rel = "noopener noreferrer";
       link.textContent = `[${source.source_id}] ${source.title}`;
       const meta = document.createElement("span");
-      meta.textContent = `${source.provider} · ${source.published || "日期未知"} · ${source.read_scope}${source.crossref_validated ? " · DOI 已核对" : ""}`;
+      meta.textContent = source.read_scope === "official_directory_entry_only"
+        ? `${source.provider} · ${source.source_type} · 允许用途：${(source.allowed_uses||[]).join("、")} · 仅为官方入口，未读取页面内容`
+        : `${source.provider} · ${source.published || "日期未知"} · ${source.read_scope}${source.crossref_validated ? " · DOI 已核对" : ""}`;
       item.append(link, meta); list.append(item);
     });
   }

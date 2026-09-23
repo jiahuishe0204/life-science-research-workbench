@@ -1,5 +1,6 @@
 import { createHmac, randomBytes, randomUUID } from "node:crypto";
 import { getStore } from "@edgeone/pages-blob";
+import { classifyOfficialUrl, officialDirectoryEntries } from "../lib/official-sources.js";
 
 const STORE_NAME = "life-science-workbench";
 const SESSION_COOKIE = "lsrw_session";
@@ -258,7 +259,9 @@ async function validateCrossref(sources) {
 
 function evidence(job) {
   return job.sources.map((source) =>
-    `[${source.source_id}] ${source.title}\nProvider: ${source.provider}; Year: ${source.published || "unknown"}; DOI: ${source.doi || "none"}; Read scope: ${source.read_scope}\nAbstract: ${(source.abstract || "Abstract unavailable") .slice(0, 1800)}`
+    source.read_scope === "official_directory_entry_only"
+      ? `[${source.source_id}] ${source.title}\nProvider: ${source.provider}; Type: ${source.source_type}; Read scope: official directory entry only; Allowed uses: ${source.allowed_uses.join(", ")}; Limitation: ${source.limitations}\nContent evidence: NOT READ — do not infer factual claims from this entry.`
+      : `[${source.source_id}] ${source.title}\nProvider: ${source.provider}; Year: ${source.published || "unknown"}; DOI: ${source.doi || "none"}; Read scope: ${source.read_scope}\nAbstract: ${(source.abstract || "Abstract unavailable") .slice(0, 1800)}`
   ).join("\n\n");
 }
 
@@ -305,7 +308,10 @@ async function advanceJob(blob, owner, job, settings) {
         }
       }
       job.source_status = sourceStatus;
-      job.sources = mergeSources(pubmedRows, epmcRows);
+      const officialRows = officialDirectoryEntries(job.topic);
+      job.sources = [...mergeSources(pubmedRows, epmcRows).slice(0, SOURCE_LIMIT - officialRows.length), ...officialRows];
+      job.sources.forEach((source, index) => { source.source_id = `S${index + 1}`; });
+      job.source_status.official_sources = "directory_entries_only";
       if (!job.sources.length) throw new Error("论文接口未返回可用资料");
       job.stage = 2;
       job.message = sourceStatus.pubmed === "fallback_via_europe_pmc"
@@ -317,7 +323,7 @@ async function advanceJob(blob, owner, job, settings) {
       await validateCrossref(job.sources);
       job.source_status.crossref = "checked";
       const result = await deepseek(settings, [
-        { role: "system", content: "Write a conservative Chinese life-science research summary using only the supplied evidence. Cite every material factual claim with [S#]. Never invent papers, numbers, efficacy, approval status, patent results or full-text access. Explicitly distinguish bibliographic-only and abstract evidence. State that EPO patent retrieval is pending. Output Markdown." },
+          { role: "system", content: "Write a conservative Chinese life-science research summary using only the supplied evidence. Cite every material factual claim with [S#]. Never invent papers, numbers, efficacy, approval status, patent results or full-text access. Official directory entries marked NOT READ may only be listed as follow-up locations and must never support factual claims. Explicitly distinguish bibliographic-only and abstract evidence. State that EPO patent retrieval is pending. Output Markdown." },
         { role: "user", content: `Topic: ${job.topic}\nSearch query: ${job.search_query}\nRetrieval status: ${JSON.stringify(job.source_status)}\n\nEvidence:\n${evidence(job)}\n\nWrite: scope, current technical routes, representative findings, limitations, evidence gaps, and a source list. If PubMed used fallback_via_europe_pmc, disclose that the records are PubMed-indexed but were retrieved through Europe PMC rather than direct NCBI access.` }
       ], 2200);
       job.draft = result.text;
@@ -383,6 +389,12 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
   try {
+    if (path === "/api/official-sources/classify" && context.request.method === "GET") {
+      const initialUrl = url.searchParams.get("url") || ""; const finalUrl = url.searchParams.get("final_url") || initialUrl;
+      const initial = classifyOfficialUrl(initialUrl); const final = classifyOfficialUrl(finalUrl);
+      if (!initial || !final) return response({ allowed: false, error: "网址或重定向目标不在官方来源白名单" }, 400);
+      return response({ allowed: true, initial, final, redirect_revalidated: finalUrl !== initialUrl });
+    }
     if (path === "/api/research-jobs" && context.request.method === "POST") {
       return await createJob(context, blob, settings);
     }
