@@ -14,7 +14,7 @@
     {
       "id": "edgeone_retrieval_revalidation",
       "priority": 1,
-      "status": "deployed",
+      "status": "runtime_verified",
       "depends_on": [],
       "acceptance": [
         "health endpoint reports ok and read_write",
@@ -22,8 +22,7 @@
         "Europe PMC and Crossref complete",
         "one report completes with valid source identifiers",
         "anonymous isolation and cancellation pass"
-      ],
-      "blocker": "A fresh time-limited EdgeOne preview URL is required to resume the saved job"
+      ]
     },
     {
       "id": "creator_authentication",

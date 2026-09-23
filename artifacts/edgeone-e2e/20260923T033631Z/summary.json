@@ -1,0 +1,41 @@
+{
+  "tested_at": "2026-09-23T03:36:31Z",
+  "environment": "EdgeOne Makers production preview deployment",
+  "deployment_url": "https://life-science-research-workbench-dpa7otiulh35.edgeone.cool",
+  "health": {
+    "ok": true,
+    "storage": "read_write",
+    "deepseek_configured": true,
+    "task_access_secret_configured": true
+  },
+  "resumed_job": {
+    "id": "9210841208a54966940f92cafcfc2d7b",
+    "topic": "CRISPR分子诊断的主要技术路线与关键限制",
+    "status": "completed",
+    "source_count": 8,
+    "source_status": {
+      "pubmed": "fallback_via_europe_pmc",
+      "europe_pmc": "direct",
+      "crossref": "checked"
+    },
+    "pubmed_indexed_via_fallback_count": 6,
+    "europe_pmc_count": 2,
+    "crossref_validated_count": 4,
+    "report_discloses_retrieval_fallback": true,
+    "report_discloses_epo_pending": true,
+    "input_tokens": 7802,
+    "output_tokens": 4411,
+    "estimated_cost_cny": 0.050892
+  },
+  "access_isolation": {
+    "unrelated_session_http_status": 404,
+    "passed": true
+  },
+  "cancellation": {
+    "job_id": "d8089c88d02b44e0a66d214f207a1715",
+    "final_status": "cancelled",
+    "estimated_cost_cny": 0,
+    "passed": true
+  },
+  "result": "passed_with_disclosed_pubmed_fallback"
+}
