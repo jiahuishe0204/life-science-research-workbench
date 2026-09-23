@@ -1,4 +1,4 @@
-import { createHmac, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from "node:crypto";
 import { getStore } from "@edgeone/pages-blob";
 import { argon2id } from "@noble/hashes/argon2.js";
 import { utf8ToBytes } from "@noble/hashes/utils.js";
@@ -73,6 +73,41 @@ async function activeSession(request, blob, secret) {
   if (record.revoked_at || now - record.last_active_at > IDLE_MS || now - record.created_at > ABSOLUTE_MS) { await blob.setJSON(key, { ...record, revoked_at: now }); return null; }
   record.last_active_at = now; await blob.setJSON(key, record); return { id, key, record };
 }
+async function creatorJobs(blob) {
+  const listed = await blob.list({ prefix: "jobs/", limit: 1000, consistency: "strong" });
+  const jobs = [];
+  for (const item of listed.blobs || []) {
+    const job = await blob.get(item.key, { type: "json", consistency: "strong" });
+    if (job?.id && job?.created_at) jobs.push(job);
+  }
+  return jobs;
+}
+function exportJob(job) {
+  return {
+    id: String(job.id), topic: String(job.topic || ""), status: String(job.status || "unknown"),
+    search_query: job.search_query || null, report: job.report || null, error: job.error || null,
+    usage: job.usage || {}, source_status: job.source_status || {},
+    sources: (job.sources || []).map(({ abstract, ...source }) => source),
+    created_at: job.created_at, updated_at: job.updated_at, expires_at: job.expires_at || null
+  };
+}
+function sha256(value) { return createHash("sha256").update(JSON.stringify(value)).digest("hex"); }
+function verifyCsrf(request, cfg, active) {
+  const token = request.headers.get("x-csrf-token") || "";
+  return safeText(hmac(cfg.sessionSecret, token), active.record.csrf_hash);
+}
+async function dashboardSummary(blob) {
+  const jobs = await creatorJobs(blob); const byStatus = {}; let cost = 0; let sources = 0;
+  for (const job of jobs) { byStatus[job.status || "unknown"] = (byStatus[job.status || "unknown"] || 0) + 1; cost += Number(job.usage?.estimated_cost_cny || 0); sources += (job.sources || []).length; }
+  return { authenticated: true, status: "creator_dashboard_ready", patent_integration: "pending_epo_approval", metrics: { total_jobs: jobs.length, by_status: byStatus, total_sources: sources, estimated_cost_cny: Number(cost.toFixed(6)) } };
+}
+async function exportData(blob, cfg, active) {
+  const records = (await creatorJobs(blob)).map(exportJob); const generated = new Date().toISOString();
+  const payload = { schema_version: "1.0.0", generated_at: generated, records };
+  const manifest = { algorithm: "sha256", record_count: records.length, record_hashes: records.map((record) => ({ id: record.id, sha256: sha256(record) })), payload_sha256: sha256(payload) };
+  await audit(blob, "data_export", { record_count: records.length, payload_sha256: manifest.payload_sha256 });
+  return json({ ...payload, manifest }, 200, { "Content-Disposition": `attachment; filename="life-science-workbench-export-${generated.slice(0, 10)}.json"` });
+}
 async function login(context, blob, cfg) {
   const key = accountRateKey(cfg.sessionSecret); const now = Date.now();
   let rate = await blob.get(key, { type: "json", consistency: "strong" }) || { failures: 0, window_started_at: now, locked_until: 0 };
@@ -94,8 +129,9 @@ export async function onRequest(context) {
     if (path === "/api/creator/login" && context.request.method === "POST") return await login(context, blob, cfg);
     const active = await activeSession(context.request, blob, cfg.sessionSecret); if (!active) return json({ error: "未登录或会话已过期" }, 401, { "Set-Cookie": cookie("", 0) });
     if (path === "/api/creator/session" && context.request.method === "GET") { const csrf = randomBytes(32).toString("base64url"); active.record.csrf_hash = hmac(cfg.sessionSecret, csrf); await blob.setJSON(active.key, active.record); return json({ authenticated: true, csrf, idle_timeout_minutes: 30, absolute_timeout_hours: 8 }); }
-    if (path === "/api/creator/logout" && context.request.method === "POST") { const csrf = context.request.headers.get("x-csrf-token") || ""; if (!safeText(hmac(cfg.sessionSecret, csrf), active.record.csrf_hash)) return json({ error: "CSRF 校验失败" }, 403); active.record.revoked_at = Date.now(); await blob.setJSON(active.key, active.record); await audit(blob, "logout", { session_key: hmac(cfg.sessionSecret, active.id) }); return json({ authenticated: false }, 200, { "Set-Cookie": cookie("", 0) }); }
-    if (path === "/api/creator/summary" && context.request.method === "GET") return json({ authenticated: true, status: "creator_dashboard_ready", patent_integration: "pending_epo_approval" });
+    if (path === "/api/creator/logout" && context.request.method === "POST") { if (!verifyCsrf(context.request, cfg, active)) return json({ error: "CSRF 校验失败" }, 403); active.record.revoked_at = Date.now(); await blob.setJSON(active.key, active.record); await audit(blob, "logout", { session_key: hmac(cfg.sessionSecret, active.id) }); return json({ authenticated: false }, 200, { "Set-Cookie": cookie("", 0) }); }
+    if (path === "/api/creator/summary" && context.request.method === "GET") return json(await dashboardSummary(blob));
+    if (path === "/api/creator/export" && context.request.method === "POST") { if (!verifyCsrf(context.request, cfg, active)) return json({ error: "CSRF 校验失败" }, 403); return exportData(blob, cfg, active); }
     return json({ error: "接口不存在" }, 404);
   } catch (error) { return json({ error: error instanceof Error ? error.message.slice(0, 200) : "服务器处理失败" }, 500); }
 }

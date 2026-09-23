@@ -29,8 +29,16 @@
         </div>
         <div id="dashboard-view" hidden>
           <h1>创建者控制台</h1>
-          <p>身份验证成功。统计、导出和备份功能将按路线图逐项启用。</p>
+          <p>身份验证成功。这里只显示汇总数据；导出文件需由创建者主动生成。</p>
           <div class="notice"><p><strong>当前状态</strong><br><span id="creator-status">正在读取……</span></p></div>
+          <dl class="creator-metrics" aria-label="调研任务汇总">
+            <div><dt>任务总数</dt><dd id="metric-jobs">—</dd></div>
+            <div><dt>完成任务</dt><dd id="metric-completed">—</dd></div>
+            <div><dt>来源记录</dt><dd id="metric-sources">—</dd></div>
+            <div><dt>估算费用</dt><dd id="metric-cost">—</dd></div>
+          </dl>
+          <button id="creator-export" type="button">导出安全数据副本</button>
+          <p id="export-status" class="export-status" role="status"></p>
           <button id="creator-logout" type="button">退出登录</button>
         </div>
         <a class="back-link" href="./index.html">← 返回调研首页</a>
