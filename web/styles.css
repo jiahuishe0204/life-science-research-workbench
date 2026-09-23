@@ -141,7 +141,12 @@ footer p { margin: 0; }
 .login-card h1 { margin: 10px 0; font: 600 34px/1.2 "Songti SC", serif; }
 .login-card > p { color: var(--muted); font-size: 14px; }
 .login-card .notice { margin: 24px 0; }
-.disabled-login { width: 100%; padding: 13px; border: 0; border-radius: 10px; background: #dbe0dc; color: #78847e; }
+.creator-form { display: grid; gap: 9px; margin-top: 24px; }
+.creator-form label { margin-top: 6px; color: var(--muted); font-size: 12px; }
+.creator-form input { width: 100%; box-sizing: border-box; border: 1px solid #c8d1cc; border-radius: 10px; padding: 12px; background: white; color: var(--ink); font-size: 16px; }
+.creator-form button, #creator-logout { width: 100%; margin-top: 10px; padding: 13px; border: 0; border-radius: 10px; background: var(--green); color: white; cursor: pointer; }
+.creator-form button:disabled { opacity: .55; cursor: wait; }
+.form-error { min-height: 20px; margin: 2px 0 0; color: #9b2929; font-size: 12px; }
 .back-link { display: block; margin-top: 20px; text-align: center; color: var(--green); font-size: 13px; text-decoration: none; }
 
 @media (max-width: 760px) {

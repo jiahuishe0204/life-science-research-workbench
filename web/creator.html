@@ -15,12 +15,27 @@
       </a>
       <section class="login-card">
         <span class="section-kicker">创建者专属</span>
-        <h1>运营面板访问验证</h1>
-        <p>后台身份服务尚未接入。本页仅确认入口和安全提示，不接收或保存口令。</p>
-        <div class="notice"><p><strong>当前不可登录。</strong> 接入后将使用独立口令、TOTP 二次验证和最长 8 小时的安全会话。</p></div>
-        <button class="disabled-login" type="button" disabled>等待身份服务接入</button>
+        <div id="login-view">
+          <h1>运营面板访问验证</h1>
+          <p>请输入创建者口令和认证器中的六位动态验证码。</p>
+          <form id="creator-login" class="creator-form">
+            <label for="creator-password">创建者口令</label>
+            <input id="creator-password" name="password" type="password" minlength="12" maxlength="256" autocomplete="current-password" required />
+            <label for="creator-totp">动态验证码</label>
+            <input id="creator-totp" name="totp" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required />
+            <p id="creator-error" class="form-error" role="alert"></p>
+            <button type="submit">安全登录</button>
+          </form>
+        </div>
+        <div id="dashboard-view" hidden>
+          <h1>创建者控制台</h1>
+          <p>身份验证成功。统计、导出和备份功能将按路线图逐项启用。</p>
+          <div class="notice"><p><strong>当前状态</strong><br><span id="creator-status">正在读取……</span></p></div>
+          <button id="creator-logout" type="button">退出登录</button>
+        </div>
         <a class="back-link" href="./index.html">← 返回调研首页</a>
       </section>
     </main>
+    <script src="./creator.js" defer></script>
   </body>
 </html>

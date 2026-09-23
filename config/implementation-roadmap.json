@@ -27,7 +27,7 @@
     {
       "id": "creator_authentication",
       "priority": 2,
-      "status": "in_progress",
+      "status": "code_verified",
       "depends_on": [],
       "acceptance": [
         "Argon2id password verification uses server-only hash",

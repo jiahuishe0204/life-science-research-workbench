@@ -19,6 +19,7 @@ python3 tests/validate_web_skeleton.py
 python3 tests/validate_security_retention.py
 python3 tests/validate_edgeone_scaffold.py
 python3 tests/validate_implementation_roadmap.py
+python3 tests/validate_creator_auth.py
 PYTHONPATH=. python3 tests/test_server_core.py
 shasum -a 256 -c 文件校验清单.sha256
 ```
