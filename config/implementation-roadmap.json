@@ -68,8 +68,9 @@
     {
       "id": "official_source_runtime_integration",
       "priority": 5,
-      "status": "in_progress",
+      "status": "runtime_verified",
       "depends_on": [],
+      "evidence": "artifacts/official-source-runtime/20260923T123339Z/summary.json",
       "acceptance": [
         "only allowlisted official domains are accepted",
         "source type and permitted use are displayed",

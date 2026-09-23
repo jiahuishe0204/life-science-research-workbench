@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "tested_at": "2026-09-23T12:33:39Z",
+  "deployment": "life-science-research-workbench-dp27hmkcchiq.edgeone.cool",
+  "deployed_commit": "c595dcc",
+  "result": "pass",
+  "url_checks": {
+    "who_positive": 200,
+    "mhra_path_positive": 200,
+    "spoofed_domain_negative": 400,
+    "http_protocol_negative": 400,
+    "gov_uk_outside_mhra_negative": 400,
+    "allowlisted_redirect_revalidated": 200,
+    "disallowed_redirect_target_negative": 400
+  },
+  "research_job_integration": {
+    "create_status": 202,
+    "advance_statuses": [200, 200],
+    "official_source_status": "directory_entries_only",
+    "official_entry_count": 5,
+    "all_entries_have_source_type": true,
+    "all_entries_have_allowed_uses": true,
+    "all_entries_have_limitations": true,
+    "all_entries_disclose_content_not_read": true,
+    "test_job_cancel_status": 202
+  },
+  "secrets_recorded": false,
+  "research_content_recorded": false
+}
