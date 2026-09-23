@@ -14,6 +14,8 @@ require("verifyTotp" in backend and 'createHmac("sha1"' in backend,"TOTP verific
 require("HttpOnly; Secure; SameSite=Strict" in backend,"Cookie flags are incomplete")
 require("IDLE_MS = 30" in backend and "ABSOLUTE_MS = 8" in backend,"Session timeouts are incomplete")
 require("MAX_FAILURES = 5" in backend and "LOCKOUT_MS = 15" in backend,"Login lockout is incomplete")
+require('accountRateKey' in backend and '"creator-account"' in backend,"Creator lockout must use an account-stable key behind proxies")
+require('rate.locked_until > now ? 429 : 401' in backend,"The threshold attempt must activate lockout immediately")
 require("x-csrf-token" in backend and "csrf_hash" in backend,"CSRF protection is missing")
 require("secretBytes" in backend and "typeof secret.value" in backend and "typeof secret.getValue" in backend,"EdgeOne secret wrappers are not normalized")
 require("process.env.ADMIN_SESSION_SECRET || context.env?.ADMIN_SESSION_SECRET" in backend,"Node environment string must take precedence")

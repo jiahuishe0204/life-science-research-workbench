@@ -61,7 +61,7 @@ function base32(value) {
 }
 function totpAt(secret, counter) { const message = Buffer.alloc(8); message.writeBigUInt64BE(BigInt(counter)); const digest = createHmac("sha1", base32(secret)).update(message).digest(); const offset = digest.at(-1) & 15; return String((digest.readUInt32BE(offset) & 0x7fffffff) % 1_000_000).padStart(6, "0"); }
 function verifyTotp(code, secret, now) { if (!/^\d{6}$/.test(code)) return false; const counter = Math.floor(now / 30_000); return [-1, 0, 1].some((delta) => safeText(code, totpAt(secret, counter + delta))); }
-function clientKey(request, secret) { const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("cf-connecting-ip") || "unknown"; return hmac(secret, `creator|${ip}`); }
+function accountRateKey(secret) { return `creator/rate/${hmac(secret, "creator-account")}.json`; }
 async function audit(blob, event, details = {}) { const timestamp = new Date().toISOString(); await blob.setJSON(`creator/audit/${timestamp.slice(0, 10)}/${timestamp}-${randomUUID()}.json`, { event, timestamp, ...details }); }
 async function body(request) { if (Number(request.headers.get("content-length") || 0) > 4096) throw new Error("请求过大"); return request.json(); }
 
@@ -74,13 +74,13 @@ async function activeSession(request, blob, secret) {
   record.last_active_at = now; await blob.setJSON(key, record); return { id, key, record };
 }
 async function login(context, blob, cfg) {
-  const client = clientKey(context.request, cfg.sessionSecret); const key = `creator/rate/${client}.json`; const now = Date.now();
+  const key = accountRateKey(cfg.sessionSecret); const now = Date.now();
   let rate = await blob.get(key, { type: "json", consistency: "strong" }) || { failures: 0, window_started_at: now, locked_until: 0 };
   if (rate.locked_until > now) return json({ error: "登录尝试过多，请稍后重试" }, 429, { "Retry-After": String(Math.ceil((rate.locked_until - now) / 1000)) });
   if (now - rate.window_started_at > FAILURE_WINDOW_MS) rate = { failures: 0, window_started_at: now, locked_until: 0 };
   const input = await body(context.request); const password = String(input.password || ""); const code = String(input.totp || "").trim(); let valid = false;
   if (password.length >= 12 && password.length <= 256) { try { valid = verifyPassword(password, cfg.passwordHash) && verifyTotp(code, cfg.totpSecret, now); } catch { valid = false; } }
-  if (!valid) { rate.failures += 1; if (rate.failures >= MAX_FAILURES) rate.locked_until = now + LOCKOUT_MS; await blob.setJSON(key, rate); await audit(blob, "login_failure", { client_key: client, locked: rate.locked_until > now }); return json({ error: "密码或动态验证码不正确" }, 401); }
+  if (!valid) { rate.failures += 1; if (rate.failures >= MAX_FAILURES) rate.locked_until = now + LOCKOUT_MS; await blob.setJSON(key, rate); await audit(blob, "login_failure", { account_rate_key: hmac(cfg.sessionSecret, "creator-account"), locked: rate.locked_until > now }); return json({ error: "密码或动态验证码不正确" }, rate.locked_until > now ? 429 : 401, rate.locked_until > now ? { "Retry-After": String(Math.ceil((rate.locked_until - now) / 1000)) } : {}); }
   await blob.setJSON(key, { failures: 0, window_started_at: now, locked_until: 0 });
   const id = randomBytes(32).toString("base64url"); const csrf = randomBytes(32).toString("base64url"); const record = { created_at: now, last_active_at: now, csrf_hash: hmac(cfg.sessionSecret, csrf), revoked_at: null };
   await blob.setJSON(sessionKey(cfg.sessionSecret, id), record); await audit(blob, "login_success", { session_key: hmac(cfg.sessionSecret, id) });
