@@ -144,15 +144,20 @@ footer p { margin: 0; }
 .creator-form { display: grid; gap: 9px; margin-top: 24px; }
 .creator-form label { margin-top: 6px; color: var(--muted); font-size: 12px; }
 .creator-form input { width: 100%; box-sizing: border-box; border: 1px solid #c8d1cc; border-radius: 10px; padding: 12px; background: white; color: var(--ink); font-size: 16px; }
-.creator-form button, #creator-logout, #creator-export { width: 100%; margin-top: 10px; padding: 13px; border: 0; border-radius: 10px; background: var(--green); color: white; cursor: pointer; }
+.creator-form button, #creator-logout, #creator-export, #creator-restore { width: 100%; margin-top: 10px; padding: 13px; border: 0; border-radius: 10px; background: var(--green); color: white; cursor: pointer; }
 .creator-form button:disabled { opacity: .55; cursor: wait; }
 .creator-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
 .creator-metrics div { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: white; }
 .creator-metrics dt { color: var(--muted); font-size: 11px; }
 .creator-metrics dd { margin: 2px 0 0; color: var(--green-dark); font-size: 20px; font-weight: 750; }
-#creator-export { background: var(--green-dark); }
-#creator-export:disabled { opacity: .55; cursor: wait; }
+#creator-export, #creator-restore { background: var(--green-dark); }
+#creator-export:disabled, #creator-restore:disabled { opacity: .55; cursor: wait; }
 .export-status { min-height: 20px; margin: 6px 0; color: var(--muted); font-size: 11px; }
+.backup-panel { margin: 18px 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #f7f7f2; }
+.backup-panel h2 { margin: 0 0 4px; font: 650 18px/1.3 "Songti SC",serif; }
+.backup-panel p { margin: 0 0 12px; color: var(--muted); font-size: 11px; }
+.backup-panel label { display: block; margin-top: 10px; color: var(--muted); font-size: 11px; }
+.backup-panel input { width: 100%; margin-top: 4px; padding: 10px; border: 1px solid #c8d1cc; border-radius: 8px; background: white; }
 .form-error { min-height: 20px; margin: 2px 0 0; color: #9b2929; font-size: 12px; }
 .back-link { display: block; margin-top: 20px; text-align: center; color: var(--green); font-size: 13px; text-decoration: none; }
 

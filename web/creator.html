@@ -37,7 +37,16 @@
             <div><dt>来源记录</dt><dd id="metric-sources">—</dd></div>
             <div><dt>估算费用</dt><dd id="metric-cost">—</dd></div>
           </dl>
-          <button id="creator-export" type="button">导出安全数据副本</button>
+          <section class="backup-panel" aria-labelledby="backup-title">
+            <h2 id="backup-title">加密备份与恢复演练</h2>
+            <p>口令只在当前浏览器内用于 AES-256-GCM 加密，不会上传或保存。</p>
+            <label for="backup-passphrase">备份口令（至少 16 位）</label>
+            <input id="backup-passphrase" type="password" minlength="16" maxlength="256" autocomplete="new-password" />
+            <button id="creator-export" type="button">生成加密备份</button>
+            <label for="backup-file">选择加密备份进行恢复校验</label>
+            <input id="backup-file" type="file" accept="application/json,.json" />
+            <button id="creator-restore" type="button">在隔离内存中验证备份</button>
+          </section>
           <p id="export-status" class="export-status" role="status"></p>
           <button id="creator-logout" type="button">退出登录</button>
         </div>

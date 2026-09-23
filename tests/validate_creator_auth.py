@@ -30,4 +30,8 @@ require('createHash("sha256")' in backend and 'data_export' in backend,"Export h
 require('passwordHash' not in backend[backend.find('function exportJob'):backend.find('function sha256')],"Export must not include credential material")
 require('id="creator-export"' in page and 'id="metric-jobs"' in page,"Creator dashboard controls are incomplete")
 require('URL.createObjectURL' in frontend and '/api/creator/export' in frontend,"Browser export download is missing")
+require('AES-GCM' in frontend and 'PBKDF2' in frontend and 'iterations:310000' in frontend,"Backup encryption parameters are incomplete")
+require('crypto.getRandomValues' in frontend and 'key_bits:256' in frontend,"Backup salt, IV or key strength is incomplete")
+require('decryptBackup' in frontend and 'verifyBackup' in frontend and '25*1024*1024' in frontend,"Isolated restore verification is incomplete")
+require('id="backup-passphrase"' in page and 'id="backup-file"' in page and 'id="creator-restore"' in page,"Backup and restore controls are incomplete")
 print("creator auth validation: PASS")
