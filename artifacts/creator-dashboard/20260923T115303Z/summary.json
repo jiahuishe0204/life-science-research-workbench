@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "tested_at": "2026-09-23T11:53:03Z",
+  "deployment": "life-science-research-workbench-dpajgw4n1nb4.edgeone.cool",
+  "deployed_commit": "4c2a714",
+  "secrets_recorded": false,
+  "research_content_recorded": false,
+  "result": "pass",
+  "checks": {
+    "creator_login": { "status": 200, "result": "pass" },
+    "session": { "status": 200, "result": "pass" },
+    "aggregate_summary": { "status": 200, "required_metrics_present": true, "result": "pass" },
+    "invalid_csrf_export": { "status": 403, "result": "pass" },
+    "authorized_export": { "status": 200, "result": "pass" },
+    "manifest_record_count": { "matches": true, "result": "pass" },
+    "manifest_record_hashes": { "algorithm": "sha256", "all_match": true, "result": "pass" },
+    "manifest_payload_hash": { "algorithm": "sha256", "matches": true, "result": "pass" },
+    "forbidden_credential_fields": { "present": false, "result": "pass" },
+    "logout": { "status": 200, "result": "pass" }
+  }
+}
