@@ -92,7 +92,12 @@ function renderJob(job) {
   workspaceTopic.textContent = job.topic;
   jobStatus.textContent = ({ queued: "排队中", running: "调研进行中", completed: "已核验", partial: "部分完成", failed: "未完成", cancelled: "已取消" })[job.status] || job.status;
   jobStatus.className = `demo-badge status-${job.status}`;
-  jobMessage.textContent = job.error ? `${job.message}：${job.error}` : `${job.message}。${job.patent_status}`;
+  const sourceNotice = job.source_status?.pubmed === "fallback_via_europe_pmc"
+    ? "PubMed 直连不可用，本次通过 Europe PMC 的 MED 备用通道读取 PubMed 索引记录。"
+    : "";
+  jobMessage.textContent = job.error
+    ? `${job.message}：${job.error}`
+    : `${job.message}。${sourceNotice}${job.patent_status}`;
   jobSteps.forEach((step, index) => {
     step.classList.toggle("active", index === job.stage && job.status === "running");
     step.classList.toggle("done", index < job.stage || job.status === "completed");

@@ -85,6 +85,7 @@ function publicJob(job) {
     report: job.report || null,
     error: job.error || null,
     usage: job.usage,
+    source_status: job.source_status || {},
     sources: (job.sources || []).map(({ abstract, ...source }) => source),
     patent_status: "EPO OPS 账号等待管理员审批，当前任务未执行专利检索",
     created_at: job.created_at,
@@ -184,6 +185,22 @@ async function pubmed(query) {
   });
 }
 
+async function pubmedViaEuropePmc(query) {
+  const url = new URL("https://www.ebi.ac.uk/europepmc/webservices/rest/search");
+  url.search = new URLSearchParams({ query: `(${query}) AND SRC:MED`, format: "json", pageSize: "6", resultType: "core" });
+  const result = await fetch(url, { headers: { "User-Agent": "LifeScienceResearchWorkbench/0.3" } });
+  if (!result.ok) throw new Error(`PubMed 备用通道返回 ${result.status}`);
+  const data = await result.json();
+  return (data.resultList?.result || []).filter((row) => row.pmid).map((row) => ({
+    provider: "PubMed（经 Europe PMC 备用通道）",
+    title: cleanText(row.title || "Untitled"),
+    url: `https://pubmed.ncbi.nlm.nih.gov/${row.pmid}/`,
+    doi: row.doi || "", abstract: row.abstractText || "", published: String(row.pubYear || ""),
+    read_scope: row.abstractText ? "bibliographic_and_abstract" : "bibliographic_record",
+    retrieval_path: "europe_pmc_med_mirror", crossref_validated: false
+  }));
+}
+
 function cleanText(value) {
   return String(value)
     .replace(/<[^>]*>/g, "")
@@ -272,19 +289,36 @@ async function advanceJob(blob, owner, job, settings) {
       job.message = "正在检索 PubMed 与 Europe PMC";
       await writeJob(blob, owner, job);
       const results = await Promise.allSettled([pubmed(job.search_query), europePmc(job.search_query)]);
-      const pubmedRows = results[0].status === "fulfilled" ? results[0].value : [];
+      let pubmedRows = results[0].status === "fulfilled" ? results[0].value : [];
       const epmcRows = results[1].status === "fulfilled" ? results[1].value : [];
+      const sourceStatus = {
+        pubmed: pubmedRows.length ? "direct" : "unavailable",
+        europe_pmc: results[1].status === "fulfilled" ? "direct" : "unavailable",
+        crossref: "pending"
+      };
+      if (!pubmedRows.length) {
+        try {
+          pubmedRows = await pubmedViaEuropePmc(job.search_query);
+          if (pubmedRows.length) sourceStatus.pubmed = "fallback_via_europe_pmc";
+        } catch {
+          // Keep Europe PMC results usable while exposing the failed PubMed path.
+        }
+      }
+      job.source_status = sourceStatus;
       job.sources = mergeSources(pubmedRows, epmcRows);
       if (!job.sources.length) throw new Error("论文接口未返回可用资料");
       job.stage = 2;
-      job.message = `已保存 ${job.sources.length} 条去重资料`;
+      job.message = sourceStatus.pubmed === "fallback_via_europe_pmc"
+        ? `已保存 ${job.sources.length} 条去重资料；PubMed 直连失败，已使用 Europe PMC 的 MED 备用通道`
+        : `已保存 ${job.sources.length} 条去重资料`;
     } else if (job.stage === 2) {
       job.message = "正在核对 DOI 并生成技术摘要";
       await writeJob(blob, owner, job);
       await validateCrossref(job.sources);
+      job.source_status.crossref = "checked";
       const result = await deepseek(settings, [
         { role: "system", content: "Write a conservative Chinese life-science research summary using only the supplied evidence. Cite every material factual claim with [S#]. Never invent papers, numbers, efficacy, approval status, patent results or full-text access. Explicitly distinguish bibliographic-only and abstract evidence. State that EPO patent retrieval is pending. Output Markdown." },
-        { role: "user", content: `Topic: ${job.topic}\nSearch query: ${job.search_query}\n\nEvidence:\n${evidence(job)}\n\nWrite: scope, current technical routes, representative findings, limitations, evidence gaps, and a source list.` }
+        { role: "user", content: `Topic: ${job.topic}\nSearch query: ${job.search_query}\nRetrieval status: ${JSON.stringify(job.source_status)}\n\nEvidence:\n${evidence(job)}\n\nWrite: scope, current technical routes, representative findings, limitations, evidence gaps, and a source list. If PubMed used fallback_via_europe_pmc, disclose that the records are PubMed-indexed but were retrieved through Europe PMC rather than direct NCBI access.` }
       ], 2200);
       job.draft = result.text;
       addUsage(job, result.usage);
@@ -334,7 +368,7 @@ async function createJob(context, blob, settings) {
   const timestamp = new Date().toISOString();
   const job = {
     id: randomUUID().replaceAll("-", ""), topic, status: "queued", stage: 0,
-    message: "任务已创建", search_query: null, sources: [], report: null, error: null,
+    message: "任务已创建", search_query: null, source_status: {}, sources: [], report: null, error: null,
     cancel_requested: false, usage: { input_tokens: 0, output_tokens: 0, estimated_cost_cny: 0 },
     created_at: timestamp, updated_at: timestamp, expires_at: new Date(Date.now() + 7 * 86400_000).toISOString()
   };

@@ -32,5 +32,7 @@ require("/advance" in client and "method: \"POST\"" in client, "Client does not 
 require("estimated_cost_cny >= 1" in jobs, "Per-task model cost hard stop is missing")
 require("EPO OPS" in jobs and "未执行专利检索" in jobs, "Patent retrieval gap is not disclosed")
 require("const relaxed" in jobs and "ids = await search(relaxed)" in jobs, "PubMed relaxed-query fallback is missing")
+require("pubmedViaEuropePmc" in jobs and "fallback_via_europe_pmc" in jobs, "Transparent PubMed mirror fallback is missing")
+require("source_status" in jobs and "source_status" in client, "Retrieval-path status is not exposed to users")
 
 print("edgeone scaffold validation: PASS")
