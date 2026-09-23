@@ -18,6 +18,7 @@ python3 server.py
 python3 tests/validate_web_skeleton.py
 python3 tests/validate_security_retention.py
 python3 tests/validate_edgeone_scaffold.py
+python3 tests/validate_implementation_roadmap.py
 PYTHONPATH=. python3 tests/test_server_core.py
 shasum -a 256 -c 文件校验清单.sha256
 ```
@@ -39,4 +40,4 @@ shasum -a 256 -c 文件校验清单.sha256
 - 已完成：网站页面、本地真实论文／模型后端、五主题端到端验收、提示词验证、论文数据源选择、官方来源白名单、DeepSeek 预算规则、域名／备份／创建者鉴权规则。
 - 待完成：EPO OPS 应用凭据与真实调用、创建者真实登录、EdgeOne 真实部署、部署后的权限／备份／移动端验收与公开发布决定。
 
-详细状态以 `项目状态.json` 和 `移交说明.md` 为准。
+详细状态以 `项目状态.json`、`后续实施标准与流程.md` 和 `config/implementation-roadmap.json` 为准。

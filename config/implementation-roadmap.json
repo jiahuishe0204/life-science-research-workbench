@@ -1,0 +1,115 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-09-23",
+  "execution_policy": {
+    "allowed_statuses": ["not_started", "in_progress", "code_verified", "deployed", "runtime_verified", "blocked_external"],
+    "completion_status": "runtime_verified",
+    "required_evidence": ["implementation", "automated_test", "runtime_result"],
+    "never_treat_as_complete": ["written_plan_only", "local_test_only_for_cloud_feature", "deployment_success_without_runtime_test"],
+    "automatic_progress": "continue all reversible repository work and read-only verification; pause only for secrets, account approval, payment, public release, domain purchase, or destructive data operations",
+    "cost_stop_cny_per_research_job": 1.0,
+    "secret_policy": "server_environment_only_never_chat_or_git"
+  },
+  "work_items": [
+    {
+      "id": "edgeone_retrieval_revalidation",
+      "priority": 1,
+      "status": "deployed",
+      "depends_on": [],
+      "acceptance": [
+        "health endpoint reports ok and read_write",
+        "PubMed retrieval path is disclosed as direct or fallback_via_europe_pmc",
+        "Europe PMC and Crossref complete",
+        "one report completes with valid source identifiers",
+        "anonymous isolation and cancellation pass"
+      ],
+      "blocker": "A fresh time-limited EdgeOne preview URL is required to resume the saved job"
+    },
+    {
+      "id": "creator_authentication",
+      "priority": 2,
+      "status": "in_progress",
+      "depends_on": [],
+      "acceptance": [
+        "Argon2id password verification uses server-only hash",
+        "RFC 6238 TOTP is required",
+        "HttpOnly Secure SameSite=Strict session cookie",
+        "30 minute idle and 8 hour absolute expiry",
+        "CSRF validation for state changes",
+        "five failures in fifteen minutes trigger a fifteen minute lockout",
+        "login logout timeout and unauthorized access pass online"
+      ]
+    },
+    {
+      "id": "creator_dashboard_and_export",
+      "priority": 3,
+      "status": "not_started",
+      "depends_on": ["creator_authentication"],
+      "acceptance": [
+        "dashboard exposes only aggregate and authorized task data",
+        "export contains a manifest record count and SHA-256 hashes",
+        "no secrets session values or full audit credentials are exported"
+      ]
+    },
+    {
+      "id": "backup_restore_drill",
+      "priority": 4,
+      "status": "not_started",
+      "depends_on": ["creator_dashboard_and_export"],
+      "acceptance": [
+        "encrypted export is stored outside Git",
+        "restore into an isolated namespace succeeds",
+        "record counts and SHA-256 manifest match",
+        "test data is removed after verification"
+      ]
+    },
+    {
+      "id": "official_source_runtime_integration",
+      "priority": 5,
+      "status": "not_started",
+      "depends_on": [],
+      "acceptance": [
+        "only allowlisted official domains are accepted",
+        "source type and permitted use are displayed",
+        "failure does not become an unsupported factual claim",
+        "positive negative and redirect URL tests pass"
+      ]
+    },
+    {
+      "id": "epo_ops_runtime_integration",
+      "priority": 6,
+      "status": "blocked_external",
+      "depends_on": [],
+      "acceptance": [
+        "EPO approves registration reference 45022",
+        "client credentials remain server-only",
+        "OAuth token retrieval succeeds",
+        "search detail rate-limit and error handling pass",
+        "reports disclose patent retrieval coverage"
+      ],
+      "blocker": "Waiting for EPO administrator decision on registration reference 45022"
+    },
+    {
+      "id": "production_acceptance",
+      "priority": 7,
+      "status": "not_started",
+      "depends_on": ["edgeone_retrieval_revalidation", "creator_authentication", "creator_dashboard_and_export", "backup_restore_drill", "official_source_runtime_integration", "epo_ops_runtime_integration"],
+      "acceptance": [
+        "five life-science topics complete end to end",
+        "citations permissions costs failures and mobile layout pass",
+        "HTTPS and same-origin policy pass",
+        "documentation and evidence are current"
+      ]
+    },
+    {
+      "id": "public_release_decision",
+      "priority": 8,
+      "status": "not_started",
+      "depends_on": ["production_acceptance"],
+      "acceptance": [
+        "owner explicitly approves public release and domain choice",
+        "monitoring rollback and cost limits are enabled"
+      ]
+    }
+  ]
+}
