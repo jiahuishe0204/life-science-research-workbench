@@ -55,8 +55,9 @@
     {
       "id": "backup_restore_drill",
       "priority": 4,
-      "status": "in_progress",
+      "status": "runtime_verified",
       "depends_on": ["creator_dashboard_and_export"],
+      "evidence": "artifacts/backup-restore/20260923T121425Z/summary.json",
       "acceptance": [
         "encrypted export is stored outside Git",
         "restore into an isolated namespace succeeds",
@@ -67,7 +68,7 @@
     {
       "id": "official_source_runtime_integration",
       "priority": 5,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [],
       "acceptance": [
         "only allowlisted official domains are accepted",
