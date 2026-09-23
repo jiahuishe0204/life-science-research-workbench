@@ -50,8 +50,8 @@
   "current_blockers": [
     {
       "item": "epo_ops_account_and_api_test",
-      "reason": "先前 EPO OPS 申请含中文字段，需要改用真实、完整的英文或拼音资料重新申请；尚未获批或创建应用 Consumer Key 和 Consumer Secret",
-      "required_action": "使用唯一用户名和唯一邮箱，以英文或拼音填写真实完整资料并提交；等待 EPO 审批邮件；批准后登录并创建应用凭据，凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
+      "reason": "EPO OPS 已使用英文或拼音资料重新提交注册，EPO 正在人工审核；申请参考编号 45022，尚未创建应用 Consumer Key 和 Consumer Secret",
+      "required_action": "等待 EPO 批准或补充资料邮件；批准后登录开发者门户并创建应用凭据，凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
     }
   ],
   "not_executed": [
