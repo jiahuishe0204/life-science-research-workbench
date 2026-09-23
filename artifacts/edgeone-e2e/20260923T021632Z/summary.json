@@ -1,0 +1,34 @@
+{
+  "tested_at": "2026-09-23T02:16:32Z",
+  "environment": "EdgeOne Makers production deployment",
+  "deployment_url": "https://life-science-research-workbench-dp0klah46fr2.edgeone.cool",
+  "health": {
+    "ok": true,
+    "storage": "read_write",
+    "deepseek_configured": true,
+    "task_access_secret_configured": true
+  },
+  "completed_job": {
+    "id": "6cc3578b3f7d42a9a75b307efc579c27",
+    "topic": "CRISPR分子诊断的主要技术路线与关键限制",
+    "status": "completed",
+    "source_count": 8,
+    "providers": ["Europe PMC"],
+    "crossref_validated_count": 4,
+    "input_tokens": 7666,
+    "output_tokens": 4411,
+    "estimated_cost_cny": 0.05062,
+    "patent_pending_disclosed": true
+  },
+  "access_isolation": {
+    "unrelated_session_http_status": 404,
+    "passed": true
+  },
+  "cancellation": {
+    "job_id": "b626041de6ff4d159b7c6c596c1147f7",
+    "final_status": "cancelled",
+    "estimated_cost_cny": 0,
+    "passed": true
+  },
+  "recorded_limitation": "The deployed EdgeOne runtime did not return PubMed records in this run. Europe PMC fallback, report generation and Crossref validation completed, but dual-source retrieval is not yet accepted as passed."
+}

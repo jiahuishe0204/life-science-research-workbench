@@ -1,7 +1,7 @@
 {
   "project": "生命科学科研调研工作台",
   "snapshot_version": "H1",
-  "updated_at": "2026-09-20",
+  "updated_at": "2026-09-23",
   "phase": "产品与技术方案定稿",
   "active_item_id": "epo_ops_account_and_api_test",
   "active_item": "EPO OPS 账户权限与真实 API 测试",
@@ -40,7 +40,7 @@
     {"id": "website_skeleton", "status": "static_skeleton_browser_verified", "evidence": ["web/index.html", "web/creator.html", "web/styles.css", "web/app.js", "tests/validate_web_skeleton.py", "README.md"]},
     {"id": "website_backend_local", "status": "runtime_verified_five_topics_with_revalidation", "evidence": ["server.py", "tests/test_server_core.py", "tests/run_backend_e2e_eval.py", "网站后端真实验收.md", "artifacts/backend-e2e/20260920T090405Z/summary.json", "artifacts/backend-e2e/20260920T090659Z/summary.json"]},
     {"id": "edgeone_static_deployment", "status": "deployed_https_and_mobile_user_verified", "evidence": ["https://life-science-research-workbench-dpm9y33xdaq8.edgeone.cool", "git_commit:2773aa9"]},
-    {"id": "edgeone_backend_scaffold", "status": "single_topic_runtime_verified_with_pubmed_fallback_revalidation_pending", "evidence": ["edgeone.json", "package.json", "cloud-functions/api/health.js", "cloud-functions/api/[[default]].js", "tests/validate_edgeone_scaffold.py", "artifacts/edgeone-e2e/20260923T020620Z/summary.json"]}
+    {"id": "edgeone_backend_scaffold", "status": "production_runtime_verified_with_pubmed_egress_limitation", "evidence": ["edgeone.json", "package.json", "cloud-functions/api/health.js", "cloud-functions/api/[[default]].js", "tests/validate_edgeone_scaffold.py", "artifacts/edgeone-e2e/20260923T020620Z/summary.json", "artifacts/edgeone-e2e/20260923T021632Z/summary.json"]}
   ],
   "pending_in_order": [
     "epo_ops_account_and_api_test",
@@ -50,14 +50,14 @@
   "current_blockers": [
     {
       "item": "epo_ops_account_and_api_test",
-      "reason": "EPO OPS 新账号邮箱已确认，页面显示正在等待 EPO 管理员审批，尚未创建应用 Consumer Key 和 Consumer Secret",
-      "required_action": "等待 EPO 审批邮件；批准后登录并创建应用凭据，凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
+      "reason": "先前 EPO OPS 申请含中文字段，需要改用真实、完整的英文或拼音资料重新申请；尚未获批或创建应用 Consumer Key 和 Consumer Secret",
+      "required_action": "使用唯一用户名和唯一邮箱，以英文或拼音填写真实完整资料并提交；等待 EPO 审批邮件；批准后登录并创建应用凭据，凭据值仅写入本地 .env，不得发送到聊天或提交到 GitHub"
     }
   ],
   "not_executed": [
     "创建者真实登录与部署后端迁移",
     "EPO OPS 应用凭据创建与真实调用",
-    "EdgeOne Cloud Functions 与 Blob 真实验证",
+    "EdgeOne 上 PubMed 双源检索故障定位与复验",
     "公开发布"
   ]
 }
