@@ -18,9 +18,9 @@ function json(payload, status = 200, headers = {}) {
   }});
 }
 function config(context) { return {
-  passwordHash: context.env?.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD_HASH || "",
-  sessionSecret: context.env?.ADMIN_SESSION_SECRET || process.env.ADMIN_SESSION_SECRET || "",
-  totpSecret: context.env?.ADMIN_TOTP_SECRET || process.env.ADMIN_TOTP_SECRET || ""
+  passwordHash: process.env.ADMIN_PASSWORD_HASH || context.env?.ADMIN_PASSWORD_HASH || "",
+  sessionSecret: process.env.ADMIN_SESSION_SECRET || context.env?.ADMIN_SESSION_SECRET || "",
+  totpSecret: process.env.ADMIN_TOTP_SECRET || context.env?.ADMIN_TOTP_SECRET || ""
 }; }
 function store() { return getStore({ name: STORE_NAME, consistency: "strong" }); }
 function cookies(request) { const out = {}; for (const part of (request.headers.get("cookie") || "").split(";")) { const i = part.indexOf("="); if (i > 0) out[part.slice(0, i).trim()] = part.slice(i + 1).trim(); } return out; }
