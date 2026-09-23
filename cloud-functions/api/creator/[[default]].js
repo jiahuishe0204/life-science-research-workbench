@@ -92,7 +92,7 @@ export async function onRequest(context) {
   const blob = store(); const path = new URL(context.request.url).pathname.replace(/\/+$/, "");
   try {
     if (path === "/api/creator/login" && context.request.method === "POST") return await login(context, blob, cfg);
-    const active = await activeSession(context.request, blob, cfg); if (!active) return json({ error: "未登录或会话已过期" }, 401, { "Set-Cookie": cookie("", 0) });
+    const active = await activeSession(context.request, blob, cfg.sessionSecret); if (!active) return json({ error: "未登录或会话已过期" }, 401, { "Set-Cookie": cookie("", 0) });
     if (path === "/api/creator/session" && context.request.method === "GET") { const csrf = randomBytes(32).toString("base64url"); active.record.csrf_hash = hmac(cfg.sessionSecret, csrf); await blob.setJSON(active.key, active.record); return json({ authenticated: true, csrf, idle_timeout_minutes: 30, absolute_timeout_hours: 8 }); }
     if (path === "/api/creator/logout" && context.request.method === "POST") { const csrf = context.request.headers.get("x-csrf-token") || ""; if (!safeText(hmac(cfg.sessionSecret, csrf), active.record.csrf_hash)) return json({ error: "CSRF 校验失败" }, 403); active.record.revoked_at = Date.now(); await blob.setJSON(active.key, active.record); await audit(blob, "logout", { session_key: hmac(cfg.sessionSecret, active.id) }); return json({ authenticated: false }, 200, { "Set-Cookie": cookie("", 0) }); }
     if (path === "/api/creator/summary" && context.request.method === "GET") return json({ authenticated: true, status: "creator_dashboard_ready", patent_integration: "pending_epo_approval" });
