@@ -15,6 +15,7 @@ require("HttpOnly; Secure; SameSite=Strict" in backend,"Cookie flags are incompl
 require("IDLE_MS = 30" in backend and "ABSOLUTE_MS = 8" in backend,"Session timeouts are incomplete")
 require("MAX_FAILURES = 5" in backend and "LOCKOUT_MS = 15" in backend,"Login lockout is incomplete")
 require("x-csrf-token" in backend and "csrf_hash" in backend,"CSRF protection is missing")
+require("secretBytes" in backend and "typeof secret.value" in backend,"EdgeOne secret wrappers are not normalized")
 require("login_success" in backend and "login_failure" in backend and '"logout"' in backend,"Audit events are incomplete")
 require("localStorage" not in frontend and "sessionStorage" not in frontend,"Web Storage must not hold sessions")
 require('autocomplete="current-password"' in page and 'autocomplete="one-time-code"' in page,"Login autocomplete semantics are missing")

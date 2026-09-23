@@ -24,7 +24,12 @@ function config(context) { return {
 }; }
 function store() { return getStore({ name: STORE_NAME, consistency: "strong" }); }
 function cookies(request) { const out = {}; for (const part of (request.headers.get("cookie") || "").split(";")) { const i = part.indexOf("="); if (i > 0) out[part.slice(0, i).trim()] = part.slice(i + 1).trim(); } return out; }
-function hmac(secret, value) { return createHmac("sha256", secret).update(value).digest("base64url"); }
+function secretBytes(secret) {
+  if (typeof secret === "string" || Buffer.isBuffer(secret) || secret instanceof Uint8Array) return secret;
+  if (secret && typeof secret.value === "string") return secret.value;
+  throw new Error("服务端密钥类型无效");
+}
+function hmac(secret, value) { return createHmac("sha256", secretBytes(secret)).update(String(value)).digest("base64url"); }
 function safeText(a, b) { a = Buffer.from(String(a)); b = Buffer.from(String(b)); return a.length === b.length && timingSafeEqual(a, b); }
 function cookie(value, age = 28_800) { return `${COOKIE}=${value}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${age}`; }
 function sessionKey(secret, id) { return `creator/sessions/${hmac(secret, id)}.json`; }

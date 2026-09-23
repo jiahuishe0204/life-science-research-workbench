@@ -1,0 +1,32 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@edgeone/pages-blob':
+        specifier: 0.0.16
+        version: 0.0.16
+      '@noble/hashes':
+        specifier: 2.4.0
+        version: 2.4.0
+
+packages:
+
+  '@edgeone/pages-blob@0.0.16':
+    resolution: {integrity: sha512-Qk3SHTSvCF7awlKsG5t45FolHd8kVH44yJKeXM21qNq8A1I1mTGUuQWa+j4shwuBdgQTvRHTFBbQxAvKqiR22A==}
+    engines: {node: '>=18.0.0'}
+
+  '@noble/hashes@2.4.0':
+    resolution: {integrity: sha512-X5XaVWZIBCT7HHZGm5I7ZQXDwLG+bGXuSrMQAW+7Zvl87h1kmc1ZB1VSRJcpUfoUrGQp4Fkoxm5kZ+Ms+aW+eA==}
+    engines: {node: '>= 20.19.0'}
+
+snapshots:
+
+  '@edgeone/pages-blob@0.0.16': {}
+
+  '@noble/hashes@2.4.0': {}
