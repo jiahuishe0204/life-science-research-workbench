@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "tested_at": "2026-09-23T11:27:02Z",
+  "deployment": "life-science-research-workbench-dpqldgqvqyjx.edgeone.cool",
+  "deployed_commit": "9afc582",
+  "secrets_recorded": false,
+  "result": "pass",
+  "checks": {
+    "health": { "status": 200, "result": "pass" },
+    "unauthenticated_access": { "status": 401, "result": "pass" },
+    "invalid_totp": { "status": 401, "result": "pass" },
+    "valid_password_and_totp": { "status": 200, "result": "pass" },
+    "session_persistence": { "status": 200, "result": "pass" },
+    "authenticated_summary": { "status": 200, "result": "pass" },
+    "invalid_csrf_logout": { "status": 403, "result": "pass" },
+    "valid_logout": { "status": 200, "result": "pass" },
+    "post_logout_access": { "status": 401, "result": "pass" },
+    "account_lockout": {
+      "statuses": [401, 401, 401, 401, 429, 429],
+      "threshold": 5,
+      "duration_minutes": 15,
+      "result": "pass"
+    }
+  },
+  "notes": [
+    "The preview access token was used only to establish the EdgeOne preview cookie and is not stored in this artifact.",
+    "Password, TOTP secret, one-time codes, session cookies and CSRF tokens are excluded.",
+    "The creator account is intentionally locked for approximately fifteen minutes after the final lockout test."
+  ]
+}

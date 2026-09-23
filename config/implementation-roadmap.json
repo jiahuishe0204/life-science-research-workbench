@@ -27,8 +27,9 @@
     {
       "id": "creator_authentication",
       "priority": 2,
-      "status": "code_verified",
+      "status": "runtime_verified",
       "depends_on": [],
+      "evidence": "artifacts/creator-auth/20260923T112702Z/summary.json",
       "acceptance": [
         "Argon2id password verification uses server-only hash",
         "RFC 6238 TOTP is required",
@@ -42,7 +43,7 @@
     {
       "id": "creator_dashboard_and_export",
       "priority": 3,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": ["creator_authentication"],
       "acceptance": [
         "dashboard exposes only aggregate and authorized task data",
