@@ -41,6 +41,10 @@ require("acquireEpoTimeSlot" in jobs and "onlyIfNew: true" in jobs and "slotMs =
         "EPO cross-instance request spacing is missing")
 require("readEpoBody" in jobs and "responseBytes" in jobs and "EPO OPS 响应超过 10 MB" in jobs,
         "EPO response-size hard limit is missing")
+require('"X-OPS-Range": "1-3"' in jobs and 'error.epoStatus === 404' in jobs,
+        "EPO search must use the OPS range header and treat a zero-result 404 as no results")
+require('related.map((term) => `ta=${term}`).join(" or ")' in jobs,
+        "EPO deterministic CQL must avoid requiring every generated term")
 require('read_scope: "patent_bibliographic_metadata"' in jobs and "must never support scientific efficacy" in jobs,
         "Patent metadata must be isolated from scientific evidence")
 require('filter((source) => source.read_scope !== "patent_bibliographic_metadata")' in jobs,

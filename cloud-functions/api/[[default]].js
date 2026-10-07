@@ -220,19 +220,23 @@ async function readEpoBody(result) {
   return { body, accountedBytes: size, tooLarge: false };
 }
 
-async function epoFetch(blob, settings, path, accept = "application/ops+xml") {
+async function epoFetch(blob, settings, path, accept = "application/ops+xml", extraHeaders = {}) {
   const reservation = await reserveEpo(blob);
   let consumed = false;
   try {
     const token = await epoTokenFor(settings);
     await acquireEpoTimeSlot(blob);
     const result = await throttleEpo(() => fetch(`${EPO_BASE}/rest-services${path}`, { signal: AbortSignal.timeout(30_000), headers: {
-      Authorization: `Bearer ${token}`, Accept: accept, "User-Agent": "LifeScienceResearchWorkbench/0.3" } }));
+      Authorization: `Bearer ${token}`, Accept: accept, "User-Agent": "LifeScienceResearchWorkbench/0.3", ...extraHeaders } }));
     const read = await readEpoBody(result);
     consumed = true;
     await settleEpo(blob, reservation, read.accountedBytes, result.headers);
     if (read.tooLarge) throw new Error("EPO OPS 响应超过 10 MB 安全上限");
-    if (!result.ok) throw new Error(`EPO OPS 返回 ${result.status}`);
+    if (!result.ok) {
+      const error = new Error(`EPO OPS 返回 ${result.status}`);
+      error.epoStatus = result.status;
+      throw error;
+    }
     return new TextDecoder().decode(read.body);
   } catch (error) {
     if (!consumed) await blob.setJSON(reservation.key, { status: "released", reserved_bytes: 0,
@@ -251,8 +255,18 @@ function xmlText(value) { return cleanText(String(value || "").replace(/<[^>]+>/
 async function epoSearch(blob, settings, query) {
   if (!settings.epoKey || !settings.epoSecret) return { records: [], status: "credentials_unavailable" };
   const terms = epoTerms(query); if (!terms.length) return { records: [], status: "query_unavailable" };
-  const cql = terms.map((term) => `ta=${term}`).join(" and ");
-  const xml = await epoFetch(blob, settings, `/published-data/search?q=${encodeURIComponent(cql)}&Range=1-3`);
+  const related = terms.slice(1, 4);
+  const cql = related.length
+    ? `ta=${terms[0]} and (${related.map((term) => `ta=${term}`).join(" or ")})`
+    : `ta=${terms[0]}`;
+  let xml;
+  try {
+    xml = await epoFetch(blob, settings, `/published-data/search?q=${encodeURIComponent(cql)}`,
+      "application/ops+xml", { "X-OPS-Range": "1-3" });
+  } catch (error) {
+    if (error.epoStatus === 404) return { records: [], status: "no_results" };
+    throw error;
+  }
   const ids = [...xml.matchAll(/<[^>]*document-id[^>]*>[\s\S]*?<[^>]*country[^>]*>([^<]+)<\/[^>]*country>[\s\S]*?<[^>]*doc-number[^>]*>([^<]+)<\/[^>]*doc-number>[\s\S]*?<[^>]*kind[^>]*>([^<]+)<\/[^>]*kind>[\s\S]*?<\/[^>]*document-id>/g)]
     .map((match) => `${match[1].trim()}.${match[2].trim()}.${match[3].trim()}`)
     .filter((id, index, all) => /^[A-Z]{2}\.[A-Z0-9]+\.[A-Z0-9]+$/.test(id) && all.indexOf(id) === index).slice(0, 3);
