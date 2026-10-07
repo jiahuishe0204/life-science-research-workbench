@@ -10,6 +10,10 @@ const ABSOLUTE_MS = 8 * 60 * 60_000;
 const FAILURE_WINDOW_MS = 15 * 60_000;
 const LOCKOUT_MS = 15 * 60_000;
 const MAX_FAILURES = 5;
+const LAST_VERIFIED_EPO_USAGE = {
+  week: "2026-W41", response_bytes: 104370, server_weekly_bytes: 122774,
+  verified_at: "2026-10-06T22:46:00+08:00", source: "epo_response_header"
+};
 
 function json(payload, status = 200, headers = {}) {
   return new Response(JSON.stringify(payload), { status, headers: {
@@ -99,7 +103,14 @@ function verifyCsrf(request, cfg, active) {
 async function dashboardSummary(blob) {
   const jobs = await creatorJobs(blob); const byStatus = {}; let cost = 0; let sources = 0;
   for (const job of jobs) { byStatus[job.status || "unknown"] = (byStatus[job.status || "unknown"] || 0) + 1; cost += Number(job.usage?.estimated_cost_cny || 0); sources += (job.sources || []).length; }
-  return { authenticated: true, status: "creator_dashboard_ready", patent_integration: "pending_epo_approval", metrics: { total_jobs: jobs.length, by_status: byStatus, total_sources: sources, estimated_cost_cny: Number(cost.toFixed(6)) } };
+  const synced = await blob.get("epo/usage/current.json", { type: "json", consistency: "strong" });
+  const epo = synced || LAST_VERIFIED_EPO_USAGE;
+  const measured = Math.max(Number(epo.response_bytes || 0), Number(epo.server_weekly_bytes || 0));
+  const epoUsage = { week: String(epo.week || ""), measured_bytes: measured,
+    warning_reached: measured >= 3_000_000_000, warning_bytes: 3_000_000_000,
+    official_free_bytes: 4_000_000_000, verified_at: epo.verified_at || null,
+    sync_status: synced ? "live" : "last_verified", source: epo.source || "shared_meter" };
+  return { authenticated: true, status: "creator_dashboard_ready", patent_integration: "approved", epo_usage: epoUsage, metrics: { total_jobs: jobs.length, by_status: byStatus, total_sources: sources, estimated_cost_cny: Number(cost.toFixed(6)) } };
 }
 async function exportData(blob, cfg, active) {
   const records = (await creatorJobs(blob)).map(exportJob); const generated = new Date().toISOString();
