@@ -58,7 +58,9 @@ def main():
 
     html = (WEB / "index.html").read_text(encoding="utf-8")
     js = (WEB / "app.js").read_text(encoding="utf-8")
-    require("EPO 审批" in html, "page must disclose the patent retrieval limitation")
+    require("EPO 专利接口已获批" in html, "page must disclose the approved patent integration")
+    require("专利书目信息与论文内容证据会分开展示" in html,
+            "page must disclose the patent evidence boundary")
     require("maxlength=\"120\"" in html, "topic length must be constrained")
     require("preventDefault" in js and "submit.disabled = true" in js, "duplicate submission guard is missing")
     require("idempotency_key" in js and "sessionStorage" in js, "idempotency or reconnect support is missing")

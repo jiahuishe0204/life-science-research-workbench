@@ -5,6 +5,13 @@ import { classifyOfficialUrl, officialDirectoryEntries } from "../lib/official-s
 const STORE_NAME = "life-science-workbench";
 const SESSION_COOKIE = "lsrw_session";
 const SOURCE_LIMIT = 12;
+const EPO_BASE = "https://ops.epo.org/3.2";
+const EPO_WARNING_BYTES = 3_000_000_000;
+const EPO_FREE_BYTES = 4_000_000_000;
+const EPO_RESERVE_BYTES = 10_000_000;
+let epoToken = "";
+let epoTokenExpiresAt = 0;
+let epoRequestQueue = Promise.resolve();
 const FINISHED = new Set(["completed", "partial", "failed", "cancelled"]);
 const STAGES = ["理解研究主题", "检索与筛选资料", "建立证据库", "生成并核验"];
 
@@ -25,7 +32,9 @@ function env(context) {
     deepseekKey: context.env?.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEY || "",
     deepseekBase: context.env?.DEEPSEEK_BASE_URL || process.env.DEEPSEEK_BASE_URL || "https://api.deepseek.com",
     deepseekModel: context.env?.DEEPSEEK_MODEL || process.env.DEEPSEEK_MODEL || "deepseek-flash",
-    taskSecret: context.env?.TASK_ACCESS_TOKEN_SECRET || process.env.TASK_ACCESS_TOKEN_SECRET || ""
+    taskSecret: context.env?.TASK_ACCESS_TOKEN_SECRET || process.env.TASK_ACCESS_TOKEN_SECRET || "",
+    epoKey: context.env?.EPO_OPS_CONSUMER_KEY || process.env.EPO_OPS_CONSUMER_KEY || "",
+    epoSecret: context.env?.EPO_OPS_CONSUMER_SECRET || process.env.EPO_OPS_CONSUMER_SECRET || ""
   };
 }
 
@@ -84,14 +93,179 @@ function publicJob(job) {
     stages: STAGES,
     message: job.message,
     report: job.report || null,
-    error: job.error || null,
+    error: job.error_public || null,
     usage: job.usage,
     source_status: job.source_status || {},
     sources: (job.sources || []).map(({ abstract, ...source }) => source),
-    patent_status: "EPO OPS 账号等待管理员审批，当前任务未执行专利检索",
+    patent_status: job.patent_status || "EPO OPS 已获批；当前任务未执行专利检索",
     created_at: job.created_at,
     updated_at: job.updated_at
   };
+}
+
+function publicFailure(error) {
+  const message = error instanceof Error ? error.message : "";
+  if (message.includes("4 GB")) return "EPO_QUOTA_GUARD";
+  if (message.includes("10 MB")) return "EPO_RESPONSE_TOO_LARGE";
+  if (message.startsWith("EPO OAuth") || message.startsWith("EPO OPS")) return "EPO_UNAVAILABLE";
+  if (message.includes("引用核验")) return "CITATION_VALIDATION_FAILED";
+  if (message.includes("1 元")) return "MODEL_COST_LIMIT";
+  return "WORKFLOW_STEP_FAILED";
+}
+
+function isoWeek(now = new Date()) {
+  const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+  const start = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  return `${date.getUTCFullYear()}-W${String(Math.ceil((((date - start) / 86400000) + 1) / 7)).padStart(2, "0")}`;
+}
+
+async function epoUsage(blob, week = isoWeek()) {
+  const listed = await blob.list({ prefix: `epo/ledger/${week}/`, consistency: "strong" });
+  let responseBytes = 0; let serverWeeklyBytes = 0; let reservedBytes = 0; let requests = 0;
+  for (const item of listed.blobs || []) {
+    const row = await blob.get(item.key, { type: "json", consistency: "strong" });
+    if (row?.status === "reserved") reservedBytes += Number(row.reserved_bytes || 0);
+    if (row?.status === "completed") {
+      responseBytes += Number(row.response_bytes || 0); requests += 1;
+      serverWeeklyBytes = Math.max(serverWeeklyBytes, Number(row.server_weekly_bytes || 0));
+    }
+  }
+  return { week, response_bytes: responseBytes, server_weekly_bytes: serverWeeklyBytes,
+    reserved_bytes: reservedBytes, requests, measured_bytes: Math.max(responseBytes, serverWeeklyBytes) };
+}
+
+async function reserveEpo(blob) {
+  const week = isoWeek(); const id = randomUUID(); const key = `epo/ledger/${week}/${id}.json`;
+  await blob.setJSON(key, { status: "reserved", reserved_bytes: EPO_RESERVE_BYTES, created_at: new Date().toISOString() }, { onlyIfNew: true });
+  const usage = await epoUsage(blob, week);
+  if (usage.measured_bytes + usage.reserved_bytes > EPO_FREE_BYTES) {
+    await blob.setJSON(key, { status: "released", reserved_bytes: 0, reason: "quota_guard", updated_at: new Date().toISOString() });
+    throw new Error("EPO OPS 本周用量已进入 4 GB 临界保护区");
+  }
+  return { key, week };
+}
+
+async function settleEpo(blob, reservation, responseBytes, headers) {
+  const raw = headers.get("X-RegisteredQuotaPerWeek-Used") || "";
+  const server = /^\d+$/.test(raw) ? Number(raw) : 0;
+  await blob.setJSON(reservation.key, { status: "completed", response_bytes: responseBytes,
+    server_weekly_bytes: server, completed_at: new Date().toISOString() });
+  const usage = await epoUsage(blob, reservation.week);
+  await blob.setJSON("epo/usage/current.json", { ...usage, warning_bytes: EPO_WARNING_BYTES,
+    official_free_bytes: EPO_FREE_BYTES, warning_reached: usage.measured_bytes >= EPO_WARNING_BYTES,
+    verified_at: new Date().toISOString(), source: "epo_response_header_and_blob_ledger" });
+}
+
+async function epoTokenFor(settings) {
+  if (epoToken && Date.now() < epoTokenExpiresAt - 30_000) return epoToken;
+  const credentials = Buffer.from(`${settings.epoKey}:${settings.epoSecret}`).toString("base64");
+  const tokenResponse = await fetch(`${EPO_BASE}/auth/accesstoken`, { method: "POST",
+    signal: AbortSignal.timeout(30_000),
+    headers: { Authorization: `Basic ${credentials}`, "Content-Type": "application/x-www-form-urlencoded" },
+    body: "grant_type=client_credentials" });
+  if (!tokenResponse.ok) throw new Error(`EPO OAuth 返回 ${tokenResponse.status}`);
+  const tokenPayload = await tokenResponse.json();
+  epoToken = String(tokenPayload.access_token || "");
+  if (!epoToken) throw new Error("EPO OAuth 未返回访问令牌");
+  epoTokenExpiresAt = Date.now() + Number(tokenPayload.expires_in || 1200) * 1000;
+  return epoToken;
+}
+
+async function throttleEpo(operation) {
+  const previous = epoRequestQueue;
+  let release; epoRequestQueue = new Promise((resolve) => { release = resolve; });
+  await previous;
+  try { return await operation(); }
+  finally { setTimeout(release, 1100); }
+}
+
+async function acquireEpoTimeSlot(blob) {
+  const slotMs = 1500; const first = Math.ceil(Date.now() / slotMs);
+  for (let offset = 0; offset < 20; offset += 1) {
+    const slot = first + offset; const key = `epo/rate/${isoWeek()}/${slot}.json`;
+    try {
+      await blob.setJSON(key, { scheduled_at: slot * slotMs }, { onlyIfNew: true });
+      const wait = slot * slotMs - Date.now();
+      if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+      return;
+    } catch {
+      // Another instance owns this globally spaced slot.
+    }
+  }
+  throw new Error("EPO OPS 全局限速时槽暂时繁忙");
+}
+
+async function readEpoBody(result) {
+  const declared = Number(result.headers.get("content-length") || 0);
+  if (declared > EPO_RESERVE_BYTES) {
+    await result.body?.cancel();
+    return { body: null, accountedBytes: EPO_RESERVE_BYTES, tooLarge: true };
+  }
+  const reader = result.body?.getReader();
+  if (!reader) {
+    const body = new Uint8Array(await result.arrayBuffer());
+    return { body: body.byteLength <= EPO_RESERVE_BYTES ? body : null,
+      accountedBytes: Math.min(body.byteLength, EPO_RESERVE_BYTES), tooLarge: body.byteLength > EPO_RESERVE_BYTES };
+  }
+  const chunks = []; let size = 0;
+  while (true) {
+    const { done, value } = await reader.read(); if (done) break;
+    size += value.byteLength;
+    if (size > EPO_RESERVE_BYTES) { await reader.cancel(); return { body: null, accountedBytes: EPO_RESERVE_BYTES, tooLarge: true }; }
+    chunks.push(value);
+  }
+  const body = new Uint8Array(size); let offset = 0;
+  for (const chunk of chunks) { body.set(chunk, offset); offset += chunk.byteLength; }
+  return { body, accountedBytes: size, tooLarge: false };
+}
+
+async function epoFetch(blob, settings, path, accept = "application/ops+xml") {
+  const reservation = await reserveEpo(blob);
+  let consumed = false;
+  try {
+    const token = await epoTokenFor(settings);
+    await acquireEpoTimeSlot(blob);
+    const result = await throttleEpo(() => fetch(`${EPO_BASE}/rest-services${path}`, { signal: AbortSignal.timeout(30_000), headers: {
+      Authorization: `Bearer ${token}`, Accept: accept, "User-Agent": "LifeScienceResearchWorkbench/0.3" } }));
+    const read = await readEpoBody(result);
+    consumed = true;
+    await settleEpo(blob, reservation, read.accountedBytes, result.headers);
+    if (read.tooLarge) throw new Error("EPO OPS 响应超过 10 MB 安全上限");
+    if (!result.ok) throw new Error(`EPO OPS 返回 ${result.status}`);
+    return new TextDecoder().decode(read.body);
+  } catch (error) {
+    if (!consumed) await blob.setJSON(reservation.key, { status: "released", reserved_bytes: 0,
+      reason: error instanceof Error ? error.message.slice(0, 120) : "request_failed", updated_at: new Date().toISOString() });
+    throw error;
+  }
+}
+
+function epoTerms(query) {
+  const blocked = new Set(["and", "or", "not"]);
+  return (String(query).match(/[A-Za-z0-9-]+/g) || []).filter((term) => term.length >= 2 && !blocked.has(term.toLowerCase())).slice(0, 6);
+}
+
+function xmlText(value) { return cleanText(String(value || "").replace(/<[^>]+>/g, " ")); }
+
+async function epoSearch(blob, settings, query) {
+  if (!settings.epoKey || !settings.epoSecret) return { records: [], status: "credentials_unavailable" };
+  const terms = epoTerms(query); if (!terms.length) return { records: [], status: "query_unavailable" };
+  const cql = terms.map((term) => `ta=${term}`).join(" and ");
+  const xml = await epoFetch(blob, settings, `/published-data/search?q=${encodeURIComponent(cql)}&Range=1-3`);
+  const ids = [...xml.matchAll(/<[^>]*document-id[^>]*>[\s\S]*?<[^>]*country[^>]*>([^<]+)<\/[^>]*country>[\s\S]*?<[^>]*doc-number[^>]*>([^<]+)<\/[^>]*doc-number>[\s\S]*?<[^>]*kind[^>]*>([^<]+)<\/[^>]*kind>[\s\S]*?<\/[^>]*document-id>/g)]
+    .map((match) => `${match[1].trim()}.${match[2].trim()}.${match[3].trim()}`)
+    .filter((id, index, all) => /^[A-Z]{2}\.[A-Z0-9]+\.[A-Z0-9]+$/.test(id) && all.indexOf(id) === index).slice(0, 3);
+  const records = [];
+  for (const id of ids) {
+    const detail = await epoFetch(blob, settings, `/published-data/publication/docdb/${id}/biblio`, "application/exchange+xml");
+    const title = detail.match(/<[^>]*invention-title[^>]*lang=["']en["'][^>]*>([\s\S]*?)<\/[^>]*invention-title>/i)?.[1]
+      || detail.match(/<[^>]*invention-title[^>]*>([\s\S]*?)<\/[^>]*invention-title>/i)?.[1] || id;
+    records.push({ provider: "EPO OPS", title: xmlText(title), url: `https://worldwide.espacenet.com/patent/search?q=pn%3D${id.replaceAll(".", "")}`,
+      doi: "", abstract: "", published: "", patent_id: id, read_scope: "patent_bibliographic_metadata",
+      crossref_validated: false });
+  }
+  return { records, status: records.length ? "direct_bibliographic_metadata" : "no_results" };
 }
 
 async function readJson(request) {
@@ -258,7 +432,7 @@ async function validateCrossref(sources) {
 }
 
 function evidence(job) {
-  return job.sources.map((source) =>
+  return job.sources.filter((source) => source.read_scope !== "patent_bibliographic_metadata").map((source) =>
     source.read_scope === "official_directory_entry_only"
       ? `[${source.source_id}] ${source.title}\nProvider: ${source.provider}; Type: ${source.source_type}; Read scope: official directory entry only; Allowed uses: ${source.allowed_uses.join(", ")}; Limitation: ${source.limitations}\nContent evidence: NOT READ — do not infer factual claims from this entry.`
       : `[${source.source_id}] ${source.title}\nProvider: ${source.provider}; Year: ${source.published || "unknown"}; DOI: ${source.doi || "none"}; Read scope: ${source.read_scope}\nAbstract: ${(source.abstract || "Abstract unavailable") .slice(0, 1800)}`
@@ -291,13 +465,14 @@ async function advanceJob(blob, owner, job, settings) {
     } else if (job.stage === 1) {
       job.message = "正在检索 PubMed 与 Europe PMC";
       await writeJob(blob, owner, job);
-      const results = await Promise.allSettled([pubmed(job.search_query), europePmc(job.search_query)]);
+      const results = await Promise.allSettled([pubmed(job.search_query), europePmc(job.search_query), epoSearch(blob, settings, job.search_query)]);
       let pubmedRows = results[0].status === "fulfilled" ? results[0].value : [];
       const epmcRows = results[1].status === "fulfilled" ? results[1].value : [];
+      const epoResult = results[2].status === "fulfilled" ? results[2].value : { records: [], status: "request_failed" };
       const sourceStatus = {
         pubmed: pubmedRows.length ? "direct" : "unavailable",
         europe_pmc: results[1].status === "fulfilled" ? "direct" : "unavailable",
-        crossref: "pending"
+        crossref: "pending", epo_ops: epoResult.status
       };
       if (!pubmedRows.length) {
         try {
@@ -309,8 +484,12 @@ async function advanceJob(blob, owner, job, settings) {
       }
       job.source_status = sourceStatus;
       const officialRows = officialDirectoryEntries(job.topic);
-      job.sources = [...mergeSources(pubmedRows, epmcRows).slice(0, SOURCE_LIMIT - officialRows.length), ...officialRows];
+      const reserved = officialRows.length + epoResult.records.length;
+      job.sources = [...mergeSources(pubmedRows, epmcRows).slice(0, Math.max(0, SOURCE_LIMIT - reserved)), ...epoResult.records, ...officialRows];
       job.sources.forEach((source, index) => { source.source_id = `S${index + 1}`; });
+      job.patent_status = epoResult.records.length
+        ? `EPO OPS 已检索并返回 ${epoResult.records.length} 条专利书目记录；不作为论文内容证据`
+        : `EPO OPS 已获批；本次专利检索状态：${epoResult.status}`;
       job.source_status.official_sources = "directory_entries_only";
       if (!job.sources.length) throw new Error("论文接口未返回可用资料");
       job.stage = 2;
@@ -323,7 +502,7 @@ async function advanceJob(blob, owner, job, settings) {
       await validateCrossref(job.sources);
       job.source_status.crossref = "checked";
       const result = await deepseek(settings, [
-          { role: "system", content: "Write a conservative Chinese life-science research summary using only the supplied evidence. Cite every material factual claim with [S#]. Never invent papers, numbers, efficacy, approval status, patent results or full-text access. Official directory entries marked NOT READ may only be listed as follow-up locations and must never support factual claims. Explicitly distinguish bibliographic-only and abstract evidence. State that EPO patent retrieval is pending. Output Markdown." },
+          { role: "system", content: "Write a conservative Chinese life-science research summary using only the supplied evidence. Cite every material factual claim with [S#]. Never invent papers, numbers, efficacy, approval status, patent results or full-text access. Official directory entries and patent bibliographic metadata marked NOT READ may be listed only in their respective follow-up or patent-landscape sections and must never support scientific efficacy or performance claims. Explicitly distinguish bibliographic-only, patent-metadata-only and abstract evidence. Output Markdown." },
         { role: "user", content: `Topic: ${job.topic}\nSearch query: ${job.search_query}\nRetrieval status: ${JSON.stringify(job.source_status)}\n\nEvidence:\n${evidence(job)}\n\nWrite: scope, current technical routes, representative findings, limitations, evidence gaps, and a source list. If PubMed used fallback_via_europe_pmc, disclose that the records are PubMed-indexed but were retrieved through Europe PMC rather than direct NCBI access.` }
       ], 2200);
       job.draft = result.text;
@@ -333,13 +512,15 @@ async function advanceJob(blob, owner, job, settings) {
       job.message = "正在核验引用并修订不支持结论";
       await writeJob(blob, owner, job);
       const result = await deepseek(settings, [
-        { role: "system", content: "Audit the draft strictly against the evidence. Remove or weaken unsupported claims and invalid source IDs. Preserve useful structure. Every important factual claim needs a valid [S#]. Explicitly disclose abstract-only reading and unavailable EPO patent retrieval. Output only corrected Markdown." },
+        { role: "system", content: "Audit the draft strictly against the evidence. Remove or weaken unsupported claims and invalid source IDs. Preserve useful structure. Every important scientific factual claim needs a valid non-patent evidence [S#]. Patent bibliographic metadata may only support the existence and identity of a patent record, never scientific efficacy or performance. Explicitly disclose abstract-only reading and EPO retrieval status. Output only corrected Markdown." },
         { role: "user", content: `Evidence:\n${evidence(job)}\n\nDraft:\n${job.draft}` }
       ], 2200);
       addUsage(job, result.usage);
       let final = result.text;
-      if (!final.includes("EPO")) final += "\n\n> 专利检索状态：EPO OPS 账号仍在等待管理员审批，本报告未执行专利检索，不代表不存在相关专利。";
-      const valid = new Set(job.sources.map((source) => source.source_id));
+      const patents = job.sources.filter((source) => source.read_scope === "patent_bibliographic_metadata");
+      final += `\n\n> 专利检索状态：${job.patent_status}。`;
+      if (patents.length) final += `\n\n### EPO 专利书目记录（不作为论文内容证据）\n${patents.map((source) => `- ${source.patent_id}：${source.title} — ${source.url}`).join("\n")}`;
+      const valid = new Set(job.sources.filter((source) => source.read_scope !== "patent_bibliographic_metadata").map((source) => source.source_id));
       const used = [...final.matchAll(/\[(S\d+)\]/g)].map((match) => match[1]);
       if (!used.length || used.some((id) => !valid.has(id))) throw new Error("引用核验失败：报告包含缺失或无效的来源编号");
       job.report = final;
@@ -351,7 +532,8 @@ async function advanceJob(blob, owner, job, settings) {
   } catch (error) {
     job.status = job.sources?.length ? "partial" : "failed";
     job.message = job.sources?.length ? "已保留可用资料，报告未完成" : "任务未完成";
-    job.error = error instanceof Error ? error.message.slice(0, 500) : "未知错误";
+    job.error_public = publicFailure(error);
+    job.error_detail = error instanceof Error ? error.message.slice(0, 500) : "unknown";
     return writeJob(blob, owner, job);
   }
 }
@@ -414,11 +596,17 @@ export async function onRequest(context) {
     }
     if (match[2] === "advance" && context.request.method === "POST") {
       if (FINISHED.has(job.status)) return response(publicJob(job));
+      const leaseKey = `job-stage-leases/${identity.owner}/${job.id}/${job.stage}.json`;
+      try {
+        await blob.setJSON(leaseKey, { created_at: new Date().toISOString() }, { onlyIfNew: true });
+      } catch {
+        return response({ error: "该任务阶段正在处理或已处理，请刷新状态" }, 409);
+      }
       const advanced = await advanceJob(blob, identity.owner, job, settings);
       return response(publicJob(advanced));
     }
     return response({ error: "请求方法不支持" }, 405);
   } catch (error) {
-    return response({ error: error instanceof Error ? error.message.slice(0, 300) : "服务器处理失败" }, 500);
+    return response({ error: "服务器处理失败", code: publicFailure(error) }, 500);
   }
 }

@@ -21,7 +21,9 @@ export async function onRequestGet(context) {
     ADMIN_PASSWORD_HASH: Boolean(context.env?.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD_HASH),
     ADMIN_SESSION_SECRET: Boolean(context.env?.ADMIN_SESSION_SECRET || process.env.ADMIN_SESSION_SECRET),
     ADMIN_TOTP_SECRET: Boolean(context.env?.ADMIN_TOTP_SECRET || process.env.ADMIN_TOTP_SECRET),
-    TASK_ACCESS_TOKEN_SECRET: Boolean(context.env?.TASK_ACCESS_TOKEN_SECRET || process.env.TASK_ACCESS_TOKEN_SECRET)
+    TASK_ACCESS_TOKEN_SECRET: Boolean(context.env?.TASK_ACCESS_TOKEN_SECRET || process.env.TASK_ACCESS_TOKEN_SECRET),
+    EPO_OPS_CONSUMER_KEY: Boolean(context.env?.EPO_OPS_CONSUMER_KEY || process.env.EPO_OPS_CONSUMER_KEY),
+    EPO_OPS_CONSUMER_SECRET: Boolean(context.env?.EPO_OPS_CONSUMER_SECRET || process.env.EPO_OPS_CONSUMER_SECRET)
   };
 
   try {
